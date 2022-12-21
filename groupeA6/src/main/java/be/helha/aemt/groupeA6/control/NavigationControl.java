@@ -32,3 +32,5 @@ public class NavigationControl implements Serializable {
 		this.nom = nom;
 	}
 }
+
+//test
