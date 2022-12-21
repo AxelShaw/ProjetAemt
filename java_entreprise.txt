@@ -1,0 +1,120 @@
+new maven project
+
+dans pom.xml:
+import dependences jakartaee et payara embedded
+changer le scope de payara de test à provided
+refresh maven project
+
+import payara tools dans le market place
+new server payara
+admin name "admin"
+pas de mot de passe car phase de dev
+
+propriétés du project
+project facets
+convert
+cocher java(11), javascript, dynamic web module
+cocher payara dans runtimes, apply and close
+cocher dinamique web module version 4, apply and close
+clique droit servers dans console, add and remove
+add projet en cours and finish
+
+interface anotée "@remote" (jakarta pas javax)
+classe anotée "@stateless" qui implement l'interface
+
+start le serveur
+
+consulter console du serveur, chercher "Portable JNDI names for EJB"
+si il y est, ça marche
+copier le nom le plus long dans les crochets (style:
+java:global/pBonjourGillebert/BonjourEJB!be.helha.aemt.gillebert.ejb.IBonjour2022Remote)
+dans la méthode lookup du context
+Context import de "import javax.naming.Context;"
+
+Remove la classe puis la rajouter a nouveau dans le serveur pour actualiser le code
+
+effacer les fichiers dans eclipse apps pour eviter les bugs après utilisation
+(click droit sur payara -> domain directory)
+
+config payara + bd:
+1. Créer projet maven
+2. Configurer java-11 et ajouter les dépendences (jakarta, payara, mysql
+3. Maven update
+4. Architecture: packages:
+	-entities
+	-dao
+	-ejb
+	-util
+5. Créer le dossier META-INF et le fichier persistence.xml
+6. adapter persistence.xml (dbenseignants2022)
+7. Code:
+	-Enseignant
+	-EnseignantDAO
+	-GestionEnseignantEJB
+	-GestionEnseignantRemote (car client console)
+8. tester le code en local avec entity manager
+9. Configurer une persistence.xml en JTA
+10. Serveur 
+	-connecteur mysql
+	-configurer connexion pool
+	-tester le pool à l'aide d'un ping
+	-créer JDBC Resource
+11. déployer l'application
+	-configurer les propriétés du projet dans eclipse
+12. utiliser JNDI pour invoquer les méthodes de IGestionEnseignant
+
+
+
+si erreur: supprimer tout les dossiers dans "C:\payara5\glassfish\domains\domain1\eclipseApps",
+restart le serveur et remove puis add le projet.
+
+
+
+
+clicker et detail 
+
+securité
+
+
+JAAS
+
+1. Créer une table UTILISATEUR
+	id
+	Login
+	Password
+	Role
+	
+2. Configurer sécurité sur pararya (localhost 4848)
+	Configuration -> serveurconfig
+	security
+	new 	 
+	name:enseignantRealm
+	className:JDBCRealm
+	JNDI:jdbc/db...
+	user table:UTILISATEUR
+	User name:LOGIN
+	password:PASSWORD
+	group table:UTLISATEUR
+	group name collum:ROLE
+	algorithm:SHA-256
+	Encoding:Base64
+
+3.redemarer le seveur	
+
+4.ECLIPSE : 
+	créer deux page xhtml
+		Login.xhtml -> copier coller de ca -> https://blog.eisele.net/2013/01/jdbc-realm-glassfish312-primefaces342.html -> c'etait pour test
+		error.xhtml -> la meme
+	Configurer web.xml
+		coller security-constraint -> du site
+		coller login config -> encore site
+		coller security role -> ensore site
+	créer fichier payara-web.xml
+	
+5.  1-admin-helha-admin (créer ca dans sql) -- hash helha (d+Rn6wFp6C538JDfIXoyM1fGoVepjAN15vbbr+ApyDo=)
+	puis test de faire le add et demande le login
+
+	
+
+
+
