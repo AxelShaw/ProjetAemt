@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+<title>Start Page</title>
+<meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Hello World!</h1>
+	
+	<h:form>
+		<h3>Quel est votre nom?</h3>
+		<h:inputText value="#{navigationControl.nom}"/>
+		<h:commandButton value="Next" action="#{navigationControl.doNext()}" /> <br/>
+		<h:commandButton value="List" action="#{navigationControl.doList()}" /> <br/>
+		<h:commandButton value="Add" action="#{navigationControl.doAdd()}" />
+	</h:form>
+</body>
+</html>
