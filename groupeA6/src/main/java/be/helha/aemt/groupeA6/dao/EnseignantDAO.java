@@ -1,8 +1,8 @@
-package be.helha.aemt.gillebert.dao;
+package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
-import be.helha.aemt.gillebert.entities.Enseignant;
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;

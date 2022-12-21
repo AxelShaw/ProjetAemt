@@ -36,7 +36,7 @@
 
 	<login-config>
 		<auth-method>FORM</auth-method>
-		<realm-name>enseignantRealm</realm-name>
+		<realm-name>groupeA6Realm</realm-name>
 		<form-login-config>
 			<form-login-page>/login.xhtml</form-login-page>
 			<form-error-page>/error.xhtml</form-error-page>

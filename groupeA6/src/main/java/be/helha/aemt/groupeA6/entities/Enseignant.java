@@ -1,4 +1,4 @@
-package be.helha.aemt.gillebert.entities;
+package be.helha.aemt.groupeA6.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

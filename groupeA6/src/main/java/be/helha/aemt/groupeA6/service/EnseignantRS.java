@@ -1,9 +1,9 @@
-package be.helha.aemt.gillebert.service;
+package be.helha.aemt.groupeA6.service;
 
 import java.util.List;
 
-import be.helha.aemt.gillebert.dao.EnseignantDAO;
-import be.helha.aemt.gillebert.entities.Enseignant;
+import be.helha.aemt.groupeA6.dao.EnseignantDAO;
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.ws.rs.DELETE;
