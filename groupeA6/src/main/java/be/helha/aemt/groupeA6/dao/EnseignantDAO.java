@@ -14,7 +14,7 @@ import jakarta.persistence.TypedQuery;
 @LocalBean
 public class EnseignantDAO {
 	
-	@PersistenceContext(unitName = "pBDJEEGillebert2022-JTA")
+	@PersistenceContext(unitName = "groupeA6-JTA")
 	private EntityManager em;
 	
 	public EnseignantDAO() {
