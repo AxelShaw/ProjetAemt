@@ -20,7 +20,6 @@ public class EnseignantsControl implements Serializable {
 //	supprimer l'annotation @Remote de IGestionEnseignant
 	private IGestionEnseignantEJB beanGestion;
 	
-	private String code;
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -35,7 +34,7 @@ public class EnseignantsControl implements Serializable {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
-			beanGestion = (IGestionEnseignantEJB) ctx.lookup("java:global/pWebGillebert/GestionEnseignantEJB!be.helha.aemt.gillebert.ejb.IGestionEnseignantEJB");
+			beanGestion = (IGestionEnseignantEJB) ctx.lookup("java:global/groupeA6/GestionEnseignantEJB!be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

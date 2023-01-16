@@ -30,13 +30,6 @@ public class EnseignantDAO {
 			return null;
 		}
 		
-		List<Enseignant> list = findAll();		
-		for (Enseignant ens: list) {
-			if (ens.getEmail().equals(e.getEmail())) {
-				return null;
-			}			
-		}
-		
 		em.merge(e);
 		em.detach(e);
 		
@@ -74,7 +67,7 @@ public class EnseignantDAO {
 		
 		Query query = em.createQuery("UPDATE Enseignant SET nom = ?1 WHERE email = ?2");	
 		query.setParameter(1, e2.getNom());
-		query.setParameter(2, e1.getEmail()).executeUpdate();
+		query.setParameter(2, e1.getMail()).executeUpdate();
 		return e1;
 	}
 
