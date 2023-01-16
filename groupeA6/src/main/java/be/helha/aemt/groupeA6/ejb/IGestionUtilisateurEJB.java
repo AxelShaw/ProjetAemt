@@ -4,7 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 
-public interface IGestionUtilisateur {
+public interface IGestionUtilisateurEJB {
 	
 	public List<Utilisateur> findAll();
 	public Utilisateur findById(int id);
