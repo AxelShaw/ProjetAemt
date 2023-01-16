@@ -15,21 +15,26 @@ public class Enseignant implements Serializable {
 	private Integer id;
 	
 	private String nom;
-	private String email;
+	private String prenom;
+	private String mail;
+	private String remarque;
+	//private Attribution attribution
 	
 	public Enseignant() {
 		super();
 	}
 	
-	public Enseignant(String nom, String email) {
+	public Enseignant(String nom,String prenom, String mail,String remarque) {
 		super();
 		this.nom = nom;
-		this.email = email;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.remarque = remarque;
 	}
 	
 	@Override
 	public String toString() {
-		return "\nid=" + id + ", nom=" + nom + ", email=" + email;
+		return "\nid=" + id + ", nom=" + nom + ", email=" + mail;
 	}
 
 	@Override
@@ -41,31 +46,9 @@ public class Enseignant implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Enseignant other = (Enseignant) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom);
+		return Objects.equals(mail, other.mail) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom);
 	}
 
-	public String getNom() {
-		return nom;
-	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 }

@@ -2,9 +2,15 @@ package be.helha.aemt.groupeA6.ejb;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.dao.EnseignantDAO;
+import be.helha.aemt.groupeA6.dao.UtilisateurDAO;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import jakarta.ejb.EJB;
 
 public class GestionUtilisateurEJB implements IGestionUtilisateur {
+	
+	@EJB
+	private UtilisateurDAO daoUtilisateur;
 
 	@Override
 	public List<Utilisateur> findAll() {

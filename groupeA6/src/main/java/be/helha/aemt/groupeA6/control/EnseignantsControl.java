@@ -23,7 +23,7 @@ public class EnseignantsControl implements Serializable {
 	private String code;
 	private String nom;
 	private String prenom;
-	private String email;
+	private String mail;
 	private String remarque;
 	private int id;
 	
@@ -57,7 +57,7 @@ public class EnseignantsControl implements Serializable {
 	
 	public Enseignant doAdd() {
 		// faire appel à la méthode add de beanGestion
-		Enseignant e = new Enseignant(nom, email);
+		Enseignant e = new Enseignant(nom, prenom, mail, remarque);
 		return beanGestion.add(e);
 	}
 
@@ -69,12 +69,28 @@ public class EnseignantsControl implements Serializable {
 		this.nom = nom;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPrenom() {
+		return prenom;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getRemarque() {
+		return remarque;
+	}
+
+	public void setRemarque(String remarque) {
+		this.remarque = remarque;
 	}
 
 	public int getId() {
@@ -84,6 +100,7 @@ public class EnseignantsControl implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 
 }
