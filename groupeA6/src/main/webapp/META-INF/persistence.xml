@@ -3,7 +3,7 @@
 
 
 	<persistence-unit name="groupeA6-JTA" transaction-type="JTA">
-		<jta-data-source>jdbc/dba6</jta-data-source>
+		<jta-data-source>jdbc/groupeA6</jta-data-source>
 		<class>be.helha.aemt.groupeA6.entities.Enseignant</class>
 		<properties></properties>
 	</persistence-unit>
