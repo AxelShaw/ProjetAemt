@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,11 +20,19 @@ public class UE implements Serializable {
 	private Integer id;
 	
 	private int anneeAcademique;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Section section;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Departement departement;
+	
 	private String bloc;
 	private String code;
 	private String intitule;
 	private int credit;
+	
+
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<AA> aas;
@@ -32,10 +41,11 @@ public class UE implements Serializable {
 		super();
 	}
 	
-	public UE(int anneeAcademique,Section section ,String bloc, String code, String intitule, int credit, List<AA> aas) {
+	public UE(int anneeAcademique,Section section ,Departement departement,String bloc, String code, String intitule, int credit, List<AA> aas) {
 		super();
 		this.anneeAcademique = anneeAcademique;
 		this.section = section;
+		this.departement = departement;
 		this.bloc = bloc;
 		this.code = code;
 		this.intitule = intitule;

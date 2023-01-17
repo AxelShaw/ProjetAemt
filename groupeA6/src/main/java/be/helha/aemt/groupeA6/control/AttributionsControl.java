@@ -32,7 +32,7 @@ public class AttributionsControl implements Serializable {
 	
 	private Integer id;
 	
-	private int AnneeAcademique;
+	private int anneeAcademique;
 	
 	private List<AA> aas;
 	
@@ -63,7 +63,7 @@ public class AttributionsControl implements Serializable {
 	
 	public Attribution doAdd() {
 		init();
-		Attribution a = new Attribution(AnneeAcademique, aas,missions);
+		Attribution a = new Attribution(anneeAcademique, aas,missions);
 		return beanGestionAttribution.add(a);
 	}
 	
@@ -82,11 +82,11 @@ public class AttributionsControl implements Serializable {
 	}
 
 	public int getAnneeAcademique() {
-		return AnneeAcademique;
+		return anneeAcademique;
 	}
 
 	public void setAnneeAcademique(int anneeAcademique) {
-		AnneeAcademique = anneeAcademique;
+		anneeAcademique = anneeAcademique;
 	}
 
 	public List<AA> getAas() {
