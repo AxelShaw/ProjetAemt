@@ -2,77 +2,76 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
-public class MissionDAO extends AbstractDAO<Mission>{
+@Stateless
+@LocalBean
+public class MissionDAO {
+	
+	@PersistenceContext(unitName = "groupeA6-JTA")
+	private EntityManager em;
+	
+	public MissionDAO() {
 
-	@Override
-	public Mission add(Mission t) {
-
-		if(t==null) return null;
-		if(find(t)!=null) return null;
-		em.merge(t);
-		submit();
-		return t;
+	}
+	
+	public List<Mission> findAll() {
+		return em.createQuery("Select m from Enseignant m", Mission.class).getResultList();
 	}
 
-	@Override
-	public Mission find(Mission t) {
-		if (t == null) return null;
-		String strUA="SELECT mission FROM Mission mission WHERE mission.intitule=?1";
-		TypedQuery<Mission> queryA=em.createQuery(strUA, Mission.class);
-		queryA.setParameter(1, t.getIntitule());
+	public Mission add(Mission m) {
+		if (m==null) {
+			return null;
+		}
 		
-		List<Mission> resA=queryA.getResultList();
-		if(resA.isEmpty()) return null;
-		Mission res = resA.get(0);
+		em.merge(m);
+		em.detach(m);
+		
+		return m;
+	}
+	
+	public Mission remove(Mission m) {
+		if (m==null) {
+			return null;
+		}
+		
+		Query query = em.createQuery("delete from Mission where id = ?1");	
+		query.setParameter(1, m.getId()).executeUpdate();
+		return m;
+	}
+
+	public Mission find(Mission m) {
+		em.contains(m);
+		return m;
+	}
+
+	public Mission findById(Integer id) {
+		if (id == null) {
+			return null;
+		}
+		Mission res = em.find(Mission.class, id);	
 		em.detach(res);
 		return res;
 	}
-
-	@Override
-	public List<Mission> findAll() {
-		String strFindAll = "SELECT Mission FROM Mission Mission" ;
-		TypedQuery<Mission> query = em.createQuery(strFindAll,Mission.class) ;
-		return query.getResultList();
-	}
-
-	@Override
-	public Mission update(Mission t) {
-		if (t==null) return null;
-		Integer id=t.getId();
-		if(id==null ||findById(id)==null) return null;
-		em.merge(t);
-		submit();
-		em.detach(t);
-		return t;
-	}
-
-	@Override
-	public Mission remove(Mission t) {
-		if(t==null) return null;
-		Mission aSup = em.merge(t);
-		em.remove(aSup);
-		submit();
-		return t;
-	}
-
-	@Override
-	public Mission findById(Integer id) {
-		if(id == null) return null;
-		Mission res = em.find(Mission.class, id);
-		return res;
-	}
 	
-	public void submit() {
-		tx.begin();
-		tx.commit();
-	}
-	
-	public void close()
-	{
-		super.close();
+	public Mission update(Mission m) {
+		if (m==null) {
+			return null;
+		}
+		
+		Query query = em.createQuery("UPDATE Mission SET anneeAcademique = ?1, intitule = ?2, heures = ?3 WHERE id = ?4");	
+		query.setParameter(1, m.getAnneeAcademique());
+		query.setParameter(2, m.getIntitule());
+		query.setParameter(3, m.getHeures());
+		query.setParameter(4, m.getId()).executeUpdate();
+		return m;
 	}
 
 }
