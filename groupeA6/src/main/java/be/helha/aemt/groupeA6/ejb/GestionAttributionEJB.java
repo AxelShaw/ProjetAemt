@@ -30,8 +30,8 @@ public class GestionAttributionEJB implements IGestionAttributionEJB {
 	}
 
 	//@Override
-/*	public Attribution update(Attribution a1, Attribution a2) {
+	public Attribution update(Attribution a1, Attribution a2) {
 		return daoAttribution.update(a1, a2);
-	}*/
+	}
 
 }

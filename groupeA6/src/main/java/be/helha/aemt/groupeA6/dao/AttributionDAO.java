@@ -74,7 +74,7 @@ public class AttributionDAO {
 		
 		Query query = em.createQuery("UPDATE Attribution SET nom = ?1 WHERE email = ?2");	
 		query.setParameter(1, a2.getAnneeAcademique());
-		query.setParameter(2, a1.getEmail()).executeUpdate();
+		query.setParameter(2, a1.getId()).executeUpdate();
 		return a1;
 	}
 
