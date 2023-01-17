@@ -27,7 +27,6 @@ public class EnseignantsControl implements Serializable {
 	private int id;
 	
 	public EnseignantsControl() {
-		init();
 	}
 
 	public void init() {
@@ -41,23 +40,24 @@ public class EnseignantsControl implements Serializable {
 	}
 	
 	public List<Enseignant> doFindAll() {
-		// faire appel à la méthode findAll de beanGestion
+		init();
 		return beanGestion.findAll();
 	}
 	
 	public Enseignant doFindById() {
+		init();
 		return beanGestion.findById(id);
 	}
 	
-	public String doDetails(int id) {
-		this.id = id;
-		return "details.xhtml";
-	}
-	
 	public Enseignant doAdd() {
-		// faire appel à la méthode add de beanGestion
+		init();
 		Enseignant e = new Enseignant(nom, prenom, mail, remarque,null);
 		return beanGestion.add(e);
+	}
+	
+	public Enseignant doDelete(Enseignant e) {
+		init();
+		return beanGestion.remove(e);
 	}
 	
 	public String getNom() {

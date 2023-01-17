@@ -4,37 +4,45 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
-<title>Ajout d'un enseignant</title>
+<title>Liste des enseignants</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
-	margin-left: 15%;
+	margin-left: 10%;
 	font-size: 150%;
 }
 
-.tableId {
-	width: 20%;
+.table {
 	font-size: 1.2em;
-	margin-left: 38%;
-	text-align: center;
-}
-
-.tableNom {
-	width: 40%;
-	font-size: 1.2em;
-	margin-left: 27%;
-}
-
-.tableEmail {
-	width: 48%;
-	font-size: 1.2em;
-	margin-left: 24%;
 }
 
 .btn {
 	margin-top: 2%;
 	margin-left: 49%;
 	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnDelete {
+	margin-top: 2%;
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 1.4em;
 	width: 12%;
 	border-size: 1px;
 	border-color: black;
@@ -48,24 +56,44 @@
 </body>
 
 <body>
+	<h:form>
+		<h:commandButton class="btnBack" value="Retour"
+			action="#{navigationControl.doGroupeA6()}" />
+		<br />
+	</h:form>
+
 	<div class="list">
-		<h:dataTable value="#{enseignantControl.doFindAll()}" var="e" border="2" bgcolor="#7A7878" >
-			<h:column>
-				<f:facet name="header">ID</f:facet>
-				<h:form>
-					<h:inputText class="tableId" disabled="true" value="#{e.id}" size="7" />
-				</h:form>
-			</h:column>
+		<h:dataTable value="#{enseignantsControl.doFindAll()}" var="e"
+			border="2" bgcolor="#7A7878">
 			<h:column>
 				<f:facet name="header">NOM</f:facet>
 				<h:form>
-					<h:inputText class="tableNom" disabled="true" value="#{e.nom}" />
+					<h:inputText class="table" disabled="true" value="#{e.nom}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">PRENOM</f:facet>
+				<h:form>
+					<h:inputText class="table" disabled="true" value="#{e.prenom}"/>
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">EMAIL</f:facet>
 				<h:form>
-					<h:inputText class="tableEmail" disabled="true" value="#{e.email}" />
+					<h:inputText class="table" disabled="true" value="#{e.mail}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">REMARQUE</f:facet>
+				<h:form>
+					<h:inputText class="table" disabled="true" value="#{e.remarque}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">DELETE</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="X"
+						action="#{enseignantsControl.doDelete(e)}"/>
 				</h:form>
 			</h:column>
 		</h:dataTable>

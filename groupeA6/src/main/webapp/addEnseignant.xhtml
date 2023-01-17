@@ -12,10 +12,12 @@
 	margin-left: 20%;
 	font-size: 150%;
 }
+
 .fields {
 	width: 48%;
 	font-size: 1.2em;
 }
+
 .fieldsHeader {
 	font-size: 1.2em;
 	width: 12%;
@@ -23,6 +25,7 @@
 	border-color: black;
 	border-style: solid;
 }
+
 .btn {
 	margin-top: 2%;
 	margin-left: 49%;
@@ -32,6 +35,18 @@
 	border-color: black;
 	border-style: solid;
 }
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 1.4em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
 </style>
 </head>
 <body>
@@ -39,21 +54,27 @@
 </body>
 
 <body>
+	<h:form>
+		<h:commandButton class="btnBack" value="Retour"
+			action="#{navigationControl.doGroupeA6()}" />
+	</h:form>
+
 	<div class="form">
 		<h:form>
-			<h:inputText class="fieldsHeader" value="Nom" disabled="true"/>
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
 			<h:inputText class="fields" value="#{enseignantsControl.nom}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Prenom" disabled="true"/>
+			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
 			<h:inputText class="fields" value="#{enseignantsControl.prenom}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Email" disabled="true"/>
+			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
 			<h:inputText class="fields" value="#{enseignantsControl.mail}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Remarque" disabled="true"/>
+			<h:inputText class="fieldsHeader" value="Remarque" disabled="true" />
 			<h:inputText class="fields" value="#{enseignantsControl.remarque}" />
 			<br />
-			<h:commandButton class="btn" value="Add" action="#{enseignantsControl.doAdd()}" />
+			<h:commandButton class="btn" value="Add"
+				action="#{enseignantsControl.doAdd()}" />
 		</h:form>
 	</div>
 </body>
