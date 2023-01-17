@@ -18,23 +18,31 @@ public class Utilisateur implements Serializable {
 	private String prenom;
 	private String email;
 	private String password;
+	private Departement departement;
+	private Role role;
+	
 
 	
 	public Utilisateur() {
 		super();
 	}
 	
-	public Utilisateur(String nom, String prenom, String email, String password) {
+	public Utilisateur(String nom, String prenom, String email, String password, Departement departement, Role role) {
 		super();
 		this.nom = nom;
 		this.nom = prenom;
 		this.email = email;
 		this.password = password;
+		this.departement = departement;
+		this.role = role;
 	}
 	
+
+
 	@Override
 	public String toString() {
-		return "\nid=" + id + ", nom=" + nom + ", email=" + email;
+		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password="
+				+ password + ", departement=" + departement + ", role=" + role + "]";
 	}
 
 	@Override
@@ -46,7 +54,7 @@ public class Utilisateur implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Utilisateur other = (Utilisateur) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom);
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id);
 	}
 
 	public Integer getId() {
@@ -88,6 +96,24 @@ public class Utilisateur implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+
 
 
 	
