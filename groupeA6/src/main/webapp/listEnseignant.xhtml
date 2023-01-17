@@ -26,6 +26,18 @@
 	border-style: solid;
 	font-size: 1.2em;
 }
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 1.4em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
 </style>
 </head>
 <body>
@@ -33,6 +45,11 @@
 </body>
 
 <body>
+	<h:form>
+		<h:commandButton class="btnBack" value="Retour"
+			action="#{navigationControl.doGroupeA6()}" /><br/>
+	</h:form>
+
 	<div class="list">
 		<h:dataTable value="#{enseignantsControl.doFindAll()}" var="e"
 			border="2" bgcolor="#7A7878">

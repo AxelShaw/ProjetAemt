@@ -12,12 +12,16 @@ public class NavigationControl implements Serializable {
 	
 	private String nom;
 	
-	public String doNext() {
-		return "next.xhtml";
+	public String doGroupeA6() {
+		return "groupeA6.xhtml";
 	}
 	
-	public String doList() {
-		return "list.xhtml";
+	public String doAddEnseignant() {
+		return "addEnseignant.xhtml";
+	}
+	
+	public String doListEnseignant() {
+		return "listEnseignant.xhtml";
 	}
 
 	public String doAdd() {
