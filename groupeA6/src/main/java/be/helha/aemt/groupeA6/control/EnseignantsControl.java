@@ -55,6 +55,11 @@ public class EnseignantsControl implements Serializable {
 		return beanGestion.add(e);
 	}
 	
+	public Enseignant doDelete(Enseignant e) {
+		init();
+		return beanGestion.remove(e);
+	}
+	
 	public String getNom() {
 		return nom;
 	}
