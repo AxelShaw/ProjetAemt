@@ -7,7 +7,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import be.helha.aemt.groupeA6.dao.InitDAO;
 import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import jakarta.enterprise.context.SessionScoped;
@@ -26,8 +25,6 @@ public class EnseignantsControl implements Serializable {
 	private String mail;
 	private String remarque;
 	private int id;
-	
-	private String show;
 	
 	public EnseignantsControl() {
 		init();
@@ -59,20 +56,10 @@ public class EnseignantsControl implements Serializable {
 	
 	public Enseignant doAdd() {
 		// faire appel à la méthode add de beanGestion
-		Enseignant e = new Enseignant(nom, prenom, mail, remarque);
+		Enseignant e = new Enseignant(nom, prenom, mail, remarque,null);
 		return beanGestion.add(e);
 	}
 	
-	public void doInit() {
-		InitDAO init = new InitDAO();
-		init.init();
-	}
-
-	public void doShow() {
-		InitDAO init = new InitDAO();
-		show = init.showTables();
-	}
-
 	public String getNom() {
 		return nom;
 	}

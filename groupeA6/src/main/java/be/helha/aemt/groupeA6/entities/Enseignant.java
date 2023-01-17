@@ -18,20 +18,21 @@ public class Enseignant implements Serializable {
 	private String prenom;
 	private String mail;
 	private String remarque;
-	//private Attribution attribution
+	private Attribution attribution;
 	
 	public Enseignant() {
 		super();
 	}
 	
-	public Enseignant(String nom,String prenom, String mail,String remarque) {
+	public Enseignant(String nom, String prenom, String mail, String remarque, Attribution attribution) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.remarque = remarque;
+		this.attribution = attribution;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "\nid=" + id + ", nom=" + nom + ", email=" + mail;
@@ -88,8 +89,4 @@ public class Enseignant implements Serializable {
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
-
-
-	
-	
 }
