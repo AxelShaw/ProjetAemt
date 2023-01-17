@@ -27,6 +27,8 @@ public class EnseignantsControl implements Serializable {
 	private String remarque;
 	private int id;
 	
+	public String show;
+	
 	public EnseignantsControl() {
 		init();
 	}
@@ -66,6 +68,10 @@ public class EnseignantsControl implements Serializable {
 		init.init();
 	}
 
+	public void doShow() {
+		InitDAO init = new InitDAO();
+		show = init.showTables();
+	}
 
 	public String getNom() {
 		return nom;

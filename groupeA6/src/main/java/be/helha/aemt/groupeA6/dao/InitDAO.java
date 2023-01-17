@@ -96,4 +96,7 @@ public class InitDAO {
 				+ ")").executeUpdate();
 	}
 	
+	public String showTables() {
+		return em.createQuery("show tables").getResultList().toString();
+	}
 }
