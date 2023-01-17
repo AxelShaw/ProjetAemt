@@ -27,7 +27,7 @@ public class EnseignantsControl implements Serializable {
 	private String remarque;
 	private int id;
 	
-	public String show;
+	private String show;
 	
 	public EnseignantsControl() {
 		init();

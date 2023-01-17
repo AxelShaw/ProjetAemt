@@ -56,14 +56,6 @@
 			<h:commandButton class="btn" value="Add" action="#{enseignantsControl.doAdd()}" />
 		</h:form>
 	</div>
-	
-	
-	<h:dataTable value="#{enseignantsControl.doFindAll()}" var="p" >
-		<h:column>
-			<h:link value="#{p.nom}"/>
-		</h:column>
-
-	</h:dataTable>
 
 	<h:commandButton class="btn" value="Init tables" action="#{enseignantsControl.doInit()}" />
 	
