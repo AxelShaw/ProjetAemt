@@ -20,11 +20,17 @@ public class EnseignantsControl implements Serializable {
 //	supprimer l'annotation @Remote de IGestionEnseignant
 	private IGestionEnseignantEJB beanGestion;
 	
-	private String nom;
-	private String prenom;
-	private String mail;
-	private String remarque;
-	private int id;
+	private String nomAjout;
+	private String prenomAjout;
+	private String mailAjout;
+	private String remarqueAjout;
+	private int idAjout;
+	
+	private String nomUpdate;
+	private String prenomUpdate;
+	private String mailUpdate;
+	private String remarqueUpdate;
+	private int idUpdate;
 	
 	public EnseignantsControl() {
 	}
@@ -46,12 +52,16 @@ public class EnseignantsControl implements Serializable {
 	
 	public Enseignant doFindById() {
 		init();
-		return beanGestion.findById(id);
+		return beanGestion.findById(idAjout);
 	}
 	
 	public Enseignant doAdd() {
 		init();
-		Enseignant e = new Enseignant(nom, prenom, mail, remarque,null);
+		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
+		this.nomAjout = "";
+		this.prenomAjout = "";
+		this.mailAjout = "";
+		this.remarqueAjout = "";
 		return beanGestion.add(e);
 	}
 	
@@ -60,46 +70,101 @@ public class EnseignantsControl implements Serializable {
 		return beanGestion.remove(e);
 	}
 	
-	public String getNom() {
-		return nom;
+	public String doGoToUpdate(Enseignant e) {
+		init();
+		this.idUpdate = e.getId();
+		this.nomUpdate = e.getNom();
+		this.prenomUpdate = e.getPrenom();
+		this.mailUpdate = e.getMail();
+		this.remarqueUpdate = e.getRemarque();
+		return "updateEnseignant.xhtml";
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public Enseignant doUpdate() {
+		init();
+		Enseignant e = new Enseignant(nomUpdate, prenomUpdate, mailUpdate, remarqueUpdate,null);
+		e.setId(idUpdate);
+		return beanGestion.update(e);
+	}
+	
+	public String getNomAjout() {
+		return nomAjout;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public void setNomAjout(String nomAjout) {
+		this.nomAjout = nomAjout;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public String getPrenomAjout() {
+		return prenomAjout;
 	}
 
-	public String getMail() {
-		return mail;
+	public void setPrenomAjout(String prenomAjout) {
+		this.prenomAjout = prenomAjout;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public String getMailAjout() {
+		return mailAjout;
 	}
 
-	public String getRemarque() {
-		return remarque;
+	public void setMailAjout(String mailAjout) {
+		this.mailAjout = mailAjout;
 	}
 
-	public void setRemarque(String remarque) {
-		this.remarque = remarque;
+	public String getRemarqueAjout() {
+		return remarqueAjout;
 	}
 
-	public int getId() {
-		return id;
+	public void setRemarqueAjout(String remarqueAjout) {
+		this.remarqueAjout = remarqueAjout;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getIdAjout() {
+		return idAjout;
 	}
 
+	public void setIdAjout(int idAjout) {
+		this.idAjout = idAjout;
+	}
 
+	public String getNomUpdate() {
+		return nomUpdate;
+	}
+
+	public void setNomUpdate(String nomUpdate) {
+		this.nomUpdate = nomUpdate;
+	}
+
+	public String getPrenomUpdate() {
+		return prenomUpdate;
+	}
+
+	public void setPrenomUpdate(String prenomUpdate) {
+		this.prenomUpdate = prenomUpdate;
+	}
+
+	public String getMailUpdate() {
+		return mailUpdate;
+	}
+
+	public void setMailUpdate(String mailUpdate) {
+		this.mailUpdate = mailUpdate;
+	}
+
+	public String getRemarqueUpdate() {
+		return remarqueUpdate;
+	}
+
+	public void setRemarqueUpdate(String remarqueUpdate) {
+		this.remarqueUpdate = remarqueUpdate;
+	}
+
+	public int getIdUpdate() {
+		return idUpdate;
+	}
+
+	public void setIdUpdate(int idUpdate) {
+		this.idUpdate = idUpdate;
+	}
 
 }

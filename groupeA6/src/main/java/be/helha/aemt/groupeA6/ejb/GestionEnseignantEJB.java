@@ -39,7 +39,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	}
 	
 	@Override
-	public Enseignant update(Enseignant e1, Enseignant e2) {
-		return daoEnseignant.update(e1, e2);
+	public Enseignant update(Enseignant e) {
+		return daoEnseignant.update(e);
 	}
 }

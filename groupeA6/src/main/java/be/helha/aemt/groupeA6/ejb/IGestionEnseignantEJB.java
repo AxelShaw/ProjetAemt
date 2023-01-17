@@ -11,5 +11,5 @@ public interface IGestionEnseignantEJB {
 	public Enseignant findById(int id);
 	public Enseignant add(Enseignant e);
 	public Enseignant remove(Enseignant e);
-	public Enseignant update(Enseignant e1, Enseignant e2);
+	public Enseignant update(Enseignant e);
 }

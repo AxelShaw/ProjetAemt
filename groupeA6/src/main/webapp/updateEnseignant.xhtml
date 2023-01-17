@@ -56,25 +56,25 @@
 <body>
 	<h:form>
 		<h:commandButton class="btnBack" value="Retour"
-			action="#{navigationControl.doGroupeA6()}" />
+			action="#{navigationControl.doListEnseignant()}" />
 	</h:form>
 
 	<div class="form">
 		<h:form>
 			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
-			<h:inputText class="fields" value="popo" />
+			<h:inputText class="fields" value="#{enseignantsControl.nomUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.prenom}" />
+			<h:inputText class="fields" value="#{enseignantsControl.prenomUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.mail}" />
+			<h:inputText class="fields" value="#{enseignantsControl.mailUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Remarque" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.remarque}" />
+			<h:inputText class="fields" value="#{enseignantsControl.remarqueUpdate}" />
 			<br />
-			<h:commandButton class="btn" value="Update"
-				action="#{enseignantsControl.doAdd()}" />
+			<h:commandButton class="btn" value="Modify"
+				action="#{enseignantsControl.doUpdate()}" />
 		</h:form>
 	</div>
 </body>
