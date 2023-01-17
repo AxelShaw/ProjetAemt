@@ -24,8 +24,12 @@ public class NavigationControl implements Serializable {
 		return "listEnseignant.xhtml";
 	}
 
-	public String doAdd() {
-		return "add.xhtml";
+	public String doEnseignant() {
+		return "Enseignant.xhtml";
+	}
+	
+	public String doMission() {
+		return "Mission.xhtml";
 	}
 	
 	public String getNom() {
