@@ -40,13 +40,16 @@
 	margin-top: 2%;
 	margin-left: 2%;
 	margin-bottom: 2%;
-	font-size: 1.4em;
-	width: 12%;
+	font-size: 2.2em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
-	border-radius: 10px;
-	font-size: 1.2em;
+	border-radius: 50px;
+	width: 3%;
+}
+
+.btnBack:hover {
+	background-color: #C0C0C2;
 }
 </style>
 </head>
@@ -56,7 +59,7 @@
 
 <body>
 	<h:form>
-		<h:commandButton class="btnBack" value="Retour"
+		<h:commandButton class="btnBack" value="🠔"
 			action="#{navigationControl.doListEnseignant()}" />
 	</h:form>
 
