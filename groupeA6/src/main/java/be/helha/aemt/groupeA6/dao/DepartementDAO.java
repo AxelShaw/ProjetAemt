@@ -1,3 +1,5 @@
+package be.helha.aemt.groupeA6.dao;
+
 import be.helha.aemt.groupeA6.entities.Departement;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
