@@ -64,9 +64,12 @@ public class EnseignantDAO {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE Enseignant SET nom = ?1 WHERE email = ?2");	
+		Query query = em.createQuery("UPDATE Enseignant SET nom = ?1, prenom = ?2, mail = ?3, remarque = ?4 WHERE id = ?5");	
 		query.setParameter(1, e2.getNom());
-		query.setParameter(2, e1.getMail()).executeUpdate();
+		query.setParameter(2, e2.getPrenom());
+		query.setParameter(3, e2.getMail());
+		query.setParameter(4, e2.getRemarque());
+		query.setParameter(5, e1.getId()).executeUpdate();
 		return e1;
 	}
 
