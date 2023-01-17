@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Login Form</title>
+	<style>
+.log {
+	text-align: right;
+	margin-right: 30%;
+	margin-top: 5%;
+	font-size: 1.8em;
+}
+
+.fields {
+	font-size: 1.4em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.fieldsHeader {
+	font-size: 1.4em;
+	width: 25%; 
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btn {
+	margin-top: 2%;
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+}
+
+.btn:hover {
+	background-color: #C0C0C2;
+}
+</style>
+</h:head>
+<body>
+	<h:body>
+		<p:panel header="Login From">
+			<form class="log" method="POST" action="j_security_check">
+				<h:inputText class="fieldsHeader" value="Email" disabled="true" />
+				<h:inputText class="fields" type="text" name="j_mail" />
+				<br />
+
+				<h:inputText class="fieldsHeader" value="Mot de passe"
+					disabled="true" />
+				<h:inputText class="fields" type="text" name="j_password" />
+				<br /> 
+				<input class="btn" type="submit" value="Login" /> 
+				<input class="btn" type="reset" value="Reset" />
+			</form>
+		</p:panel>
+	</h:body>
+</body>
+</html>
