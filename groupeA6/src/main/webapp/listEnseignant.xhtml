@@ -28,9 +28,16 @@
 }
 
 .btnDelete {
-	margin-top: 2%;
 	margin-left: 30%;
 	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnUpdate {
 	font-size: 1.2em;
 	border-size: 1px;
 	border-color: black;
@@ -47,6 +54,7 @@
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
+	border-radius: 10px;
 	font-size: 1.2em;
 }
 </style>
@@ -99,7 +107,7 @@
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
 				<h:form>
-					<h:commandButton class="btnUpadte" value="Modify"
+					<h:commandButton class="btnUpdate" value="Modify"
 						action="#{enseignantsControl.doGoToUpdate(e)}"/>
 				</h:form>
 			</h:column>
