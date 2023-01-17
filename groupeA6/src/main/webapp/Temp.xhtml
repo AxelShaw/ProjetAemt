@@ -46,6 +46,10 @@
 			<h:inputText class="fieldsHeader" value="nom" disabled="true"/>
 			<h:inputText class="fields" value="#{enseignantsControl.nom}" />
 
+			<h:selectOneMenu value="#{enseignantsControl.id}" id="profMenu">               
+    			<f:selectItems value="#{enseignantsControl.id}"/>
+			</h:selectOneMenu>
+			<h:commandButton class="btn" value="afficher les attributions de l'enseignat" action="showEnseignant" />
 		</h:form>
 			<h:commandButton class="btn" value="afficher les attributions de l'enseignat" action="#{enseignantsControl.doShow()}" />
 			<h:inputText disabled="true" value="#{e.show}" size="7" />
