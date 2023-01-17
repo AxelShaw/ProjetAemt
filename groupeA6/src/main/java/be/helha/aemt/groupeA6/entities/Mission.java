@@ -1,9 +1,13 @@
 package be.helha.aemt.groupeA6.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Mission {
@@ -14,6 +18,10 @@ public class Mission {
 	private Integer anneeAcademique;
 	private String intitule;
 	private Integer heures;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "section_id"/*,nullable=false*/)
+	private Section section;
 	
 	public Mission(int anAc,String inti,int hour)
 	{
@@ -102,6 +110,10 @@ public class Mission {
 
 	public void setHeures(Integer heures) {
 		this.heures = heures;
+	}
+	public void setSection(Section s)
+	{
+		this.section=s;
 	}
 
 }
