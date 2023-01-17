@@ -41,7 +41,7 @@ public class UtilisateursControl implements Serializable {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
-			beanGestionUtilisateur = (IGestionUtilisateurEJB) ctx.lookup("java:global/groupeA6/GestionEnseignantEJB!be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB");
+			beanGestionUtilisateur = (IGestionUtilisateurEJB) ctx.lookup("java:global/groupeA6/GestionUtilisateurEJB!be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
