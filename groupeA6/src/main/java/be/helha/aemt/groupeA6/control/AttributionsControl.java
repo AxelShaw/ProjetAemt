@@ -64,7 +64,7 @@ public class AttributionsControl implements Serializable {
 	public Attribution doAdd() {
 		init();
 		Attribution a = new Attribution(AnneeAcademique, aas,missions);
-		return beanGestionAttribution.add(u);
+		return beanGestionAttribution.add(a);
 	}
 	
 	public Attribution doDelete(Attribution a) {
