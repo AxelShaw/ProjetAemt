@@ -1,5 +1,7 @@
 package be.helha.aemt.groupeA6.entities;
 
+import java.util.Objects;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,69 +17,31 @@ public class Mission {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer anneeAcademique;
+	private int anneeAcademique;
 	private String intitule;
 	private Integer heures;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "section_id"/*,nullable=false*/)
-	private Section section;
-	
-	public Mission(int anAc,String inti,int hour)
+
+	public Mission(int anneeAcademique,String intitule,int heures)
 	{
-		anneeAcademique = anAc;
-		intitule = inti;
-		heures = hour;
+		this.anneeAcademique = anneeAcademique;
+		this.intitule = intitule;
+		this.heures = heures;
 	}
 	public Mission() {
 		
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((anneeAcademique == null) ? 0 : anneeAcademique.hashCode());
-		result = prime * result + ((heures == null) ? 0 : heures.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!(obj instanceof Mission))
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
 			return false;
 		Mission other = (Mission) obj;
-		if (anneeAcademique == null) {
-			if (other.anneeAcademique != null)
-				return false;
-		} else if (!anneeAcademique.equals(other.anneeAcademique))
-			return false;
-		if (heures == null) {
-			if (other.heures != null)
-				return false;
-		} else if (!heures.equals(other.heures))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (intitule == null) {
-			if (other.intitule != null)
-				return false;
-		} else if (!intitule.equals(other.intitule))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Mission [id=" + id + ", anneeAcademique=" + anneeAcademique + ", intitule=" + intitule
-				+ ", credit=" + ", heures=" + heures + "]";
+		return Objects.equals(id, other.id);
 	}
 
 	public Integer getId() {
@@ -110,10 +74,6 @@ public class Mission {
 
 	public void setHeures(Integer heures) {
 		this.heures = heures;
-	}
-	public void setSection(Section s)
-	{
-		this.section=s;
 	}
 
 }
