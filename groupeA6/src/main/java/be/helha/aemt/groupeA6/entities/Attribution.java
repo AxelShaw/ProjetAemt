@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -22,12 +23,12 @@ public class Attribution implements Serializable {
 	
 	private int AnneeAcademique;
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<AA> aas;
 	
 
 
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Mission> missions;
 	
 	//private Attribution attribution
