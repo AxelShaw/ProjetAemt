@@ -88,12 +88,5 @@ public class SectionDAO extends AbstractDAO<Section>{
 		tx.begin();
 		tx.commit();
 	}
-	
-	public void close()
-	{
-		super.close();
-		missionDAO.close();
-	}
-
 }
 

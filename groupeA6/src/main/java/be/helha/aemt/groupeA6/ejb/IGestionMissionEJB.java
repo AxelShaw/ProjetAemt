@@ -10,5 +10,5 @@ public interface IGestionMissionEJB {
 	public Mission findById(int id);
 	public Mission add(Mission m);
 	public Mission remove(Mission m);
-	public Enseignant update(Enseignant e);
+	public Mission update(Mission m);
 }
