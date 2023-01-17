@@ -21,11 +21,12 @@ public class Section {
 	private Integer id;
 	private String nom;
 
-	@OneToMany(mappedBy = "section",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Mission> missions = new ArrayList<>();
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Mission> missions;
 	
-	public Section(String nom) {
+	public Section(String nom, List<Mission> missions) {
 		this.nom = nom;
+		this.missions= new ArrayList<>();
 	}
 	public Section() {
 	}
@@ -33,10 +34,7 @@ public class Section {
 	public String toString() {
 		return "Section [id=" + id + ", nom=" + nom + ", missions=" + missions + "]";
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, missions, nom);
-	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,32 +61,4 @@ public class Section {
 	public List<Mission> getMissions(){
 		return missions;
 	}
-	public boolean addMission(Mission m) {
-		if(missions.contains(m)) return false;
-		for(Mission mi: missions) if(mi.equals(m))return false;
-		missions.add(m);
-		m.setSection(this);
-		return true;
-	}
-	public Mission findMissionById(int id) {
-		if(id<=0) return null;
-		for(Mission mi: missions) if(mi.getId()==id)return  mi;
-		return null;
-	}
-	public boolean updateMission(Mission m,int idUpdate) {
-		if(idUpdate<=0 || idUpdate>missions.size()) return false;
-		if(missions.contains(m)) return false;
-		for(Mission mi: missions) {
-			if(mi.getId()==idUpdate) {
-				missions.set(idUpdate, m);
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean removeMission(Mission m) {
-		if(missions.contains(m)) return missions.remove(m);
-		return false;
-	}
-
 }
