@@ -66,7 +66,7 @@ public class AttributionDAO {
 		em.detach(res);
 		return res;
 	}
-	
+	//pas encore fait
 	public Attribution update(Attribution a1, Attribution a2) {
 		if (a1==null || a2==null) {
 			return null;

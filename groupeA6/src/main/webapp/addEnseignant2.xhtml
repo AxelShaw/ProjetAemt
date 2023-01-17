@@ -5,10 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
- <h:outputScript library="js" name="jquery-1.7.1_.min.js" target="head" />
- <h:outputScript library="js" name="jquery-ui-1.8.18.custom.min.js" target="head" />
- <h:outputStylesheet library="css" name="jquery-ui-1.8.18.custom.css" target="head"     />
- <h:outputScript library="js" name="mytabs.js" target="head" />
+
 <title>Listes des attributions d'un enseignant</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
@@ -46,11 +43,12 @@
 	<div class="form">
 		<h3>selection de l'enseignant</h3>
 		<h:form>
-			<h:selectOneMenu value="#{enseignantsControl.code}" id="profMenu">               
-    			<f:selectItems value="#{enseignantsControl.code}"/>
-			</h:selectOneMenu>
-			<h:commandButton class="btn" value="afficher les attributions de l'enseignat" action="showEnseignant" />
+			<h:inputText class="fieldsHeader" value="nom" disabled="true"/>
+			<h:inputText class="fields" value="#{enseignantsControl.nom}" />
+
 		</h:form>
+			<h:commandButton class="btn" value="afficher les attributions de l'enseignat" action="#{enseignantsControl.doShow()}" />
+			<h:inputText disabled="true" value="#{e.show}" size="7" />
 		<br />
 		<br />
 		<h:form>
