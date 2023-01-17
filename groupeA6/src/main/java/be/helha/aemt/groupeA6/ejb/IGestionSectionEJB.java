@@ -7,6 +7,6 @@ import be.helha.aemt.groupeA6.entities.Section;
 public interface IGestionSectionEJB {
 	public List<Section> findAll();
 	public Section findById(int id);
-	public Section add(Section d);
-	public Section remove(Section d);
+	public Section add(Section s);
+	public Section remove(Section s);
 }
