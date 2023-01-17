@@ -55,19 +55,21 @@ public class EnseignantsControl implements Serializable {
 		return beanGestion.findById(idAjout);
 	}
 	
-	public Enseignant doAdd() {
+	public String doAdd() {
 		init();
 		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
 		this.nomAjout = "";
 		this.prenomAjout = "";
 		this.mailAjout = "";
 		this.remarqueAjout = "";
-		return beanGestion.add(e);
+		beanGestion.add(e);
+		return "listEnseignant.xhtml";
 	}
 	
-	public Enseignant doDelete(Enseignant e) {
+	public String doDelete(Enseignant e) {
 		init();
-		return beanGestion.remove(e);
+		beanGestion.remove(e);
+		return "listEnseignant.xhtml";
 	}
 	
 	public String doGoToUpdate(Enseignant e) {
@@ -80,11 +82,12 @@ public class EnseignantsControl implements Serializable {
 		return "updateEnseignant.xhtml";
 	}
 
-	public Enseignant doUpdate() {
+	public String doUpdate() {
 		init();
 		Enseignant e = new Enseignant(nomUpdate, prenomUpdate, mailUpdate, remarqueUpdate,null);
 		e.setId(idUpdate);
-		return beanGestion.update(e);
+		beanGestion.update(e);
+		return "listEnseignant.xhtml";
 	}
 	
 	public String getNomAjout() {
