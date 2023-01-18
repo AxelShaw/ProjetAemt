@@ -65,16 +65,15 @@ public class UEDAO {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE UE SET anneeAcademique = ?1, departement = ?2, section = ?3, bloc = ?4, code = ?5, intitule = ?6, credit = ?7, aas = ?8 WHERE id = ?9");	
+		UE search = find(ue);
+		
+		Query query = em.createQuery("UPDATE UE SET anneeAcademique = ?1, bloc = ?2, code = ?3, intitule = ?4, credit = ?5 WHERE id = ?6");	
 		query.setParameter(1, ue.getAnneeAcademique());
-		query.setParameter(2, ue.getDepartement());
-		query.setParameter(3, ue.getSection());
-		query.setParameter(4, ue.getBloc());
-		query.setParameter(5, ue.getCode());
-		query.setParameter(6, ue.getIntitule());
-		query.setParameter(7, ue.getCredit());
-		query.setParameter(8, ue.getAas());
-		query.setParameter(9, ue.getId()).executeUpdate();
+		query.setParameter(2, ue.getBloc());
+		query.setParameter(3, ue.getCode());
+		query.setParameter(4, ue.getIntitule());
+		query.setParameter(5, ue.getCredit());
+		query.setParameter(6, search.getId()).executeUpdate();
 		return ue;
 	}
 	

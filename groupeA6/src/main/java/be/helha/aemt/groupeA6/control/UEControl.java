@@ -79,7 +79,7 @@ public class UEControl implements Serializable{
 	public String doDelete(UE ue) {
 		init();
 		beanGestion.remove(ue);
-		return "listEnseignant.xhtml";
+		return "listUe.xhtml";
 	}
 	
 	public String doGoToUpdate(UE ue) {
@@ -91,15 +91,15 @@ public class UEControl implements Serializable{
 		this.codeUpdate = ue.getCode();
 		this.intituleUpdate = ue.getIntitule();
 		this.creditUpdate = ue.getCredit();
-		return "updateEnseignant.xhtml";
+		return "updateUe.xhtml";
 	}
 
 	public String doUpdate() {
 		init();
-		UE e = new UE(anneeAcademiqueUpdate, null, null, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, null);
+		UE e = new UE((int)anneeAcademiqueUpdate, null, null, blocUpdate, codeUpdate, intituleUpdate, (int)creditUpdate, null);
 		e.setId(idUpdate);
 		beanGestion.update(e);
-		return "listEnseignant.xhtml";
+		return "listUe.xhtml";
 	}
 
 	public int getAnneeAcademiqueAjout() {
