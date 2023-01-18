@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<title>Update d'un UE</title>
+<title>Modifiez une UE</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .form {
@@ -54,7 +54,7 @@
 </style>
 </head>
 <body>
-	<h1>Update un UE</h1>
+	<h1>Modifiez une UE</h1>
 </body>
 
 <body>
@@ -65,20 +65,23 @@
 
 	<div class="form">
 		<h:form>
-			<h:inputText class="fieldsHeader" value="AnneeAcademique" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.anneeAcademiqueAjout}" />
+			<h:inputText class="fieldsHeader" value="Annee Academique" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.anneeAcademiqueUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Section" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.sectionUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Bloc" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.blocAjout}" />
+			<h:inputText class="fields" value="#{uEControl.blocUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Code" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.codeAjout}" />
+			<h:inputText class="fields" value="#{uEControl.codeUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Intitule" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.intituleAjout}" />
+			<h:inputText class="fields" value="#{uEControl.intituleUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.creditAjout}" />
+			<h:inputText class="fields" value="#{uEControl.creditUpdate}" />
 			<br />
 			<h:commandButton class="btn" value="Modify"
 				action="#{uEControl.doUpdate()}" />

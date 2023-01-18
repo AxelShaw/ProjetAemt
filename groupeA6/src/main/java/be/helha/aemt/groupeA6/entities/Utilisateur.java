@@ -18,7 +18,7 @@ public class Utilisateur implements Serializable {
 	private String prenom;
 	private String email;
 	private String password;
-	private Departement departement;
+	private String departement;
 	private Role role;
 	
 
@@ -27,7 +27,7 @@ public class Utilisateur implements Serializable {
 		super();
 	}
 	
-	public Utilisateur(String nom, String prenom, String email, String password, Departement departement, Role role) {
+	public Utilisateur(String nom, String prenom, String email, String password, String departement, Role role) {
 		super();
 		this.nom = nom;
 		this.nom = prenom;
