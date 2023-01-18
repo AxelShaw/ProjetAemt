@@ -20,7 +20,7 @@ import jakarta.inject.Named;
 @SessionScoped
 public class UtilisateursControl implements Serializable {
 	
-	private IGestionUtilisateurEJB beanGestionUtilisateur;
+	private IGestionUtilisateurEJB beanGestion;
 	
 
 	
@@ -41,7 +41,7 @@ public class UtilisateursControl implements Serializable {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
-			beanGestionUtilisateur = (IGestionUtilisateurEJB) ctx.lookup("java:global/groupeA6/GestionUtilisateurEJB!be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB");
+			beanGestion = (IGestionUtilisateurEJB) ctx.lookup("java:global/groupeA6/GestionUtilisateurEJB!be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -49,23 +49,29 @@ public class UtilisateursControl implements Serializable {
 	
 	public List<Utilisateur> doFindAll() {
 		init();
-		return beanGestionUtilisateur.findAll();
+		return beanGestion.findAll();
 	}
 	
 	public Utilisateur doFindById() {
 		init();
-		return beanGestionUtilisateur.findById(id);
+		return beanGestion.findById(id);
 	}
 	
 	public Utilisateur doAdd() {
 		init();
 		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,role);
-		return beanGestionUtilisateur.add(u);
+		this.nom = "";
+		this.prenom = "";
+		this.email = "";
+		this.password = "";
+		this.departement = new Departement();
+		this.role = role.S ;
+		return beanGestion.add(u);
 	}
 	
 	public Utilisateur doDelete(Utilisateur u) {
 		init();
-		return beanGestionUtilisateur.remove(u);
+		return beanGestion.remove(u);
 	}
 
 	//Getters and setters

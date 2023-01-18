@@ -40,6 +40,6 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	
 	@Override
 	public Enseignant update(Enseignant e) {
-		return daoEnseignant.remove(e);
+		return daoEnseignant.update(e);
 	}
 }
