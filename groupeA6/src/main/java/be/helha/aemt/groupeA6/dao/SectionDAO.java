@@ -5,6 +5,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
+import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -60,6 +61,19 @@ public class SectionDAO {
 		Section res = em.find(Section.class, id);	
 		em.detach(res);
 		return res;
+	}
+
+	public Section update(Section s) {
+		if (s==null) {
+			return null;
+		}
+		
+		Section search = find(s);
+		
+		Query query = em.createQuery("UPDATE UE SET nom = ?1 WHERE id = ?2");	
+		query.setParameter(1, s.getNom());
+		query.setParameter(2, search.getId()).executeUpdate();
+		return s;
 	}
 
 }
