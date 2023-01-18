@@ -24,7 +24,6 @@ public class UE implements Serializable {
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Section section;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Departement departement;
 	
 	private String bloc;
