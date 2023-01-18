@@ -6,7 +6,9 @@ import be.helha.aemt.groupeA6.dao.EnseignantDAO;
 import be.helha.aemt.groupeA6.dao.UtilisateurDAO;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 	
 	@EJB

@@ -23,6 +23,10 @@ public class NavigationControl implements Serializable {
 	public String doListEnseignant() {
 		return "listEnseignant.xhtml";
 	}
+	
+	public String doListMission() {
+		return "listMission.xhtml";
+	}
 
 	public String doEnseignant() {
 		return "Enseignant.xhtml";
