@@ -68,16 +68,6 @@ public class NavigationControl implements Serializable {
 		return "addUe.xhtml";
 	}
 	
-<<<<<<< Updated upstream
-=======
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	
 	public String doChoixSectionSection() {
 		return "choixSectionSection.xhtml";
 	}
@@ -85,6 +75,4 @@ public class NavigationControl implements Serializable {
 	public String doChoixSectionMission() {
 		return "choixMissionSection.xhtml";
 	}
-	
->>>>>>> Stashed changes
 }
