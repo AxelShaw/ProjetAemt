@@ -4,7 +4,9 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.dao.DepartementDAO;
 import be.helha.aemt.groupeA6.entities.Departement;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class GestionDepartementEJB implements IGestionDepartementEJB {
 	
 	private DepartementDAO daoDepartement;

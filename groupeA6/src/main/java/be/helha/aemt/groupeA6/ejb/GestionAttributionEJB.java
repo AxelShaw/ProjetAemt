@@ -4,7 +4,9 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.dao.AttributionDAO;
 import be.helha.aemt.groupeA6.entities.Attribution;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class GestionAttributionEJB implements IGestionAttributionEJB {
 	
 	private AttributionDAO daoAttribution;

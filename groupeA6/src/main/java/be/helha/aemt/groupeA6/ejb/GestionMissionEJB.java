@@ -5,7 +5,9 @@ import java.util.List;
 import be.helha.aemt.groupeA6.dao.MissionDAO;
 import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class GestionMissionEJB implements IGestionMissionEJB {
 
 	

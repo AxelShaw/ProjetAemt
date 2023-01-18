@@ -5,7 +5,9 @@ import java.util.List;
 import be.helha.aemt.groupeA6.dao.UEDAO;
 import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class GestionUEEJB implements IGestionUEEJB {
 	
 	

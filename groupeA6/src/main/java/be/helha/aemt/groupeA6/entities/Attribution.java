@@ -31,7 +31,6 @@ public class Attribution implements Serializable {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Mission> missions;
 	
-	//private Attribution attribution
 	
 	public Attribution() {
 		super();
