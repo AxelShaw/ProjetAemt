@@ -5,6 +5,7 @@
 	<persistence-unit name="groupeA6-JTA" transaction-type="JTA">
 		<jta-data-source>jdbc/groupeA6</jta-data-source>
 		<class>be.helha.aemt.groupeA6.entities.Enseignant</class>
+		<class>be.helha.aemt.groupeA6.entities.Mission</class>
 		<properties>
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://54.216.125.208:3306/dba6" />
 			<property name="jakarta.persistence.jdbc.user" value="ga6" />
