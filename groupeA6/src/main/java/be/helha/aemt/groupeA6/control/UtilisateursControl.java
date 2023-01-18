@@ -110,6 +110,22 @@ public class UtilisateursControl implements Serializable {
 		this.password = password;
 	}
 
+	public String getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(String departement) {
+		this.departement = departement;
+	}
+
+	public String getRoleE() {
+		return RoleE;
+	}
+
+	public void setRoleE(String roleE) {
+		RoleE = roleE;
+	}
+
 	public Role getRole() {
 		return role;
 	}
