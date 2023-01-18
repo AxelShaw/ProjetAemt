@@ -66,12 +66,15 @@ public class UEControl implements Serializable{
 	
 	public String doAdd() {
 		init();
-		UE ue = new UE(anneeAcademiqueAjout, null, null, blocAjout, codeAjout, intituleAjout, creditAjout, null);
+		UE ue = new UE(anneeAcademiqueAjout, sectionAjout, departementAjout, blocAjout, codeAjout, intituleAjout, creditAjout, aasAjout);
 		this.anneeAcademiqueAjout = 0;
+		this.sectionAjout = null;
+		this.departementAjout = null;
 		this.blocAjout = "";
 		this.codeAjout = "";
 		this.intituleAjout = "";
 		this.creditAjout = 0;
+		this.aasAjout = null;
 		beanGestion.add(ue);
 		return "listUe.xhtml";
 	}
@@ -79,7 +82,7 @@ public class UEControl implements Serializable{
 	public String doDelete(UE ue) {
 		init();
 		beanGestion.remove(ue);
-		return "listEnseignant.xhtml";
+		return "listeUe.xhtml";
 	}
 	
 	public String doGoToUpdate(UE ue) {
@@ -87,19 +90,21 @@ public class UEControl implements Serializable{
 		this.idUpdate = ue.getId();
 		this.anneeAcademiqueUpdate = ue.getAnneeAcademique();
 		this.sectionUpdate = ue.getSection();
+		this.departementUpdate = ue.getDepartement();
 		this.blocUpdate = ue.getBloc();
 		this.codeUpdate = ue.getCode();
 		this.intituleUpdate = ue.getIntitule();
 		this.creditUpdate = ue.getCredit();
-		return "updateEnseignant.xhtml";
+		this.aasUpdate = ue.getAas();
+		return "updateUe.xhtml";
 	}
 
 	public String doUpdate() {
 		init();
-		UE e = new UE(anneeAcademiqueUpdate, null, null, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, null);
+		UE e = new UE(anneeAcademiqueUpdate, sectionUpdate, departementUpdate, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, aasUpdate);
 		e.setId(idUpdate);
 		beanGestion.update(e);
-		return "listEnseignant.xhtml";
+		return "listUe.xhtml";
 	}
 
 	public int getAnneeAcademiqueAjout() {

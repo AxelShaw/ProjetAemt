@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<title>Modifiez un enseignant</title>
+<title>Modifiez une UE</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .form {
@@ -54,31 +54,37 @@
 </style>
 </head>
 <body>
-	<h1>Modifiez un enseignant</h1>
+	<h1>Modifiez une UE</h1>
 </body>
 
 <body>
 	<h:form>
 		<h:commandButton class="btnBack" value="🠔"
-			action="#{navigationControl.doListEnseignant()}" />
+			action="#{navigationControl.doListUe()}" />
 	</h:form>
 
 	<div class="form">
 		<h:form>
-			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.nomUpdate}" />
+			<h:inputText class="fieldsHeader" value="Annee Academique" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.anneeAcademiqueUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.prenomUpdate}" />
+			<h:inputText class="fieldsHeader" value="Section" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.sectionUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.mailUpdate}" />
+			<h:inputText class="fieldsHeader" value="Bloc" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.blocUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Remarque" disabled="true" />
-			<h:inputText class="fields" value="#{enseignantsControl.remarqueUpdate}" />
+			<h:inputText class="fieldsHeader" value="Code" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.codeUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Intitule" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.intituleUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.creditUpdate}" />
 			<br />
 			<h:commandButton class="btn" value="Modify"
-				action="#{enseignantsControl.doUpdate()}" />
+				action="#{uEControl.doUpdate()}" />
 		</h:form>
 	</div>
 </body>

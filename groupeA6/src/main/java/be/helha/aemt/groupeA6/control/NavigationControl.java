@@ -5,7 +5,6 @@ import java.io.Serializable;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
-// scope == durée d'activité du controller (session, requete)
 @Named
 @SessionScoped
 public class NavigationControl implements Serializable {
