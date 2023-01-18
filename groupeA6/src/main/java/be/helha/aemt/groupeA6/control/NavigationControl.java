@@ -32,6 +32,10 @@ public class NavigationControl implements Serializable {
 		return "Mission.xhtml";
 	}
 	
+	public String doAddMission() {
+		return "addMission.xhtml";
+	}
+	
 	public String getNom() {
 		return nom;
 	}

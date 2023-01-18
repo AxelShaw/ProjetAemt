@@ -1,5 +1,6 @@
 package be.helha.aemt.groupeA6.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Mission {
+public class Mission implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

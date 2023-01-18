@@ -54,11 +54,11 @@ public class UE implements Serializable {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "UE [id=" + id + ", anneeAcademique=" + anneeAcademique + ", section=" + section + ", bloc=" + bloc
-				+ ", code=" + code + ", intitule=" + intitule + ", credit=" + credit + ", aas=" + aas + "]";
+		return "UE [id=" + id + ", anneeAcademique=" + anneeAcademique + ", section=" + section + ", departement="
+				+ departement + ", bloc=" + bloc + ", code=" + code + ", intitule=" + intitule + ", credit=" + credit
+				+ ", aas=" + aas + "]";
 	}
 
 	@Override
