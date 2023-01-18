@@ -72,6 +72,14 @@ public class SectionsControl implements Serializable {
 		return "listMission.xhtml";
 	}
 	
+	public String doGoToUpdate(Section s ) {
+		init();
+		this.idU = s.getId();
+		this.nom = s.getNom();
+		this.missionsU = s.getMissions();
+		return "updateSection.xhtml";
+	}
+	
 	public Section doDelete(Section e) {
 		init();
 		return beanSectionGestion.remove(e);
