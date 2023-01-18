@@ -38,7 +38,7 @@ public class SectionDAO {
 		
 		return s;
 	}
-	
+		
 	public Section remove(Section s) {
 		if (s==null) {
 			return null;

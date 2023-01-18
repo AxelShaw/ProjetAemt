@@ -22,7 +22,7 @@ public class Section {
 	private String nom;
 
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Mission> missions;
+	private List<Mission> missions;
 	
 	public Section(String nom, List<Mission> missions) {
 		this.nom = nom;
@@ -45,6 +45,11 @@ public class Section {
 		return Objects.equals(id, other.id) && Objects.equals(missions, other.missions)
 				&& Objects.equals(nom, other.nom);
 	}
+	
+	public void addMission(Mission m) {
+		missions.add(m);
+	}
+	
 	public Integer getId() {
 		return id;
 	}
