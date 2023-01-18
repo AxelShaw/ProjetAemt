@@ -11,4 +11,5 @@ public interface IGestionUtilisateurEJB {
 	public Utilisateur add(Utilisateur u);
 	public Utilisateur remove(Utilisateur u);
 	public Utilisateur update(Utilisateur u1, Utilisateur u2);
+	public String getUsername(String email);
 }

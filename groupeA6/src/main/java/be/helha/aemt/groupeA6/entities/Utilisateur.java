@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,19 +20,13 @@ public class Utilisateur implements Serializable {
 	private String password;
 	private String departement;
 	
-	
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private String role;
 
-	
-	
-
-	
 	public Utilisateur() {
 		super();
 	}
 	
-	public Utilisateur(String nom, String prenom, String email, String password, String departement, Role role) {
+	public Utilisateur(String nom, String prenom, String email, String password, String departement, String role) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -43,8 +35,6 @@ public class Utilisateur implements Serializable {
 		this.departement = departement;
 		this.role = role;
 	}
-	
-
 
 	@Override
 	public String toString() {
@@ -105,11 +95,11 @@ public class Utilisateur implements Serializable {
 	}
 
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

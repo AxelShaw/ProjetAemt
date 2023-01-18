@@ -7,17 +7,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
-import be.helha.aemt.groupeA6.entities.Departement;
-import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.security.enterprise.identitystore.CredentialValidationResult.Status;
 
 @Named
 @SessionScoped
@@ -25,25 +20,23 @@ public class UtilisateursControl implements Serializable {
 	
 	private IGestionUtilisateurEJB beanGestion;
 	
-
-	
 	private String nom;
 	private String prenom;
 	private String email;
 	private String password;
 	private String departement;
-	private String role2;
-	
-
-	private Role role;
+	private String role;
 	
 	private int id;
 	
+	private String username = "";
+	
+	public void doUsername() {
+		username = doGetUsername(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+	}
 	
 	public UtilisateursControl() {
 	}
-	
-	
 	
     public Role[] getStatuses() {
         return Role.values();
@@ -85,7 +78,10 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.remove(u);
 	}
 	
-	
+	public String doGetUsername(String email) {
+		init();
+		return beanGestion.getUsername(email);
+	}
 
 	//Getters and setters
 	public String getNom() {
@@ -129,11 +125,11 @@ public class UtilisateursControl implements Serializable {
 	}
 
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -144,6 +140,13 @@ public class UtilisateursControl implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 }
