@@ -8,7 +8,7 @@
 	<style>
 .log {
 	text-align: right;
-	margin-right: 30%;
+	margin-right: 35%;
 	margin-top: 5%;
 	font-size: 1.8em;
 }
@@ -18,14 +18,16 @@
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
+	border-radius: 10px;
 }
 
 .fieldsHeader {
 	font-size: 1.4em;
-	width: 25%; 
+	width: 250px;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
+	border-radius: 10px;
 }
 
 .btn {
@@ -43,22 +45,19 @@
 }
 </style>
 </h:head>
-<body>
-	<h:body>
-		<p:panel header="Login From">
-			<form class="log" method="POST" action="j_security_check">
-				<h:inputText class="fieldsHeader" value="Email" disabled="true" />
-				<h:inputText class="fields" type="text" name="j_mail" />
-				<br />
+<h:body>
+	<p:panel header="Login From">
+		<form class="log" method="POST" action="j_security_check">
+			<input class="fieldsHeader" value="Email" disabled="true"/>
+			<input class="fields" type="text" name="j_username"/>
+			<br />
 
-				<h:inputText class="fieldsHeader" value="Mot de passe"
-					disabled="true" />
-				<h:inputText class="fields" type="password" name="j_password" />
-				<br /> 
-				<input class="btn" type="submit" value="Login" /> 
-				<input class="btn" type="reset" value="Reset" />
-			</form>
-		</p:panel>
-	</h:body>
-</body>
+			<input class="fieldsHeader" value="Mot de passe"
+				disabled="true" />
+			<input class="fields" type="password" name="j_password"/>
+			<br /> <input class="btn" type="submit" value="Login"/> <input
+				class="btn" type="reset" value="Reset" />
+		</form>
+	</p:panel>
+</h:body>
 </html>

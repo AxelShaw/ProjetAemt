@@ -2,11 +2,12 @@ package be.helha.aemt.groupeA6.ejb;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.dao.SectionDAO;
 import be.helha.aemt.groupeA6.entities.Section;
 
 public class GestionSectionEJB implements IGestionSectionEJB {
 	
-	private 
+	private SectionDAO daoEnseignant;
 
 	@Override
 	public List<Section> findAll() {
