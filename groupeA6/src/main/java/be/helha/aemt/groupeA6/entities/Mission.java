@@ -44,7 +44,12 @@ public class Mission implements Serializable {
 		Mission other = (Mission) obj;
 		return Objects.equals(id, other.id);
 	}
-
+	
+	@Override
+	public String toString() {
+		return "anneeAcademique=" + anneeAcademique + ", intitule=" + intitule + ", heures="
+				+ heures + "\n";
+	}
 	public Integer getId() {
 		return id;
 	}
