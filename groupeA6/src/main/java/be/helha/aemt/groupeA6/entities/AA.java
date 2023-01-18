@@ -34,7 +34,7 @@ public class AA {
 	}
 	private Fraction fraction;
 	
-	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,Fraction fraction)
+	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,Fraction fractionAjout)
 	{
 		this.anneeAcademique = anneeAcademique;
 		this.code = code;
@@ -45,7 +45,7 @@ public class AA {
 		this.heureQ2 = heureQ2;
 		this.nombreGroupe = nombreGroupe;
 		this.nombreEtudiant = nombreEtudiant;
-		this.fraction=fraction;
+		this.fraction=fractionAjout;
 	}
 	public AA() {
 		

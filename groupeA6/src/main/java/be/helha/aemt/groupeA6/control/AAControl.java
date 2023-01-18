@@ -114,7 +114,7 @@ public class AAControl implements Serializable {
 		AA aa = new AA(anneeAcademiqueUpdate, codeUpdate, intituleUpdate, creditUpdate, heureUpdate, heureQ1Update, heureQ2Update, nombreGroupeUpdate, nombreEtudiantUpdate, fractionUpdate);
 		aa.setId(idUpdate);
 		beanGestion.update(aa);
-		return "listUe.xhtml";
+		return "listAa.xhtml";
 	}
 
 }
