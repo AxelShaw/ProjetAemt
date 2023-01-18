@@ -7,9 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionMissionEJB;
-import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -18,8 +16,6 @@ import jakarta.inject.Named;
 @SessionScoped
 public class MissionControl implements Serializable {
 	
-//	utiliser le serveur pour une reference de EJB
-//	supprimer l'annotation @Remote de IGestionEnseignant
 	private IGestionMissionEJB beanGestion;
 	
 	private int anneeAcademiqueAjout;
@@ -62,7 +58,7 @@ public class MissionControl implements Serializable {
 		this.intituleAjout = "";
 		this.heuresAjout = 0;
 		beanGestion.add(e);
-		return "listEnseignant.xhtml";
+		return "listMission.xhtml";
 	}
 	
 	public String doDelete(Mission e) {

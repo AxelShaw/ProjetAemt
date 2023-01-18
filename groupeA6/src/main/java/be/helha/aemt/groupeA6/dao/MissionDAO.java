@@ -2,7 +2,6 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
-import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -23,7 +22,7 @@ public class MissionDAO {
 	}
 	
 	public List<Mission> findAll() {
-		return em.createQuery("Select m from Enseignant m", Mission.class).getResultList();
+		return em.createQuery("Select m from Mission m", Mission.class).getResultList();
 	}
 
 	public Mission add(Mission m) {

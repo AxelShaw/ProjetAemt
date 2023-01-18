@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+<title>Liste des missions</title>
+<meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.list {
+	margin-left: 10%;
+	font-size: 150%;
+}
+
+.table {
+	font-size: 1.2em;
+}
+
+.btn {
+	margin-top: 2%;
+	margin-left: 49%;
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+	font-size: 1.2em;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
+
+.btnUpdate {
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnUpdate:hover {
+	background-color: #C0C0C2;
+}
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 2.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 50px;
+	width: 3%;
+}
+
+.btnBack:hover {
+	background-color: #C0C0C2;
+}
+</style>
+</head>
+<body>
+	<h1>liste des missions</h1>
+</body>
+
+<body>
+	<h:form>
+		<h:commandButton class="btnBack" value="🠔"
+			action="#{navigationControl.doGroupeA6()}" />
+		<br />
+	</h:form>
+
+	<div class="list">
+		<h:dataTable value="#{missionControl.doFindAll()}" var="e"
+			border="2" bgcolor="#7A7878">
+			<h:column>
+				<f:facet name="header">anneeAcademique</f:facet>
+				<h:form>
+					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.anneeAcademique}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">intitule</f:facet>
+				<h:form>
+					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.intitule}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">heures</f:facet>
+				<h:form>
+					<h:inputText style="width:300px;" class="table" disabled="true" value="#{e.heures}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">DELETE</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="X"
+						action="#{missionControl.doDelete(e)}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">UPDATE</f:facet>
+				<h:form>
+					<h:commandButton class="btnUpdate" value="Modify"
+						action="#{missionControl.doGoToUpdate(e)}"/>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
+</body>
+</html>
