@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -69,6 +70,30 @@ public class UEDAO {
 		query.setParameter(1, e2.getIntitule());
 		query.setParameter(2, e1.getId()).executeUpdate();
 		return e1;
+	}
+	
+	//Filtre section
+	public List<UE> findBySection(Section s)
+	{
+		Query query = em.createQuery("Select ue FROM UE ue where section_id = ?1", UE.class);
+		query.setParameter(1, s.getId());
+		return query.getResultList();
+	}
+	
+	//Filtre année
+	public List<UE> findByAnneeAcademique(int annee)
+	{
+		Query query = em.createQuery("Select ue FROM UE ue where anneeacademique = ?1", UE.class);
+		query.setParameter(1, annee);
+		return query.getResultList();
+	}
+	
+	//Filtre both
+	public List<UE> findBySectionAndAnneeAcademique(Section s, int annee)
+	{
+		Query query = em.createQuery("Select ue FROM UE ue where section_id = ?1 AND where anneeacademique = ?2", UE.class);
+		query.setParameter(1, s.getId()).setParameter(2, annee);
+		return query.getResultList();
 	}
 
 }
