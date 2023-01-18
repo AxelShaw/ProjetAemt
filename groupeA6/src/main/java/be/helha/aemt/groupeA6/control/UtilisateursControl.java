@@ -28,7 +28,7 @@ public class UtilisateursControl implements Serializable {
 	private String prenom;
 	private String email;
 	private String password;
-	private Departement departement;
+	private String departement;
 	private Role role;
 	
 	private int id;
@@ -64,7 +64,7 @@ public class UtilisateursControl implements Serializable {
 		this.prenom = "";
 		this.email = "";
 		this.password = "";
-		this.departement = new Departement();
+		this.departement = "";
 		this.role = role.S ;
 		return beanGestion.add(u);
 	}
@@ -73,6 +73,8 @@ public class UtilisateursControl implements Serializable {
 		init();
 		return beanGestion.remove(u);
 	}
+	
+	
 
 	//Getters and setters
 	public String getNom() {

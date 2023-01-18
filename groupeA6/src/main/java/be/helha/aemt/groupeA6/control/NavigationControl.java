@@ -61,4 +61,5 @@ public class NavigationControl implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 }
