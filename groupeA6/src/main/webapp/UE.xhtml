@@ -16,10 +16,6 @@
 	border-style: solid;
 	border-radius: 10px;
 }
-
-.btn:hover {
-	background-color: #C0C0C2;
-}
 </style>
 </head>
 <body>
@@ -27,12 +23,10 @@
 
 	<h:form>
 		<h3>Bienvenue</h3>
-		<h:commandButton class="btn" value="Enseignant"
-			action="#{navigationControl.doEnseignant()}" />
-		<h:commandButton class="btn" value="Mission"
-			action="#{navigationControl.doMission()}" />
-		<h:commandButton class="btn" value="UE"
-			action="#{navigationControl.doUE()}" />
+		<h:commandButton class="btn" value="Ajouter un enseignant"
+			action="#{navigationControl.doAddUE()}" />
+		<h:commandButton class="btn" value="Lister les enseignants"
+			action="#{navigationControl.doListUE()}" />
 	</h:form>
 </body>
 </html>

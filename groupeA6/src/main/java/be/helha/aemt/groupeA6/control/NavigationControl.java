@@ -36,6 +36,17 @@ public class NavigationControl implements Serializable {
 		return "addMission.xhtml";
 	}
 	
+	//UE
+	public String doUE() {
+		return "UE.xhtml";
+	}
+	public String doAddUE() {
+		return "addUE.xhtml";
+	}
+	public String doListUE() {
+		return "listUE.xhtml";
+	}
+	
 	public String getNom() {
 		return nom;
 	}

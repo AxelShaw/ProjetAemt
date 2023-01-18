@@ -61,15 +61,20 @@ public class UEDAO {
 	}
 	
 	//pas encore fait
-	public UE update(UE e1, UE e2) {
-		if (e1==null || e2==null) {
+	public UE update(UE e) {
+		//anneeAcademiqueUpdate, null, null, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, null
+		if (e==null) {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE UE SET nom = ?1 WHERE email = ?2");	
-		query.setParameter(1, e2.getIntitule());
-		query.setParameter(2, e1.getId()).executeUpdate();
-		return e1;
+		Query query = em.createQuery("UPDATE UE SET anneeacademique = ?1, bloc = ?2, code = ?3, intitule = ?4, credit = ?5 WHERE id = ?6");	
+		query.setParameter(1, e.getAnneeAcademique());
+		query.setParameter(2, e.getBloc());
+		query.setParameter(3, e.getCode());
+		query.setParameter(4, e.getIntitule());
+		query.setParameter(5, e.getCredit());
+		query.setParameter(6, e.getId()).executeUpdate();
+		return e;
 	}
 	
 	//Filtre section
