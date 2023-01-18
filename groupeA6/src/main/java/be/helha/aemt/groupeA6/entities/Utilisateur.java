@@ -97,13 +97,6 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	public Departement getDepartement() {
-		return departement;
-	}
-
-	public void setDepartement(Departement departement) {
-		this.departement = departement;
-	}
 
 	public Role getRole() {
 		return role;

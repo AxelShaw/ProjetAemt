@@ -33,4 +33,9 @@ public class GestionSectionEJB implements IGestionSectionEJB {
 		return daoSection.remove(s);
 	}
 
+	@Override
+	public Section update(Section s) {
+		return daoSection.update(s);
+	}
+
 }

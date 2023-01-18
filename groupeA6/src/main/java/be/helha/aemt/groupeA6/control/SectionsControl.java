@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionSectionEJB;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
+import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -24,6 +25,10 @@ public class SectionsControl implements Serializable {
 	private Integer id;
 	private String nom;
     private List<Mission> missions;
+    
+    private Integer idU;
+	private String nomU;
+	private List<Mission> missionsU;
 
 
 	
@@ -50,12 +55,21 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findById(id);
 	}
 	
-	public Section doAdd() {
+	public String doAdd() {
 		init();
 		Section s = new Section(nom, missions);
 		this.nom = "";
-		this.missions = new ArrayList<>();
-		return beanSectionGestion.add(s);
+		this.missions = null;
+		beanSectionGestion.add(s);
+		return "listSection.xhtml";
+	}
+
+	public String doUpdate() {
+		init();
+		Section e = new Section(nomU, null);
+		e.setId(idU);
+		beanSectionGestion.update(e);
+		return "listMission.xhtml";
 	}
 	
 	public Section doDelete(Section e) {
