@@ -30,6 +30,7 @@ public class UtilisateursControl implements Serializable {
 	private String password;
 	private String departement;
 	private Role role;
+	private String RoleE;
 	
 	private int id;
 	
@@ -59,13 +60,13 @@ public class UtilisateursControl implements Serializable {
 	
 	public Utilisateur doAdd() {
 		init();
-		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,role);
+		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,RoleE);
 		this.nom = "";
 		this.prenom = "";
 		this.email = "";
 		this.password = "";
 		this.departement = "";
-		this.role = role.S ;
+		this.RoleE = role.S.name();
 		return beanGestion.add(u);
 	}
 	

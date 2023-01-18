@@ -19,7 +19,8 @@ public class Utilisateur implements Serializable {
 	private String email;
 	private String password;
 	private String departement;
-	private Role role;
+	private String role;
+	
 	
 
 	
@@ -27,10 +28,10 @@ public class Utilisateur implements Serializable {
 		super();
 	}
 	
-	public Utilisateur(String nom, String prenom, String email, String password, String departement, Role role) {
+	public Utilisateur(String nom, String prenom, String email, String password, String departement, String role) {
 		super();
 		this.nom = nom;
-		this.nom = prenom;
+		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
 		this.departement = departement;
@@ -105,11 +106,11 @@ public class Utilisateur implements Serializable {
 		this.departement = departement;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
