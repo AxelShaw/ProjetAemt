@@ -97,11 +97,11 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	public Departement getDepartement() {
+	public String getDepartement() {
 		return departement;
 	}
 
-	public void setDepartement(Departement departement) {
+	public void setDepartement(String departement) {
 		this.departement = departement;
 	}
 
