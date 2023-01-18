@@ -29,6 +29,8 @@ public class SectionsControl implements Serializable {
     private Integer idU;
 	private String nomU;
 	private List<Mission> missionsU;
+	
+	private Integer idChoix;
 
 	
 	public SectionsControl() {
@@ -49,7 +51,7 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findAll();
 	}
 	
-	public Section doFindById() {
+	public Section doFindById(Integer id) {
 		init();
 		return beanSectionGestion.findById(id);
 	}
@@ -82,6 +84,21 @@ public class SectionsControl implements Serializable {
 	public Section doDelete(Section e) {
 		init();
 		return beanSectionGestion.remove(e);
+	}
+	
+	public String doChoixSec(Section s) {
+		init();
+		this.idChoix = s.getId();
+		return "choixMissionSection.xhtml";
+	}
+	
+	public String addMission(Mission m) {
+		init();
+		Section s = doFindById(idChoix);
+		s.addMission(m);
+		System.out.println(s.toString());
+		beanSectionGestion.add(s);
+		return "Section.xhtml";
 	}
 
 	public Integer getId() {
@@ -130,6 +147,14 @@ public class SectionsControl implements Serializable {
 
 	public void setMissionsU(List<Mission> missionsU) {
 		this.missionsU = missionsU;
+	}
+
+	public Integer getIdChoix() {
+		return idChoix;
+	}
+
+	public void setIdChoix(Integer idChoix) {
+		this.idChoix = idChoix;
 	}
 	
 	

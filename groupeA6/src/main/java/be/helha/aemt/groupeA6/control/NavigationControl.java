@@ -68,4 +68,11 @@ public class NavigationControl implements Serializable {
 		return "addUe.xhtml";
 	}
 	
+	public String doChoixSectionSection() {
+		return "choixSectionSection.xhtml";
+	}
+	
+	public String doChoixSectionMission() {
+		return "choixMissionSection.xhtml";
+	}
 }
