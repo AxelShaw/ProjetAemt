@@ -129,6 +129,20 @@ public class UE implements Serializable {
 		this.credit = credit;
 	}
 
+	public Departement getDepartement() {
+		return departement;
+	}
 
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	public List<AA> getAas() {
+		return aas;
+	}
+
+	public void setAas(List<AA> aas) {
+		this.aas = aas;
+	}
 
 }

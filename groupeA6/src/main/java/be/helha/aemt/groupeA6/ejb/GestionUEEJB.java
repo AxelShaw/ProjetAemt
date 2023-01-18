@@ -26,18 +26,18 @@ public class GestionUEEJB implements IGestionUEEJB {
 	}
 
 	@Override
-	public UE add(UE e) {
-		return daoUE.add(e);
+	public UE add(UE ue) {
+		return daoUE.add(ue);
 	}
 
 	@Override
-	public UE remove(UE e) {
-		return daoUE.remove(e);
+	public UE remove(UE ue) {
+		return daoUE.remove(ue);
 	}
 
 	@Override
-	public UE update(UE e1, UE e2) {
-		return daoUE.update(e1, e2);
+	public UE update(UE ue) {
+		return daoUE.update(ue);
 	}
 
 	@Override
