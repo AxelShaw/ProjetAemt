@@ -71,14 +71,14 @@ public class MissionControl implements Serializable {
 		init();
 		this.idUpdate = e.getId();
 		this.anneeAcademiqueUpdate = e.getAnneeAcademique();
-		this.intituleAjout = e.getIntitule();
-		this.heuresAjout = e.getHeures();
+		this.intituleUpdate = e.getIntitule();
+		this.heuresUpdate = e.getHeures();
 		return "updateMission.xhtml";
 	}
 
 	public String doUpdate() {
 		init();
-		Mission e = new Mission(anneeAcademiqueUpdate, intituleAjout, heuresAjout);
+		Mission e = new Mission(anneeAcademiqueUpdate, intituleUpdate, heuresUpdate);
 		e.setId(idUpdate);
 		beanGestion.update(e);
 		return "listMission.xhtml";
