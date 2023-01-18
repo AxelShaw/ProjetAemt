@@ -36,7 +36,7 @@ public class AA {
 	
 	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,Fraction fraction)
 	{
-		this.anneeAcademique = anAc;
+		this.anneeAcademique = anneeAcademique;
 		this.code = code;
 		this.intitule = intitule;
 		this.credit = credit;

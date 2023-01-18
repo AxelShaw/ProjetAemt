@@ -25,7 +25,7 @@ public class AADAO {
 		return em.createQuery("Select a from AA a", AA.class).getResultList();
 	}
 
-	public Enseignant add(Enseignant a) {
+	public AA add(AA a) {
 		if (a==null) {
 			return null;
 		}
