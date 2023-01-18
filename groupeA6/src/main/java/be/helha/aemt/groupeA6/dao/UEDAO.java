@@ -60,7 +60,6 @@ public class UEDAO {
 		return res;
 	}
 	
-	//pas encore fait
 	public UE update(UE ue) {
 		if (ue==null) {
 			return null;

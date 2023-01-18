@@ -7,11 +7,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Departement;
-import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.enterprise.context.SessionScoped;
@@ -21,8 +19,6 @@ import jakarta.inject.Named;
 @SessionScoped
 public class UEControl implements Serializable{
 	
-//	utiliser le serveur pour une reference de EJB
-//	supprimer l'annotation @Remote de IGestionEnseignant
 	private IGestionUEEJB beanGestion;
 	
 	private int anneeAcademiqueAjout;
@@ -100,7 +96,7 @@ public class UEControl implements Serializable{
 
 	public String doUpdate() {
 		init();
-		UE e = new UE(anneeAcademiqueAjout, null, null, blocAjout, codeAjout, intituleAjout, creditAjout, null);
+		UE e = new UE(anneeAcademiqueUpdate, null, null, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, null);
 		e.setId(idUpdate);
 		beanGestion.update(e);
 		return "listEnseignant.xhtml";

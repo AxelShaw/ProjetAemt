@@ -23,7 +23,7 @@
 		<web-resource-collection>
 			<web-resource-name>Protected Admin Area</web-resource-name>
 			<description></description>
-			<url-pattern>/adddd</url-pattern>
+			<url-pattern>/zzzz</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 			<http-method>HEAD</http-method>

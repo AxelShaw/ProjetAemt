@@ -5,11 +5,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<title>Ajout d'une UE</title>
+<title>Ajout d'un utilisateur</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .form {
-	margin-left: 25%;
 	margin-left: 20%;
 	font-size: 150%;
 }
@@ -52,11 +51,10 @@
 .btnBack:hover {
 	background-color: #C0C0C2;
 }
-
 </style>
 </head>
 <body>
-	<h1>Ajouter une UE</h1>
+	<h1>Ajouter un utilisateur</h1>
 </body>
 
 <body>
@@ -67,23 +65,26 @@
 
 	<div class="form">
 		<h:form>
-			<h:inputText class="fieldsHeader" value="AnneeAcademique" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.anneeAcademiqueAjout}" />
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.nom}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Bloc" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.blocAjout}" />
+			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.prenom}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Code" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.codeAjout}" />
+			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.email}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Intitule" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.intituleAjout}" />
+			<h:inputText class="fieldsHeader" value="password" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.password}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
-			<h:inputText class="fields" value="#{uEControl.creditAjout}" />
+			<h:inputText class="fieldsHeader" value="departement" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.departement}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="role" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.role}" />
 			<br />
 			<h:commandButton class="btn" value="Add"
-				action="#{uEControl.doAdd()}" />
+				action="#{utilisateursControl.doAdd()}" />
 		</h:form>
 	</div>
 </body>
