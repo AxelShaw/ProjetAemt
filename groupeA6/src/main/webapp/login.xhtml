@@ -45,19 +45,22 @@
 }
 </style>
 </h:head>
-<h:body>
-	<p:panel header="Login From">
-		<form class="log" method="POST" action="j_security_check">
-			<input class="fieldsHeader" value="Email" disabled="true"/>
-			<input class="fields" type="text" name="j_username"/>
-			<br />
+<body>
+	<h:body>
+		<p:panel header="Login From">
+			<form class="log" method="POST" action="j_security_check">
+				<input class="fieldsHeader" value="Email" disabled="true" />
+				<input class="fields" type="text" name="j_username" />
+				<br />
 
-			<input class="fieldsHeader" value="Mot de passe"
-				disabled="true" />
-			<input class="fields" type="password" name="j_password"/>
-			<br /> <input class="btn" type="submit" value="Login"/> <input
-				class="btn" type="reset" value="Reset" />
-		</form>
-	</p:panel>
-</h:body>
+				<input class="fieldsHeader" value="Mot de passe"
+					disabled="true" />
+				<input class="fields" type="password" name="j_password" />
+				<br /> 
+				<input class="btn" type="submit" value="Login" /> 
+				<input class="btn" type="reset" value="Reset" />
+			</form>
+		</p:panel>
+	</h:body>
+</body>
 </html>

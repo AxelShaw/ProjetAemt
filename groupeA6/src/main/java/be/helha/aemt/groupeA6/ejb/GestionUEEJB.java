@@ -36,8 +36,8 @@ public class GestionUEEJB implements IGestionUEEJB {
 	}
 
 	@Override
-	public UE update(UE e1, UE e2) {
-		return daoUE.update(e1, e2);
+	public UE update(UE e) {
+		return daoUE.update(e);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface IGestionUEEJB {
 	public UE findById(int id);
 	public UE add(UE e);
 	public UE remove(UE e);
-	public UE update(UE e1, UE e2);
+	public UE update(UE e);
 	public List<UE> findBySection(Section s);
 	public List<UE> findByAnneeAcademique(int annee);
 	public List<UE> findBySectionAndAnneeAcademique(Section s, int annee);
