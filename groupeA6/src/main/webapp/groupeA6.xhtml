@@ -22,7 +22,7 @@
 }
 </style>
 </head>
-<body>
+<body onload="#{utilisateursControl.doUsername()}">
 	<h1>GroupeA6</h1>
 
 	<h:form>
@@ -37,6 +37,7 @@
 			action="#{navigationControl.doSection()}" />
 		<h:commandButton class="btn" value="Utilisateur"
 			action="#{navigationControl.doUtilisateur()}" />
+		<h:inputText disabled="true" value="#{utilisateursControl.username}"/>
 	</h:form>
 </body>
 </html>

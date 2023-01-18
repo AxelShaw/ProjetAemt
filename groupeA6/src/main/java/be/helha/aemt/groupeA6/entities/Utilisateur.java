@@ -19,11 +19,9 @@ public class Utilisateur implements Serializable {
 	private String email;
 	private String password;
 	private String departement;
+	
 	private String role;
-	
-	
 
-	
 	public Utilisateur() {
 		super();
 	}
@@ -37,8 +35,6 @@ public class Utilisateur implements Serializable {
 		this.departement = departement;
 		this.role = role;
 	}
-	
-
 
 	@Override
 	public String toString() {

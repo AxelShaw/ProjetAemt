@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -76,6 +77,15 @@ public class UtilisateurDAO {
 		query.setParameter(1, u2.getNom());
 		query.setParameter(2, u1.getEmail()).executeUpdate();
 		return u1;
+	}
+	
+	public String getUsername(String email) {
+		if (email == null) {
+			return null;
+		}
+		
+		Utilisateur res = em.createQuery("Select u from Utilisateur u where u.email = ?1", Utilisateur.class).setParameter(1, email).getResultList().get(0);
+		return res.getNom() + " " + res.getPrenom();
 	}
 
 }

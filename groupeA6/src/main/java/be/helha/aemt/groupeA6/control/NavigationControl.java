@@ -3,13 +3,12 @@ package be.helha.aemt.groupeA6.control;
 import java.io.Serializable;
 
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
 @Named
 @SessionScoped
 public class NavigationControl implements Serializable {
-	
-	private String nom;
 	
 	public String doGroupeA6() {
 		return "groupeA6.xhtml";
@@ -67,14 +66,6 @@ public class NavigationControl implements Serializable {
 	
 	public String doAddUe() {
 		return "addUe.xhtml";
-	}
-	
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 	
 }

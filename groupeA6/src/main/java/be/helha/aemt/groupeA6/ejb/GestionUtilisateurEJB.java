@@ -39,4 +39,9 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 		return daoUtilisateur.update(u1, u2);
 	}
 
+	@Override
+	public String getUsername(String email) {
+		return daoUtilisateur.getUsername(email);
+	}
+	
 }
