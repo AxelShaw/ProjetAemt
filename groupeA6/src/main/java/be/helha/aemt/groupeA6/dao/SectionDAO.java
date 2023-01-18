@@ -70,7 +70,7 @@ public class SectionDAO {
 		
 		Section search = find(s);
 		
-		Query query = em.createQuery("UPDATE UE SET nom = ?1 WHERE id = ?2");	
+		Query query = em.createQuery("UPDATE Section SET nom = ?1 WHERE id = ?2");	
 		query.setParameter(1, s.getNom());
 		query.setParameter(2, search.getId()).executeUpdate();
 		return s;

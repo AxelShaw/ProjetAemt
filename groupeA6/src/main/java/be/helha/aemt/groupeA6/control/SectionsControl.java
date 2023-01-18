@@ -30,7 +30,6 @@ public class SectionsControl implements Serializable {
 	private String nomU;
 	private List<Mission> missionsU;
 
-
 	
 	public SectionsControl() {
 	}
@@ -69,7 +68,7 @@ public class SectionsControl implements Serializable {
 		Section e = new Section(nomU, null);
 		e.setId(idU);
 		beanSectionGestion.update(e);
-		return "listMission.xhtml";
+		return "listSection.xhtml";
 	}
 	
 	public String doGoToUpdate(Section s ) {
@@ -108,7 +107,31 @@ public class SectionsControl implements Serializable {
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;
 	}
-	
 
+	public Integer getIdU() {
+		return idU;
+	}
+
+	public void setIdU(Integer idU) {
+		this.idU = idU;
+	}
+
+	public String getNomU() {
+		return nomU;
+	}
+
+	public void setNomU(String nomU) {
+		this.nomU = nomU;
+	}
+
+	public List<Mission> getMissionsU() {
+		return missionsU;
+	}
+
+	public void setMissionsU(List<Mission> missionsU) {
+		this.missionsU = missionsU;
+	}
+	
+	
 
 }
