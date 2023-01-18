@@ -43,6 +43,9 @@ public class NavigationControl implements Serializable {
 	public String doSection() {
 		return "Section.xhtml";
 	}
+	public String doUtilisateur() {
+		return "Utilisateur.xhtml";
+	}
 	
 	public String doAddMission() {
 		return "addMission.xhtml";
