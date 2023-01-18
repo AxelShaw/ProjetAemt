@@ -15,6 +15,9 @@ import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.security.enterprise.identitystore.CredentialValidationResult.Status;
 
 @Named
 @SessionScoped
@@ -29,14 +32,22 @@ public class UtilisateursControl implements Serializable {
 	private String email;
 	private String password;
 	private String departement;
+	private String role2;
+	
+
 	private Role role;
-	private String RoleE;
 	
 	private int id;
 	
 	
 	public UtilisateursControl() {
 	}
+	
+	
+	
+    public Role[] getStatuses() {
+        return Role.values();
+    }
 
 	public void init() {
 		Context ctx;
@@ -60,13 +71,12 @@ public class UtilisateursControl implements Serializable {
 	
 	public Utilisateur doAdd() {
 		init();
-		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,RoleE);
+		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,role);
 		this.nom = "";
 		this.prenom = "";
 		this.email = "";
 		this.password = "";
 		this.departement = "";
-		this.RoleE = role.S.name();
 		return beanGestion.add(u);
 	}
 	
@@ -118,13 +128,6 @@ public class UtilisateursControl implements Serializable {
 		this.departement = departement;
 	}
 
-	public String getRoleE() {
-		return RoleE;
-	}
-
-	public void setRoleE(String roleE) {
-		RoleE = roleE;
-	}
 
 	public Role getRole() {
 		return role;
