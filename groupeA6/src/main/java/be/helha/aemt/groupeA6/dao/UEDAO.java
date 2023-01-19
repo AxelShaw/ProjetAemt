@@ -21,8 +21,12 @@ public class UEDAO {
 
 	}
 	
-	public List<UE> findAll() {
-		return em.createQuery("Select e from UE e", UE.class).getResultList();
+	public List<UE> findAll(int bFilter, String sFilter, String aFilter) {
+		if (bFilter<1 || bFilter>3) {
+			return em.createQuery("Select e from UE e", UE.class).getResultList();
+		}
+		
+		return em.createQuery("Select e from UE e where e.bloc = ?1", UE.class).setParameter(1, bFilter).getResultList();
 	}
 
 	public UE add(UE e) {

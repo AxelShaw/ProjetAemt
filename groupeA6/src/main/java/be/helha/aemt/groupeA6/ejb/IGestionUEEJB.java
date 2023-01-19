@@ -6,7 +6,7 @@ import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
 
 public interface IGestionUEEJB {
-	public List<UE> findAll();
+	public List<UE> findAll(int bFilter, String sFilter, String aFilter);
 	public UE findById(int id);
 	public UE add(UE ue);
 	public UE remove(UE ue);

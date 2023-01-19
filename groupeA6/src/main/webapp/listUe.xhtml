@@ -16,6 +16,27 @@
 	font-size: 1.2em;
 }
 
+.fields {
+	width: 30%;
+	font-size: 1.2em;
+	background-color: #CCCCCC;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	margin-bottom: 0.5%;
+}
+
+.fieldsHeader {
+	text-align: center;
+	color: black;
+	font-size: 1.2em;
+	width: 8%;
+	background-color: #999999;
+	border-color: black;
+	border-style: solid;
+	border-size: 1px;
+}
+
 .btn {
 	margin-top: 2%;
 	margin-left: 49%;
@@ -27,6 +48,14 @@
 	font-size: 1.2em;
 }
 
+.btnFilter {
+	margin-left: 49%;
+	border-size: 1px;
+	border-color: white;
+	border-style: solid;
+	background-color: white;
+}
+
 .btnDelete {
 	margin-left: 30%;
 	width: 40%;
@@ -35,7 +64,6 @@
 	border-color: black;
 	border-style: solid;
 	border-radius: 20px;
-	font-size: 1.2em;
 }
 
 .btnDelete:hover {
@@ -83,44 +111,64 @@
 	</h:form>
 
 	<div class="list">
-		<h:dataTable value="#{uEControl.doFindAll()}" var="ue"
-			border="2" bgcolor="#7A7878">
+		<h:form>
+			<h:inputText class="fieldsHeader" value="Bloc" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.blocFilter}" />
+			<br />
+
+			<h:inputText class="fieldsHeader" value="Section" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.sectionFilter}" />
+			<br />
+
+			<h:inputText class="fieldsHeader" value="AA" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.aasFilter}" />
+
+			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
+		</h:form>
+		<br />
+
+		<h:dataTable value="#{uEControl.list}" var="ue" border="2"
+			bgcolor="#7A7878">
 			<h:column>
 				<f:facet name="header">anneeAcademique</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{ue.anneeAcademique}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true"
+						value="#{ue.anneeAcademique}"/>
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">blocAjout</f:facet>
+				<f:facet name="header">bloc</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{ue.bloc}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true"
+						value="#{ue.bloc}"/>
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">codeAjout</f:facet>
+				<f:facet name="header">code</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true" value="#{ue.code}"/>
+					<h:inputText style="width:300px;" class="table" disabled="true"
+						value="#{ue.code}" />
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">creditAjout</f:facet>
+				<f:facet name="header">credit</f:facet>
 				<h:form>
-					<h:inputText style="width:400px;" class="table" disabled="true" value="#{ue.credit}"/>
+					<h:inputText style="width:400px;" class="table" disabled="true"
+						value="#{ue.credit}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{uEControl.doDelete(ue)}"/>
+						action="#{uEControl.doDelete(ue)}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
 				<h:form>
 					<h:commandButton class="btnUpdate" value="Modify"
-						action="#{uEControl.doGoToUpdate(ue)}"/>
+						action="#{uEControl.doGoToUpdate(ue)}" />
 				</h:form>
 			</h:column>
 		</h:dataTable>

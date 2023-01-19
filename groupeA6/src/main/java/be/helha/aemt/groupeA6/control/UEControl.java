@@ -1,6 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -22,7 +23,7 @@ public class UEControl implements Serializable{
 	private IGestionUEEJB beanGestion;
 	
 	private int anneeAcademiqueAjout;
-	private String blocAjout;
+	private int blocAjout = 1;
 	private String codeAjout;
 	private int creditAjout;
 	private String intituleAjout;
@@ -32,7 +33,7 @@ public class UEControl implements Serializable{
 	private int idAjout;
 
 	private int anneeAcademiqueUpdate;
-	private String blocUpdate;
+	private int blocUpdate;
 	private String codeUpdate;
 	private int creditUpdate;
 	private String intituleUpdate;
@@ -41,7 +42,16 @@ public class UEControl implements Serializable{
 	private List<AA> aasUpdate;
 	private int idUpdate;
 	
+	private List<UE> list;
+		
+	private int blocFilter;
+	private String sectionFilter;
+	private String aasFilter;
+	
 	public UEControl() {
+		list = new ArrayList<>();
+		init();
+		list = beanGestion.findAll(blocFilter, sectionFilter, aasFilter);
 	}
 
 	public void init() {
@@ -56,7 +66,8 @@ public class UEControl implements Serializable{
 	
 	public List<UE> doFindAll() {
 		init();
-		return beanGestion.findAll();
+		list = beanGestion.findAll(blocFilter, sectionFilter, aasFilter);
+		return list;
 	}
 	
 	public UE doFindById() {
@@ -70,7 +81,7 @@ public class UEControl implements Serializable{
 		this.anneeAcademiqueAjout = 0;
 		this.sectionAjout = null;
 		this.departementAjout = null;
-		this.blocAjout = "";
+		this.blocAjout = 1;
 		this.codeAjout = "";
 		this.intituleAjout = "";
 		this.creditAjout = 0;
@@ -115,11 +126,11 @@ public class UEControl implements Serializable{
 		this.anneeAcademiqueAjout = anneeAcademiqueAjout;
 	}
 
-	public String getBlocAjout() {
+	public int getBlocAjout() {
 		return blocAjout;
 	}
 
-	public void setBlocAjout(String blocAjout) {
+	public void setBlocAjout(int blocAjout) {
 		this.blocAjout = blocAjout;
 	}
 
@@ -187,11 +198,11 @@ public class UEControl implements Serializable{
 		this.anneeAcademiqueUpdate = anneeAcademiqueUpdate;
 	}
 
-	public String getBlocUpdate() {
+	public int getBlocUpdate() {
 		return blocUpdate;
 	}
 
-	public void setBlocUpdate(String blocUpdate) {
+	public void setBlocUpdate(int blocUpdate) {
 		this.blocUpdate = blocUpdate;
 	}
 
@@ -251,5 +262,36 @@ public class UEControl implements Serializable{
 		this.idUpdate = idUpdate;
 	}
 
+	public int getBlocFilter() {
+		return blocFilter;
+	}
+
+	public void setBlocFilter(int blocFilter) {
+		this.blocFilter = blocFilter;
+	}
+
+	public String getSectionFilter() {
+		return sectionFilter;
+	}
+
+	public void setSectionFilter(String sectionFilter) {
+		this.sectionFilter = sectionFilter;
+	}
+
+	public String getAasFilter() {
+		return aasFilter;
+	}
+
+	public void setAasFilter(String aasFilter) {
+		this.aasFilter = aasFilter;
+	}
+
+	public List<UE> getList() {
+		return list;
+	}
+
+	public void setList(List<UE> list) {
+		this.list = list;
+	}
 	
 }
