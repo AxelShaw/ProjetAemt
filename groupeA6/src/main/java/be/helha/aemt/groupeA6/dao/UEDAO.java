@@ -1,5 +1,6 @@
 package be.helha.aemt.groupeA6.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Section;
@@ -21,7 +22,7 @@ public class UEDAO {
 
 	}
 	
-	public List<UE> findAll(int bFilter, String sFilter, String aFilter) {
+	public List<UE> findAll(int bFilter) {
 		if (bFilter<1 || bFilter>3) {
 			return em.createQuery("Select e from UE e", UE.class).getResultList();
 		}

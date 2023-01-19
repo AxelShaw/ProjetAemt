@@ -45,13 +45,11 @@ public class UEControl implements Serializable{
 	private List<UE> list;
 		
 	private int blocFilter;
-	private String sectionFilter;
-	private String aasFilter;
 	
 	public UEControl() {
 		list = new ArrayList<>();
 		init();
-		list = beanGestion.findAll(blocFilter, sectionFilter, aasFilter);
+		list = beanGestion.findAll(blocFilter);
 	}
 
 	public void init() {
@@ -66,7 +64,7 @@ public class UEControl implements Serializable{
 	
 	public List<UE> doFindAll() {
 		init();
-		list = beanGestion.findAll(blocFilter, sectionFilter, aasFilter);
+		list = beanGestion.findAll(blocFilter);
 		return list;
 	}
 	
@@ -268,22 +266,6 @@ public class UEControl implements Serializable{
 
 	public void setBlocFilter(int blocFilter) {
 		this.blocFilter = blocFilter;
-	}
-
-	public String getSectionFilter() {
-		return sectionFilter;
-	}
-
-	public void setSectionFilter(String sectionFilter) {
-		this.sectionFilter = sectionFilter;
-	}
-
-	public String getAasFilter() {
-		return aasFilter;
-	}
-
-	public void setAasFilter(String aasFilter) {
-		this.aasFilter = aasFilter;
 	}
 
 	public List<UE> getList() {
