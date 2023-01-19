@@ -13,9 +13,10 @@
 	border-style: solid;
 	border-radius: 20px;
 	background-color: #45A4B5;
+	float: left;
 }
 
-.btn {
+.btnMain {
 	margin-left: 3%;
 	margin-bottom: 12%;
 	font-size: 3em;
@@ -26,15 +27,45 @@
 	border-radius: 10px;
 }
 
+.btnMain:hover {
+	background-color: #B2B2B4;
+}
+
+#secondary {
+	width: 50%;
+	text-align: center;
+	position: absolute;
+	margin-top: 5%;
+	margin-left: 22%;
+	background-color: #45C4B5;
+	border-size: 1px;
+	border-style: solid;
+	border-radius: 20px;
+	border-color: black;
+}
+
+.btn {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%; font-size : 1.5em;
+	width: 40%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+	font-size: 1.5em;
+}
+
 .btn:hover {
 	background-color: #B2B2B4;
 }
 
 .login {
+	background-color: #5A5AFA;
 	color: black;
 	text-align: center;
 	height: 50px;
-	font-size: 1.7em;
+	font-size: 2em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
@@ -42,32 +73,121 @@
 	position: absolute;
 	top: -5px;
 	right: -5px;
+	width: #{utilisateursControl.username.length() * 17 + 80}px;
 	#{utilisateursControl.doUsername()};
-	width: #{utilisateursControl.username.length() * 12 + 80}px;
 }
 </style>
 </head>
 <body>
 	<h:form class="bar">
-		<h:commandButton style="margin-top: 12%;" class="btn" value="Enseignant"
-			action="#{navigationControl.doEnseignant()}" rendered="#{utilisateursControl.isAllowed(0)}" /> <br/>
-			
-		<h:commandButton class="btn" value="Ue"
-			action="#{navigationControl.doUe()}" rendered="#{utilisateursControl.isAllowed(0)}"/> <br/>
-			
-		<h:commandButton class="btn" value="AA"
-			action="#{navigationControl.doAA()}" rendered="#{utilisateursControl.isAllowed(1)}"/> <br/>
-			
-		<h:commandButton class="btn" value="Section"
-			action="#{navigationControl.doSection()}" rendered="#{utilisateursControl.isAllowed(0)}"/> <br/>
-			
-		<h:commandButton class="btn" value="Mission"
-			action="#{navigationControl.doMission()}" rendered="#{utilisateursControl.isAllowed(1)}" /> <br/>
-		
-		<h:commandButton class="btn" value="Utilisateur"
-			action="#{navigationControl.doUtilisateur()}" rendered="#{utilisateursControl.isAllowed(2)}"/>
+		<h:commandButton style="margin-top: 12%;" class="btnMain"
+			value="Enseignant" action="#{navigationControl.doEnseignant()}"
+			rendered="#{utilisateursControl.isAllowed(0)}" />
+		<br />
+
+		<h:commandButton class="btnMain" value="Ue"
+			action="#{navigationControl.doUe()}"
+			rendered="#{utilisateursControl.isAllowed(0)}" />
+		<br />
+
+		<h:commandButton class="btnMain" value="AA"
+			action="#{navigationControl.doAA()}"
+			rendered="#{utilisateursControl.isAllowed(1)}" />
+		<br />
+
+		<h:commandButton class="btnMain" value="Section"
+			action="#{navigationControl.doSection()}"
+			rendered="#{utilisateursControl.isAllowed(0)}" />
+		<br />
+
+		<h:commandButton class="btnMain" value="Mission"
+			action="#{navigationControl.doMission()}"
+			rendered="#{utilisateursControl.isAllowed(1)}" />
+		<br />
+
+		<h:commandButton class="btnMain" value="Utilisateur"
+			action="#{navigationControl.doUtilisateur()}"
+			rendered="#{utilisateursControl.isAllowed(2)}" />
 	</h:form>
-	
-	<h:inputText class="login" disabled="true" value="#{utilisateursControl.username}"/>
+
+	<div id="secondary">
+		<div id="ens">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter un enseignant"
+					action="#{navigationControl.doAddEnseignant()}"
+					rendered="#{navigationControl.enseignantFlag}" />
+				<h:commandButton class="btn" value="Lister les enseignants"
+					action="#{navigationControl.doListEnseignant()}"
+					rendered="#{navigationControl.enseignantFlag}" />
+				<h:commandButton class="btn" value="Ajout de mission"
+					action="#{navigationControl.doChoixEnseignantEnseignant()}"
+					rendered="#{navigationControl.enseignantFlag}" />
+				<h:commandButton class="btn" value="Ajout de AA"
+					action="#{navigationControl.doChoixEnseignantEnseignantAA()}"
+					rendered="#{navigationControl.enseignantFlag}" />
+			</h:form>
+		</div>
+
+		<div id="ue">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter une UE"
+					action="#{navigationControl.doAddUe()}"
+					rendered="#{navigationControl.ueFlag}" />
+				<h:commandButton class="btn" value="Liste des UE"
+					action="#{navigationControl.doListUe()}"
+					rendered="#{navigationControl.ueFlag}" />
+			</h:form>
+		</div>
+
+		<div id="aa">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter une AA"
+					action="#{navigationControl.doAddAA()}"
+					rendered="#{navigationControl.aaFlag}" />
+				<h:commandButton class="btn" value="Lister les AA"
+					action="#{navigationControl.doListAA()}"
+					rendered="#{navigationControl.aaFlag}" />
+			</h:form>
+		</div>
+
+		<div id="section">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter une section"
+					action="#{navigationControl.doAddSection()}"
+					rendered="#{navigationControl.sectionFlag}" />
+				<h:commandButton class="btn" value="Lister des section"
+					action="#{navigationControl.doListSection()}"
+					rendered="#{navigationControl.sectionFlag}" />
+				<h:commandButton class="btn" value="Ajout de mission"
+					action="#{navigationControl.doChoixSectionSection()}"
+					rendered="#{navigationControl.sectionFlag}" />
+			</h:form>
+		</div>
+
+		<div id="mis">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter une mission"
+					action="#{navigationControl.doAddMission()}"
+					rendered="#{navigationControl.missionFlag}" />
+				<h:commandButton class="btn" value="Lister des missions"
+					action="#{navigationControl.doListMission()}"
+					rendered="#{navigationControl.missionFlag}" />
+			</h:form>
+		</div>
+
+		<div id="uti">
+			<h:form>
+				<h:commandButton class="btn" value="Ajouter un utilisateur"
+					action="#{navigationControl.doAddUtilisateur()}"
+					rendered="#{navigationControl.utilisateurFlag}" />
+				<h:commandButton class="btn" value="Liste des utilisateurs"
+					action="#{navigationControl.doListUtilisateur()}"
+					rendered="#{navigationControl.utilisateurFlag}" />
+			</h:form>
+		</div>
+	</div>
+
+	<h:inputText class="login" disabled="true"
+		value="#{utilisateursControl.username}" />
 </body>
 </html>
