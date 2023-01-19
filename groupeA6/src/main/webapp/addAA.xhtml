@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Ajout d'une AA</title>
+<meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.form {
+	margin-left: 25%;
+	font-size: 150%;
+}
+
+.fields {
+	width: 48%;
+	font-size: 1.2em;
+}
+
+.fieldsHeader {
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btn {
+	margin-top: 2%;
+	margin-left: 49%;
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 2.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 50px;
+	width: 3%;
+}
+
+.btnBack:hover {
+	background-color: #C0C0C2;
+}
+</style>
+</head>
+<body>
+	<h1>Ajouter une AA</h1>
+</body>
+
+<body>
+	<h:form>
+		<h:commandButton class="btnBack" value="🠔"
+			action="#{navigationControl.doGroupeA6()}" />
+	</h:form>
+
+	<div class="form">
+		<h:form>
+			<h:inputText class="fieldsHeader" value="AnneeAcademique" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.anneeAcademiqueAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Code" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.codeAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.creditAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Fraction" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.fractionAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Heure" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.heureAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="HeureQ1" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.heureQ1Ajout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="HeureQ2" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.heureQ2Ajout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Intitule" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.intituleAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="NombreEtudiant" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.nombreEtudiantAjout}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="NombreGroupe" disabled="true" />
+			<h:inputText class="fields" value="#{aAControl.nombreGroupeAjout}" />
+			<br />
+			<h:commandButton class="btn" value="Add"
+				action="#{aAControl.doAdd()}" />
+		</h:form>
+	</div>
+</body>
+</html>

@@ -65,18 +65,18 @@ public class AADAO {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE AA SET anneeacademique = ?1, code = ?2, intitule = ?3, credit = ?4, heure = ?5"
-				+ ", heureq1 = ?6 , heureq2, = ?7, nombreetudiant , nombregroupe = ?9, fraction = ?10  WHERE id = ?11");	
+		Query query = em.createQuery("UPDATE AA SET anneeacademique = ?1 , code = ?2 , credit = ?3, fraction = ?4, heure = ?5, heureq1 = ?6 , heureq2 = ?7,intitule = ?8 , nombreetudiant = ?9, nombregroupe = ?10  WHERE id = ?11 ");
+				 	
 		query.setParameter(1, a.getAnneeAcademique());
 		query.setParameter(2, a.getCode());
-		query.setParameter(3, a.getIntitule());
-		query.setParameter(4, a.getCredit());
+		query.setParameter(8, a.getIntitule());
+		query.setParameter(3, a.getCredit());
 		query.setParameter(5, a.getHeure());
 		query.setParameter(6, a.getHeureQ1());
 		query.setParameter(7, a.getHeureQ2());
-		query.setParameter(8, a.getNombreGroupe());
 		query.setParameter(9, a.getNombreEtudiant());
-		query.setParameter(10, a.getFraction());
+		query.setParameter(10, a.getNombreGroupe());
+		query.setParameter(4, a.getFraction());
 		query.setParameter(11, a.getId()).executeUpdate();
 		return a;
 	}
