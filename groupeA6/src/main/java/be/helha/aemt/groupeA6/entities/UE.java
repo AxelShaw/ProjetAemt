@@ -26,7 +26,7 @@ public class UE implements Serializable {
 	
 	private Departement departement;
 	
-	private String bloc;
+	private int bloc;
 	private String code;
 	private String intitule;
 	private int credit;
@@ -40,7 +40,7 @@ public class UE implements Serializable {
 		super();
 	}
 	
-	public UE(int anneeAcademique,Section section ,Departement departement,String bloc, String code, String intitule, int credit, List<AA> aas) {
+	public UE(int anneeAcademique,Section section ,Departement departement,int bloc, String code, String intitule, int credit, List<AA> aas) {
 		super();
 		this.anneeAcademique = anneeAcademique;
 		this.section = section;
@@ -96,11 +96,11 @@ public class UE implements Serializable {
 		this.section = section;
 	}
 
-	public String getBloc() {
+	public int getBloc() {
 		return bloc;
 	}
 
-	public void setBloc(String bloc) {
+	public void setBloc(int bloc) {
 		this.bloc = bloc;
 	}
 

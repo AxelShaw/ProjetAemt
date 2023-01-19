@@ -16,8 +16,8 @@ public class GestionUEEJB implements IGestionUEEJB {
 	private UEDAO daoUE;
 
 	@Override
-	public List<UE> findAll() {
-		return daoUE.findAll();
+	public List<UE> findAll(int bFilter) {
+		return daoUE.findAll(bFilter);
 	}
 
 	@Override
