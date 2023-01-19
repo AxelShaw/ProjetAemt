@@ -55,6 +55,18 @@ public class AA {
 		AA other = (AA) obj;
 		return Objects.equals(code, other.code) && Objects.equals(id, other.id);
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "anneeAcademique=" + anneeAcademique + ", code=" + code + ", intitule=" + intitule
+				+ ", credit=" + credit + ", heure=" + heure + ", heureQ1=" + heureQ1 + ", heureQ2=" + heureQ2
+				+ ", nombreGroupe=" + nombreGroupe + ", nombreEtudiant=" + nombreEtudiant + ", fraction=" + fraction;
+	}
+	public void setFraction(Integer fraction) {
+		this.fraction = fraction;
+	}
 	public Integer getId() {
 		return id;
 	}

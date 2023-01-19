@@ -104,5 +104,16 @@
 			</ui:repeat>
 		</h:column>
 	</h:dataTable>
+	<h:dataTable class="list"
+		value="#{enseignantsControl.doFindById(param['id'])}" var="p">
+		<h:column class="table">
+			AA : 
+			<ui:repeat value="#{p.getAttribution().getAas()}" var="aa">
+				<div class="row">
+					<h:outputText value="#{aa}" />
+				</div>
+			</ui:repeat>
+		</h:column>
+	</h:dataTable>
 </body>
 </html>
