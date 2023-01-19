@@ -82,6 +82,22 @@ public class Attribution implements Serializable {
 		AnneeAcademique = anneeAcademique;
 	}
 
+	public List<AA> getAas() {
+		return aas;
+	}
+
+	public void setAas(List<AA> aas) {
+		this.aas = aas;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
+	}
+
 
 	
 }
