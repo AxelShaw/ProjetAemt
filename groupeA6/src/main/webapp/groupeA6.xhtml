@@ -6,11 +6,20 @@
 <title>GroupeA6</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
+.bar {
+	width: 18%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+	background-color: #45A4B5;
+}
+
 .btn {
-	margin-top: 2%;
-	margin-left: 2%;
-	font-size: 1.2em;
-	width: 12%;
+	margin-left: 3%;
+	margin-bottom: 12%;
+	font-size: 3em;
+	width: 90%;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
@@ -18,7 +27,7 @@
 }
 
 .btn:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 
 .login {
@@ -39,24 +48,21 @@
 </style>
 </head>
 <body>
-	<h1>GroupeA6</h1>
-
-	<h:form>
-		<h2>Bienvenue</h2>
-		<h:commandButton class="btn" value="Enseignant"
-			action="#{navigationControl.doEnseignant()}" rendered="#{utilisateursControl.isAllowed(0)}" />
+	<h:form class="bar">
+		<h:commandButton style="margin-top: 12%;" class="btn" value="Enseignant"
+			action="#{navigationControl.doEnseignant()}" rendered="#{utilisateursControl.isAllowed(0)}" /> <br/>
 			
 		<h:commandButton class="btn" value="Ue"
-			action="#{navigationControl.doUe()}" rendered="#{utilisateursControl.isAllowed(0)}"/>
+			action="#{navigationControl.doUe()}" rendered="#{utilisateursControl.isAllowed(0)}"/> <br/>
 			
 		<h:commandButton class="btn" value="AA"
-			action="#{navigationControl.doAA()}" rendered="#{utilisateursControl.isAllowed(1)}"/>
+			action="#{navigationControl.doAA()}" rendered="#{utilisateursControl.isAllowed(1)}"/> <br/>
 			
 		<h:commandButton class="btn" value="Section"
-			action="#{navigationControl.doSection()}" rendered="#{utilisateursControl.isAllowed(0)}"/>
+			action="#{navigationControl.doSection()}" rendered="#{utilisateursControl.isAllowed(0)}"/> <br/>
 			
 		<h:commandButton class="btn" value="Mission"
-			action="#{navigationControl.doMission()}" rendered="#{utilisateursControl.isAllowed(1)}" />
+			action="#{navigationControl.doMission()}" rendered="#{utilisateursControl.isAllowed(1)}" /> <br/>
 		
 		<h:commandButton class="btn" value="Utilisateur"
 			action="#{navigationControl.doUtilisateur()}" rendered="#{utilisateursControl.isAllowed(2)}"/>
