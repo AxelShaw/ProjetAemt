@@ -96,7 +96,6 @@ public class SectionsControl implements Serializable {
 		init();
 		Section s = doFindById(idChoix);
 		s.addMission(m);
-		System.out.println(s.toString());
 		beanSectionGestion.add(s);
 		return "Section.xhtml";
 	}
