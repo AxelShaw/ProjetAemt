@@ -124,6 +124,19 @@ public class UEControl implements Serializable{
 		this.idChoix = e.getId();
 		return "choixAaUe.xhtml";
 	}
+	
+	public String addAA(AA a) {
+		init();
+		UE s = doFindById(idChoix);
+		s.addAA(a);
+		beanGestion.add(s);
+		return "Section.xhtml";
+	}
+	
+	public UE doFindById(Integer id) {
+		init();
+		return beanGestion.findById(id);
+	}
 
 	public int getAnneeAcademiqueAjout() {
 		return anneeAcademiqueAjout;

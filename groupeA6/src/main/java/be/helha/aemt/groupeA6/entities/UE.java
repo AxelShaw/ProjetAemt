@@ -71,6 +71,10 @@ public class UE implements Serializable {
 		UE other = (UE) obj;
 		return Objects.equals(id, other.id) && Objects.equals(code, other.code);
 	}
+	
+	public void addAA(AA a) {
+		aas.add(a);	
+	}
 
 	public Integer getId() {
 		return id;
