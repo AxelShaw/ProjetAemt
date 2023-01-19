@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
@@ -26,6 +27,14 @@ public class UtilisateursControl implements Serializable {
 	private String password;
 	private String departement;
 	private String role;
+	
+	private String nomUpdate;
+	private String prenomUpdate;
+	private String emailUpdate;
+	private String passwordUpdate;
+	private String departementUpdate;
+	private String roleUpdate;
+	private int idUpdate;
 	
 	private int id;
 	
@@ -62,7 +71,7 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.findById(id);
 	}
 	
-	public Utilisateur doAdd() {
+	public String doAdd() {
 		init();
 		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,role);
 		this.nom = "";
@@ -70,7 +79,9 @@ public class UtilisateursControl implements Serializable {
 		this.email = "";
 		this.password = "";
 		this.departement = "";
-		return beanGestion.add(u);
+		this.role = "";
+		beanGestion.add(u);
+		return "listUtilisateur.xhtml";
 	}
 	
 	public Utilisateur doDelete(Utilisateur u) {
@@ -81,6 +92,26 @@ public class UtilisateursControl implements Serializable {
 	public String doGetUsername(String email) {
 		init();
 		return beanGestion.getUsername(email);
+	}
+	
+	public String doGoToUpdate(Utilisateur u) {
+		init();
+		this.idUpdate = u.getId();
+		this.nomUpdate = u.getNom();
+		this.prenomUpdate = u.getPrenom();
+		this.emailUpdate = u.getEmail();
+		this.passwordUpdate = u.getPassword();
+		this.departementUpdate = u.getDepartement();
+		this.roleUpdate = u.getRole();
+		return "updateUtilisateur.xhtml";
+	}
+
+	public String doUpdate() {
+		init();
+		Utilisateur u = new Utilisateur(nomUpdate, prenomUpdate, emailUpdate, passwordUpdate,departementUpdate,roleUpdate);
+		u.setId(idUpdate);
+		beanGestion.update(u);
+		return "listUtilisateur.xhtml";
 	}
 
 	//Getters and setters
@@ -148,5 +179,62 @@ public class UtilisateursControl implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public String getNomUpdate() {
+		return nomUpdate;
+	}
+
+	public void setNomUpdate(String nomUpdate) {
+		this.nomUpdate = nomUpdate;
+	}
+
+	public String getPrenomUpdate() {
+		return prenomUpdate;
+	}
+
+	public void setPrenomUpdate(String prenomUpdate) {
+		this.prenomUpdate = prenomUpdate;
+	}
+
+	public String getEmailUpdate() {
+		return emailUpdate;
+	}
+
+	public void setEmailUpdate(String emailUpdate) {
+		this.emailUpdate = emailUpdate;
+	}
+
+	public String getPasswordUpdate() {
+		return passwordUpdate;
+	}
+
+	public void setPasswordUpdate(String passwordUpdate) {
+		this.passwordUpdate = passwordUpdate;
+	}
+
+	public String getDepartementUpdate() {
+		return departementUpdate;
+	}
+
+	public void setDepartementUpdate(String departementUpdate) {
+		this.departementUpdate = departementUpdate;
+	}
+
+	public String getRoleUpdate() {
+		return roleUpdate;
+	}
+
+	public void setRoleUpdate(String roleUpdate) {
+		this.roleUpdate = roleUpdate;
+	}
+
+	public int getIdUpdate() {
+		return idUpdate;
+	}
+
+	public void setIdUpdate(int idUpdate) {
+		this.idUpdate = idUpdate;
+	}
+	
 
 }

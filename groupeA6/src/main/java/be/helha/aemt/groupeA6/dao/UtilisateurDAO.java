@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.LocalBean;
@@ -29,13 +30,6 @@ public class UtilisateurDAO {
 	public Utilisateur add(Utilisateur u) {
 		if (u==null) {
 			return null;
-		}
-		
-		List<Utilisateur> list = findAll();		
-		for (Utilisateur ens: list) {
-			if (ens.getEmail().equals(u.getEmail())) {
-				return null;
-			}			
 		}
 		
 		em.merge(u);
@@ -68,15 +62,20 @@ public class UtilisateurDAO {
 		return res;
 	}
 	
-	public Utilisateur update(Utilisateur u1, Utilisateur u2) {
-		if (u1==null || u2==null) {
+	public Utilisateur update(Utilisateur u) {
+		if (u==null) {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE Utilisateur SET nom = ?1 WHERE email = ?2");	
-		query.setParameter(1, u2.getNom());
-		query.setParameter(2, u1.getEmail()).executeUpdate();
-		return u1;
+		Query query = em.createQuery("UPDATE Utilisateur SET nom = ?1, prenom = ?2, email = ?3, password = ?4, departement = ?5, role = ?6 WHERE id = ?7");	
+		query.setParameter(1, u.getNom());
+		query.setParameter(2, u.getPrenom());
+		query.setParameter(3, u.getEmail());
+		query.setParameter(4, u.getPassword());
+		query.setParameter(5, u.getDepartement());
+		query.setParameter(6, u.getRole());
+		query.setParameter(7, u.getId()).executeUpdate();
+		return u;
 	}
 	
 	public String getUsername(String email) {

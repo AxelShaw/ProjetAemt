@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<title>Modifiez un enseignant</title>
+<title>Modifiez un utilisateur</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .form {
@@ -72,13 +72,19 @@
 			<h:inputText class="fields" value="#{utilisateursControl.prenomUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.mailUpdate}" />
+			<h:inputText class="fields" value="#{utilisateursControl.emailUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Remarque" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.remarqueUpdate}" />
+			<h:inputText class="fieldsHeader" value="password" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.passwordUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Departement" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.departementUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Role" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.roleUpdate}" />
 			<br />
 			<h:commandButton class="btn" value="Modify"
-				action="#{enseignantsControl.doUpdate()}" />
+				action="#{utilisateursControl.doUpdate()}" />
 		</h:form>
 	</div>
 </body>
