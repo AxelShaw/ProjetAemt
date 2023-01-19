@@ -47,6 +47,10 @@ public class Attribution implements Serializable {
 		missions.add(m);
 	}
 	
+	public void addAA(AA m) {
+		aas.add(m);
+	}
+	
 	
 	@Override
 	public String toString() {

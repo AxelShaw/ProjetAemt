@@ -24,7 +24,7 @@ public class AA {
 	private Integer nombreGroupe;
 	private Integer nombreEtudiant;
 
-	private int fraction;
+	private Integer fraction;
 	
 	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,int fractionAjout)
 	{
@@ -54,6 +54,18 @@ public class AA {
 			return false;
 		AA other = (AA) obj;
 		return Objects.equals(code, other.code) && Objects.equals(id, other.id);
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "anneeAcademique=" + anneeAcademique + ", code=" + code + ", intitule=" + intitule
+				+ ", credit=" + credit + ", heure=" + heure + ", heureQ1=" + heureQ1 + ", heureQ2=" + heureQ2
+				+ ", nombreGroupe=" + nombreGroupe + ", nombreEtudiant=" + nombreEtudiant + ", fraction=" + fraction;
+	}
+	public void setFraction(Integer fraction) {
+		this.fraction = fraction;
 	}
 	public Integer getId() {
 		return id;

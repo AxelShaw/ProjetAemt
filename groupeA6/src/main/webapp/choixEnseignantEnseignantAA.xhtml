@@ -12,30 +12,46 @@
 	font-size: 150%;
 }
 
-.name {
-	margin-left: 10%;
-	font-size: 3em;
-	margin-bottom: 1%;
-}
-
 .table {
 	font-size: 1.2em;
-	margin-top: 2%;
-	border-size: 2px;
-	border-color: black;
-	border-style: solid;
-	border-radius: 10px;
 }
 
-.row {
+.btn {
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-left: 49%;
+	font-size: 1.2em;
+	width: 12%;
 	border-size: 1px;
 	border-color: black;
-	border-style: dotted;
-	border-left: thin;
-	border-right: thin;
-	border-bottom: thin;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+	font-size: 1.2em;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
+
+.btnUpdate {
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 1.2em;
+}
+
+.btnUpdate:hover {
+	background-color: #C0C0C2;
 }
 
 .btnBack {
@@ -66,9 +82,10 @@
 		<br />
 	</h:form>
 
-	<h:dataTable class="name"
-		value="#{enseignantsControl.doFindById(param['id'])}" var="e">
-		<h:column>
+	<div class="list">
+		<h:dataTable value="#{enseignantsControl.doFindAll()}" var="e"
+			border="2" bgcolor="#7A7878">
+			<h:column>
 				<f:facet name="header">NOM</f:facet>
 				<h:form>
 					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.nom}"/>
@@ -77,7 +94,7 @@
 			<h:column>
 				<f:facet name="header">PRENOM</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true" value="#{e.prenom}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.prenom}"/>
 				</h:form>
 			</h:column>
 			<h:column>
@@ -92,28 +109,14 @@
 					<h:inputText style="width:400px;" class="table" disabled="true" value="#{e.remarque}"/>
 				</h:form>
 			</h:column>
-	</h:dataTable>
-	<h:dataTable class="list"
-		value="#{enseignantsControl.doFindById(param['id'])}" var="p">
-		<h:column class="table">
-			Missions : 
-			<ui:repeat value="#{p.getAttribution().getMissions()}" var="mis">
-				<div class="row">
-					<h:outputText value="#{mis}" />
-				</div>
-			</ui:repeat>
-		</h:column>
-	</h:dataTable>
-	<h:dataTable class="list"
-		value="#{enseignantsControl.doFindById(param['id'])}" var="p">
-		<h:column class="table">
-			AA : 
-			<ui:repeat value="#{p.getAttribution().getAas()}" var="aa">
-				<div class="row">
-					<h:outputText value="#{aa}" />
-				</div>
-			</ui:repeat>
-		</h:column>
-	</h:dataTable>
+			<h:column>
+				<f:facet name="header">SELECT</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="O"
+						action="#{enseignantsControl.doChoixEns2(e)}" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
 </body>
 </html>
