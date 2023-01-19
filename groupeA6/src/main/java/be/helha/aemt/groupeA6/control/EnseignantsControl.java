@@ -9,14 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
-
 import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
@@ -109,32 +101,6 @@ public class EnseignantsControl implements Serializable {
 		e.setId(idUpdate);
 		beanGestion.update(e);
 		return "listEnseignant.xhtml";
-	}
-	
-
-	public void doPrintPDF(Enseignant e)
-	{
-		try {
-			PdfWriter writer = new PdfWriter("enseignant.pdf");
-			PdfDocument pdf = new PdfDocument(writer);
-			Document document = new Document(pdf);
-			PdfFont text = PdfFontFactory.createFont(FontConstants.TIMES);
-			PdfFont titles = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
-			document.add(new Paragraph("Nom: ").setFont(titles)
-						.add(new Paragraph(e.getNom().toUpperCase())).setFont(text)
-						.add(new Paragraph(e.getPrenom())).setFont(text))
-				.add(new Paragraph("Mail: ").setFont(titles)
-						.add(e.getMail()).setFont(text))
-				.add(new Paragraph("Remarque: ").setFont(titles)
-						.add(e.getRemarque()).setFont(text));
-			Runtime.getRuntime().exec("enseignant.pdf");
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 	}
 
 	public String doChoixEns(Enseignant e) {
