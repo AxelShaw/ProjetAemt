@@ -35,8 +35,8 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 	}
 
 	@Override
-	public Utilisateur update(Utilisateur u1, Utilisateur u2) {
-		return daoUtilisateur.update(u1, u2);
+	public Utilisateur update(Utilisateur u) {
+		return daoUtilisateur.update(u);
 	}
 
 	@Override

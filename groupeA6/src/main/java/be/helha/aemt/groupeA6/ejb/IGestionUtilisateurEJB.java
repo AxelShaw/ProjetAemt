@@ -10,6 +10,6 @@ public interface IGestionUtilisateurEJB {
 	public Utilisateur findById(int id);
 	public Utilisateur add(Utilisateur u);
 	public Utilisateur remove(Utilisateur u);
-	public Utilisateur update(Utilisateur u1, Utilisateur u2);
+	public Utilisateur update(Utilisateur u);
 	public String getUsername(String email);
 }

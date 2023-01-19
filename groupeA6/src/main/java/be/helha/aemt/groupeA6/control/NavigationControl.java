@@ -21,6 +21,9 @@ public class NavigationControl implements Serializable {
 	public String doListEnseignant() {
 		return "listEnseignant.xhtml";
 	}
+	public String doListUtilisateur() {
+		return "listUtilisateur.xhtml";
+	}
 	
 	public String doListMission() {
 		return "listMission.xhtml";
