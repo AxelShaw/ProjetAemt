@@ -22,6 +22,7 @@ import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.entities.Section;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -47,6 +48,8 @@ public class EnseignantsControl implements Serializable {
 	
 	private List<AA> aas;
 	private List<Mission> missions;
+	
+	private Integer idChoix;
 	
 	public EnseignantsControl() {
 	}
@@ -108,6 +111,7 @@ public class EnseignantsControl implements Serializable {
 		return "listEnseignant.xhtml";
 	}
 	
+
 	public void doPrintPDF(Enseignant e)
 	{
 		try {
@@ -131,6 +135,26 @@ public class EnseignantsControl implements Serializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+
+	public String doChoixEns(Enseignant e) {
+		init();
+		this.idChoix = e.getId();
+		return "choixEnseignantMission.xhtml";
+	}
+	
+	public String addMission(Mission m) {
+		init();
+		Enseignant s = doFindById(idChoix);
+		s.getAttribution().addMission(m);
+		beanGestion.add(s);
+		return "Section.xhtml";
+	}
+	
+	
+	public Enseignant doFindById(Integer id) {
+		init();
+		return beanGestion.findById(id);
 	}
 	
 	public String getNomAjout() {

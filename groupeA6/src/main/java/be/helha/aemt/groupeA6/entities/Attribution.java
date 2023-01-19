@@ -43,6 +43,11 @@ public class Attribution implements Serializable {
 		missions = new ArrayList<>();
 	}
 	
+	public void addMission(Mission m) {
+		missions.add(m);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "\nid=" + id + ", Annee Academique=" + AnneeAcademique ;

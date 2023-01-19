@@ -97,4 +97,14 @@ public class Enseignant implements Serializable {
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
+
+	public Attribution getAttribution() {
+		return attribution;
+	}
+
+	public void setAttribution(Attribution attribution) {
+		this.attribution = attribution;
+	}
+	
+	
 }
