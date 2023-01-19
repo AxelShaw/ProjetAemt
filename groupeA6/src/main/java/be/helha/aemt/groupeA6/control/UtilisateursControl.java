@@ -14,6 +14,8 @@ import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Named
 @SessionScoped
@@ -26,6 +28,7 @@ public class UtilisateursControl implements Serializable {
 	private String email;
 	private String password;
 	private String departement;
+	
 	private String role;
 	
 	private String nomUpdate;
@@ -235,8 +238,4 @@ public class UtilisateursControl implements Serializable {
 	public void setIdUpdate(int idUpdate) {
 		this.idUpdate = idUpdate;
 	}
-	
-	
-	
-
 }
