@@ -80,8 +80,12 @@
 			<h:inputText class="fieldsHeader" value="departement" disabled="true" />
 			<h:inputText class="fields" value="#{utilisateursControl.departement}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="role" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.role}" />
+            <h:outputLabel class="fieldsHeader" value="Role" for="role" />
+         		<h:selectOneMenu class="fields" value="#{utilisateursControl.role}" id="role">
+             		<f:selectItem itemLabel="S" itemValue="S"/>
+           			<f:selectItem itemLabel="DDE" itemValue="DDE"/>
+           			<f:selectItem itemLabel="DDOM" itemValue="DDE"/>
+            </h:selectOneMenu>
 			<br />
 			<h:commandButton class="btn" value="Add"
 				action="#{utilisateursControl.doAdd()}" />
