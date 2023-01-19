@@ -3,10 +3,13 @@ package be.helha.aemt.groupeA6.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Enseignant implements Serializable {
@@ -18,6 +21,7 @@ public class Enseignant implements Serializable {
 	private String prenom;
 	private String mail;
 	private String remarque;
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Attribution attribution;
 	
 	public Enseignant() {
@@ -31,6 +35,10 @@ public class Enseignant implements Serializable {
 		this.mail = mail;
 		this.remarque = remarque;
 		this.attribution = attribution;
+	}
+	
+	public void addAttribution(Attribution a) {
+		attribution = a;
 	}
 
 	@Override
@@ -89,4 +97,14 @@ public class Enseignant implements Serializable {
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
+
+	public Attribution getAttribution() {
+		return attribution;
+	}
+
+	public void setAttribution(Attribution attribution) {
+		this.attribution = attribution;
+	}
+	
+	
 }

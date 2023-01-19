@@ -103,6 +103,14 @@ public class Utilisateur implements Serializable {
 		this.role = role;
 	}
 
+	public void setDepartement(String departement) {
+		this.departement = departement;
+	}
+
+	public String getDepartement() {
+		return departement;
+	}
+
 
 
 

@@ -1,5 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,7 +10,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
+import be.helha.aemt.groupeA6.entities.AA;
+import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
+import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.entities.Section;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -31,6 +37,11 @@ public class EnseignantsControl implements Serializable {
 	private String mailUpdate;
 	private String remarqueUpdate;
 	private int idUpdate;
+	
+	private List<AA> aas;
+	private List<Mission> missions;
+	
+	private Integer idChoix;
 	
 	public EnseignantsControl() {
 	}
@@ -62,6 +73,8 @@ public class EnseignantsControl implements Serializable {
 		this.prenomAjout = "";
 		this.mailAjout = "";
 		this.remarqueAjout = "";
+		Attribution a = new Attribution(2023,aas,missions);
+		e.addAttribution(a);
 		beanGestion.add(e);
 		return "listEnseignant.xhtml";
 	}
@@ -88,6 +101,26 @@ public class EnseignantsControl implements Serializable {
 		e.setId(idUpdate);
 		beanGestion.update(e);
 		return "listEnseignant.xhtml";
+	}
+
+	public String doChoixEns(Enseignant e) {
+		init();
+		this.idChoix = e.getId();
+		return "choixEnseignantMission.xhtml";
+	}
+	
+	public String addMission(Mission m) {
+		init();
+		Enseignant s = doFindById(idChoix);
+		s.getAttribution().addMission(m);
+		beanGestion.add(s);
+		return "Section.xhtml";
+	}
+	
+	
+	public Enseignant doFindById(Integer id) {
+		init();
+		return beanGestion.findById(id);
 	}
 	
 	public String getNomAjout() {
