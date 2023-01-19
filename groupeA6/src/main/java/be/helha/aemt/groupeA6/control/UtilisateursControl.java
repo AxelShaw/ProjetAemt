@@ -47,6 +47,11 @@ public class UtilisateursControl implements Serializable {
 		username = doGetUsername(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
 	}
 	
+	public boolean isAllowed(int permNeeded) {
+		int permUser = doGetRole(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+		return permUser >= permNeeded;
+	}
+	
 	public UtilisateursControl() {
 	}
 	
@@ -95,6 +100,11 @@ public class UtilisateursControl implements Serializable {
 	public String doGetUsername(String email) {
 		init();
 		return beanGestion.getUsername(email);
+	}
+	
+	public int doGetRole(String email) {
+		init();
+		return beanGestion.getRole(email);
 	}
 	
 	public String doGoToUpdate(Utilisateur u) {

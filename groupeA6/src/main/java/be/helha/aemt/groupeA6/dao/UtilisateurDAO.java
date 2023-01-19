@@ -87,4 +87,20 @@ public class UtilisateurDAO {
 		return res.getNom() + " " + res.getPrenom();
 	}
 
+	public int getRole(String email) {
+		if (email == null) {
+			return 0;
+		}
+		
+		String res = em.createQuery("Select u from Utilisateur u where u.email = ?1", Utilisateur.class).setParameter(1, email).getResultList().get(0).getRole();
+		
+		int role = 0;
+		if (res.equals("DDOM")) {
+			role = 2;
+		} else if (res.equals("DDE")) {
+			role = 1;
+		}
+		
+		return role;
+	}
 }

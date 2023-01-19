@@ -44,4 +44,8 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 		return daoUtilisateur.getUsername(email);
 	}
 	
+	public int getRole(String email) {
+		return daoUtilisateur.getRole(email);
+	}
+	
 }
