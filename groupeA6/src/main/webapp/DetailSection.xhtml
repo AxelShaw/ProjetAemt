@@ -7,6 +7,37 @@
 <title>Liste des missions</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
+.list {
+	margin-left: 10%;
+	font-size: 150%;
+}
+
+.name {
+	margin-left: 10%;
+	font-size: 3em;
+	margin-bottom: 1%;
+}
+
+.table {
+	font-size: 1.5em;
+	margin-top: 2%;
+	border-size: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+}
+
+.row {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	border-size: 1px;
+	border-color: black;
+	border-style: dotted;
+	border-left: thin;
+	border-right: thin;
+	border-bottom: thin;
+}
+
 .btnBack {
 	margin-top: 2%;
 	margin-left: 2%;
@@ -17,6 +48,10 @@
 	border-style: solid;
 	border-radius: 50px;
 	width: 3%;
+}
+
+.btnBack:hover {
+	background-color: #C0C0C2;
 }
 </style>
 </head>
@@ -30,18 +65,22 @@
 			action="#{navigationControl.doGroupeA6()}" />
 		<br />
 	</h:form>
-	<h:dataTable value="#{sectionsControl.doFindById(param['id'])}" var="p">
+
+	<h:dataTable class="name"
+		value="#{sectionsControl.doFindById(param['id'])}" var="p">
 		<h:column>
 			Nom : 
 			<h:outputText value="#{p.nom}" />
 		</h:column>
 	</h:dataTable>
-	<h:dataTable value="#{sectionsControl.doFindById(param['id'])}" var="p">
-		<h:column>
+	<h:dataTable class="list"
+		value="#{sectionsControl.doFindById(param['id'])}" var="p">
+		<h:column class="table">
 			Missions : 
 			<ui:repeat value="#{p.missions}" var="mis">
-				<br />
-			   <h:outputText class="text" value="#{mis}"/>
+				<div class="row">
+					<h:outputText value="#{mis}" />
+				</div>
 			</ui:repeat>
 		</h:column>
 	</h:dataTable>
