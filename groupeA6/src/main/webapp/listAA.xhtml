@@ -83,7 +83,7 @@
 	</h:form>
 
 	<div class="list">
-		<h:dataTable value="#{AAControl.doFindAll()}" var="e"
+		<h:dataTable value="#{aAControl.doFindAll()}" var="e"
 			border="2" bgcolor="#7A7878">
 			<h:column>
 				<f:facet name="header">ANNEE ACADEMIQUE</f:facet>
@@ -149,14 +149,14 @@
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{AAControl.doDelete(e)}"/>
+						action="#{aAControl.doDelete(e)}"/>
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
 				<h:form>
 					<h:commandButton class="btnUpdate" value="Modify"
-						action="#{AAControl.doGoToUpdate(e)}"/>
+						action="#{aAControl.doGoToUpdate(e)}"/>
 				</h:form>
 			</h:column>
 		</h:dataTable>

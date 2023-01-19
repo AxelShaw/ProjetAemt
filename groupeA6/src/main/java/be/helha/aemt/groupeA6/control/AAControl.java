@@ -11,7 +11,7 @@ import be.helha.aemt.groupeA6.ejb.IGestionAAEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.UE;
 import be.helha.aemt.groupeA6.entities.AA;
-import be.helha.aemt.groupeA6.entities.AA.Fraction;
+
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -22,17 +22,17 @@ public class AAControl implements Serializable {
 	private IGestionAAEJB beanGestion;
 	
 	//Ajout
-	private Integer idAjout;
-	private Integer anneeAcademiqueAjout;
+	private int idAjout;
+	private int anneeAcademiqueAjout;
 	private String codeAjout;
 	private String intituleAjout;
-	private Integer creditAjout;
-	private Integer heureAjout;
-	private Integer heureQ1Ajout;
-	private Integer heureQ2Ajout;
-	private Integer nombreGroupeAjout;
+	private int creditAjout;
+	private int heureAjout;
+	private int heureQ1Ajout;
+	private int heureQ2Ajout;
+	private int nombreGroupeAjout;
 	private Integer nombreEtudiantAjout;
-	private Fraction fractionAjout;
+	private int fractionAjout;
 	
 	//Update
 	private Integer idUpdate;
@@ -45,7 +45,7 @@ public class AAControl implements Serializable {
 	private Integer heureQ2Update;
 	private Integer nombreGroupeUpdate;
 	private Integer nombreEtudiantUpdate;
-	private Fraction fractionUpdate;
+	private int fractionUpdate;
 	
 	public AAControl() {
 	}
@@ -82,7 +82,7 @@ public class AAControl implements Serializable {
 		this.heureQ2Ajout=0;
 		this.nombreGroupeAjout=0;
 		this.nombreEtudiantAjout=0;
-		this.fractionAjout=null;
+		this.fractionAjout = 0;
 		beanGestion.add(a);
 		return "listAA.xhtml";
 	}
@@ -197,11 +197,11 @@ public class AAControl implements Serializable {
 		this.nombreEtudiantAjout = nombreEtudiantAjout;
 	}
 
-	public Fraction getFractionAjout() {
+	public int getFractionAjout() {
 		return fractionAjout;
 	}
 
-	public void setFractionAjout(Fraction fractionAjout) {
+	public void setFractionAjout(int fractionAjout) {
 		this.fractionAjout = fractionAjout;
 	}
 
@@ -285,11 +285,11 @@ public class AAControl implements Serializable {
 		this.nombreEtudiantUpdate = nombreEtudiantUpdate;
 	}
 
-	public Fraction getFractionUpdate() {
+	public int getFractionUpdate() {
 		return fractionUpdate;
 	}
 
-	public void setFractionUpdate(Fraction fractionUpdate) {
+	public void setFractionUpdate(int fractionUpdate) {
 		this.fractionUpdate = fractionUpdate;
 	}
 	

@@ -13,6 +13,7 @@ public class AA {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private Integer anneeAcademique;
 	private String code;
 	private String intitule;
@@ -22,23 +23,10 @@ public class AA {
 	private Integer heureQ2;
 	private Integer nombreGroupe;
 	private Integer nombreEtudiant;
-	public enum Fraction{
-		MA(480),
-		MFP(750);
-		  
-		private final int fraction;
 
-		private Fraction(int fraction) {
-		  this.fraction = fraction;
-		}
-	    public int getValue() {
-	        return fraction;
-	    }
-	}
+	private int fraction;
 	
-	private Fraction fraction;
-	
-	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,Fraction fractionAjout)
+	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,int fractionAjout)
 	{
 		this.anneeAcademique = anneeAcademique;
 		this.code = code;
@@ -147,11 +135,11 @@ public class AA {
 		this.nombreEtudiant = nombreEtudiant;
 	}
 
-	public Fraction getFraction() {
+	public int getFraction() {
 		return fraction;
 	}
 
-	public void setFraction(Fraction fraction) {
+	public void setFraction(int fraction) {
 		this.fraction = fraction;
 	}
 
