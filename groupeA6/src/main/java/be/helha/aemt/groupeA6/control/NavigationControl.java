@@ -180,5 +180,7 @@ public class NavigationControl implements Serializable {
 		this.utilisateurFlag = utilisateurFlag;
 	}
 	
-	
+	public String doChoixUeUe() {
+		return "choixUeUe.xhtml";
+	}
 }
