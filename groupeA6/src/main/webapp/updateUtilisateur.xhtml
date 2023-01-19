@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<title>Ajout d'un utilisateur</title>
+<title>Modifiez un utilisateur</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .form {
@@ -54,37 +54,37 @@
 </style>
 </head>
 <body>
-	<h1>Ajouter un utilisateur</h1>
+	<h1>Modifiez un Utilisateur</h1>
 </body>
 
 <body>
 	<h:form>
 		<h:commandButton class="btnBack" value="🠔"
-			action="#{navigationControl.doGroupeA6()}" />
+			action="#{navigationControl.doListUtilisateur()}" />
 	</h:form>
 
 	<div class="form">
 		<h:form>
 			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.nom}" />
+			<h:inputText class="fields" value="#{utilisateursControl.nomUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.prenom}" />
+			<h:inputText class="fields" value="#{utilisateursControl.prenomUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="Email" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.email}" />
+			<h:inputText class="fields" value="#{utilisateursControl.emailUpdate}" />
 			<br />
 			<h:inputText class="fieldsHeader" value="password" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.password}" />
+			<h:inputText class="fields" value="#{utilisateursControl.passwordUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="departement" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.departement}" />
+			<h:inputText class="fieldsHeader" value="Departement" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.departementUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="role" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.role}" />
+			<h:inputText class="fieldsHeader" value="Role" disabled="true" />
+			<h:inputText class="fields" value="#{utilisateursControl.roleUpdate}" />
 			<br />
-			<h:commandButton class="btn" value="Add"
-				action="#{utilisateursControl.doAdd()}" />
+			<h:commandButton class="btn" value="Modify"
+				action="#{utilisateursControl.doUpdate()}" />
 		</h:form>
 	</div>
 </body>

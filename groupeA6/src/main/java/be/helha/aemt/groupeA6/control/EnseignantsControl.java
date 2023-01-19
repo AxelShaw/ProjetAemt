@@ -18,7 +18,10 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
 import be.helha.aemt.groupeA6.ejb.IGestionEnseignantEJB;
+import be.helha.aemt.groupeA6.entities.AA;
+import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
+import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -41,6 +44,9 @@ public class EnseignantsControl implements Serializable {
 	private String mailUpdate;
 	private String remarqueUpdate;
 	private int idUpdate;
+	
+	private List<AA> aas;
+	private List<Mission> missions;
 	
 	public EnseignantsControl() {
 	}
@@ -72,6 +78,8 @@ public class EnseignantsControl implements Serializable {
 		this.prenomAjout = "";
 		this.mailAjout = "";
 		this.remarqueAjout = "";
+		Attribution a = new Attribution(2023,aas,missions);
+		e.addAttribution(a);
 		beanGestion.add(e);
 		return "listEnseignant.xhtml";
 	}
