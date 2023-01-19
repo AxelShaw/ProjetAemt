@@ -107,4 +107,7 @@ public class NavigationControl implements Serializable {
 	public String doChoixEnseignantEnseignantAA() {
 		return "choixEnseignantEnseignantAA.xhtml";
 	}
+	public String doChoixUeUe() {
+		return "choixUeUe.xhtml";
+	}
 }
