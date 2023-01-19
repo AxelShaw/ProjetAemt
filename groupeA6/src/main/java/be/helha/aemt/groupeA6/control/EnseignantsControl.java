@@ -109,10 +109,24 @@ public class EnseignantsControl implements Serializable {
 		return "choixEnseignantMission.xhtml";
 	}
 	
+	public String doChoixEns2(Enseignant e) {
+		init();
+		this.idChoix = e.getId();
+		return "choixEnseignantAA.xhtml";
+	}
+	
 	public String addMission(Mission m) {
 		init();
 		Enseignant s = doFindById(idChoix);
 		s.getAttribution().addMission(m);
+		beanGestion.add(s);
+		return "Section.xhtml";
+	}
+	
+	public String addAA(AA a) {
+		init();
+		Enseignant s = doFindById(idChoix);
+		s.getAttribution().addAA(a);
 		beanGestion.add(s);
 		return "Section.xhtml";
 	}

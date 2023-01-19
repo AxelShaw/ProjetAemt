@@ -24,7 +24,7 @@ public class AA {
 	private Integer nombreGroupe;
 	private Integer nombreEtudiant;
 
-	private int fraction;
+	private Integer fraction;
 	
 	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,int fractionAjout)
 	{
