@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Modifiez une AA</title>
+<meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.form {
+	margin-left: 20%;
+	font-size: 150%;
+}
+
+.fields {
+	width: 48%;
+	font-size: 1.2em;
+}
+
+.fieldsHeader {
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btn {
+	margin-top: 2%;
+	margin-left: 49%;
+	font-size: 1.2em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btnBack {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	font-size: 2.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 50px;
+	width: 3%;
+}
+
+.btnBack:hover {
+	background-color: #C0C0C2;
+}
+</style>
+</head>
+<body>
+	<h1>Modifiez une AA</h1>
+</body>
+
+<body>
+	<h:form>
+		<h:commandButton class="btnBack" value="🠔"
+			action="#{navigationControl.doListAA()}" />
+	</h:form>
+
+	<div class="form">
+		<h:form>
+			<h:inputText class="fieldsHeader" value="AnneeAcademique" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.anneeAcademiqueUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Code" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.codeUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.creditUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Fraction" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.fractionUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Heure" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.heureUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="HeureQ1" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.heureQ1Update}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="HeureQ2" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.heureQ2Update}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="Intitule" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.intituleUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="NombreEtudiant" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.nombreEtudiantUpdate}" />
+			<br />
+			<h:inputText class="fieldsHeader" value="NombreGroupe" disabled="true" />
+			<h:inputText class="fields" value="#{AAControl.nombreGroupeUpdate}" />
+			<br />
+			<h:commandButton class="btn" value="Modify"
+				action="#{AAControl.doUpdate()}" />
+		</h:form>
+	</div>
+</body>
+</html>

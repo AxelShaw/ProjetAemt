@@ -26,12 +26,16 @@ public class AA {
 		MA(480),
 		MFP(750);
 		  
-		private final Integer fraction;
+		private final int fraction;
 
-		private Fraction(int i) {
-		  this.fraction = i;
+		private Fraction(int fraction) {
+		  this.fraction = fraction;
 		}
+	    public int getValue() {
+	        return fraction;
+	    }
 	}
+	
 	private Fraction fraction;
 	
 	public AA(int anneeAcademique,String code,String intitule,int credit,int heure,int heureQ1,int heureQ2, int nombreGroupe,int nombreEtudiant,Fraction fractionAjout)
@@ -150,6 +154,7 @@ public class AA {
 	public void setFraction(Fraction fraction) {
 		this.fraction = fraction;
 	}
+
 
 }
 
