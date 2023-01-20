@@ -96,19 +96,9 @@ public class UtilisateurDAO {
 				
 		String strQuery = "Select u from Utilisateur u where u.email = ?1";
 		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
-		String res = query.getResultList().get(0).getRole();
+		Utilisateur user = query.getResultList().get(0);
 		
-		if (res.equals("DDOM")) {
-			role = new DDOM();
-		} else if (res.equals("DDE")) {
-			role = new DDE();
-		} else {
-			role = new S();
-		}
-		
-		int perm = role.getPerm();
-		
-		return perm;
+		return user.getPerm();
 	}
 
 	public Role getRole() {

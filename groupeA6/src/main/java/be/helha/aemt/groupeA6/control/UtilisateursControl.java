@@ -9,7 +9,7 @@ import javax.naming.NamingException;
 
 import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
 import be.helha.aemt.groupeA6.entities.Enseignant;
-import be.helha.aemt.groupeA6.entities.Role;
+import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
@@ -55,8 +55,8 @@ public class UtilisateursControl implements Serializable {
 	public UtilisateursControl() {
 	}
 	
-    public Role[] getStatuses() {
-        return Role.values();
+    public RoleList[] getStatuses() {
+        return RoleList.values();
     }
 
 	public void init() {
