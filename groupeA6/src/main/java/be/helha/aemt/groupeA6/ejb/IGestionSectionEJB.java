@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import jakarta.ejb.Remote;
 
 public interface IGestionSectionEJB {
 	public List<Section> findAll();

@@ -3,6 +3,7 @@ package be.helha.aemt.groupeA6.ejb;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.AA;
+import jakarta.ejb.Remote;
 
 public interface IGestionAAEJB {
 	public List<AA> findAll();

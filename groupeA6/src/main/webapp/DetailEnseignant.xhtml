@@ -18,13 +18,41 @@
 	margin-bottom: 1%;
 }
 
-.table {
-	font-size: 1.2em;
-	margin-top: 2%;
-	border-size: 2px;
-	border-color: black;
+.txt {
+	font-size: 2em;
+}
+
+.fields {
+	font-size: 0.8em;
+	background-color: #459475;
+	color: black;
+	text-align: center;
+	border-size: 1px;
+	border-color: #459475;
 	border-style: solid;
-	border-radius: 10px;
+	margin-bottom: 0.5%;
+}
+
+.fieldsMis {
+	font-size: 1em;
+	background-color: #459475;
+	color: black;
+	text-align: left;
+	border-size: 1px;
+	border-color: #459475;
+	border-style: solid;
+	margin-bottom: 0.5%;
+}
+
+.fieldsAa {
+	font-size: 1em;
+	background-color: #459475;
+	color: black;
+	text-align: left;
+	border-size: 1px;
+	border-color: #459475;
+	border-style: solid;
+	margin-bottom: 0.5%;
 }
 
 .row {
@@ -39,26 +67,22 @@
 }
 
 .btnBack {
-	margin-top: 2%;
-	margin-left: 2%;
+	margin-top: 3%;
+	margin-left: 5%;
 	margin-bottom: 2%;
-	font-size: 2.2em;
+	font-size: 3em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
 	border-radius: 50px;
-	width: 3%;
+	width: 3.6%;
 }
 
 .btnBack:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 </style>
 </head>
-<body>
-	<h1>liste des missions</h1>
-</body>
-
 <body>
 	<h:form>
 		<h:commandButton class="btnBack" value="🠔"
@@ -67,39 +91,45 @@
 	</h:form>
 
 	<h:dataTable class="name"
-		value="#{enseignantsControl.doFindById(param['id'])}" var="e">
+		value="#{enseignantsControl.doFindById(param['id'])}" var="e"
+		bgcolor="#459475">
 		<h:column>
-				<f:facet name="header">NOM</f:facet>
-				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.nom}"/>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">PRENOM</f:facet>
-				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true" value="#{e.prenom}"/>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">EMAIL</f:facet>
-				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true" value="#{e.mail}"/>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">REMARQUE</f:facet>
-				<h:form>
-					<h:inputText style="width:400px;" class="table" disabled="true" value="#{e.remarque}"/>
-				</h:form>
-			</h:column>
+			<f:facet name="header">NOM</f:facet>
+			<h:form>
+				<h:inputText style="width:200px;" class="fields" disabled="true"
+					value="#{e.nom}" />
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">PRENOM</f:facet>
+			<h:form>
+				<h:inputText style="width:200px;" class="fields" disabled="true"
+					value="#{e.prenom}" />
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">EMAIL</f:facet>
+			<h:form>
+				<h:inputText style="width:200px;" class="fields" disabled="true"
+					value="#{e.mail}" />
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">REMARQUE</f:facet>
+			<h:form>
+				<h:inputText style="width:200px;" class="fields" disabled="true"
+					value="#{e.remarque}" />
+			</h:form>
+		</h:column>
 	</h:dataTable>
 	<h:dataTable class="list"
 		value="#{enseignantsControl.doFindById(param['id'])}" var="p">
 		<h:column class="table">
-			Missions : 
+			<span class="txt">Missions : </span>
 			<ui:repeat value="#{p.getAttribution().getMissions()}" var="mis">
 				<div class="row">
-					<h:outputText value="#{mis}" />
+					<h:inputText style="width:800px;" class="fieldsMis" disabled="true"
+					value="#{mis}" />
 				</div>
 			</ui:repeat>
 		</h:column>
@@ -107,10 +137,11 @@
 	<h:dataTable class="list"
 		value="#{enseignantsControl.doFindById(param['id'])}" var="p">
 		<h:column class="table">
-			AA : 
+			<span class="txt">AA : </span>
 			<ui:repeat value="#{p.getAttribution().getAas()}" var="aa">
 				<div class="row">
-					<h:outputText value="#{aa}" />
+					<h:inputText style="width:1600px;" class="fieldsAa" disabled="true"
+					value="#{aa}" />
 				</div>
 			</ui:repeat>
 		</h:column>

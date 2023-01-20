@@ -1,8 +1,8 @@
 package be.helha.aemt.groupeA6.ejb;
 
 import java.util.List;
-
 import be.helha.aemt.groupeA6.entities.Attribution;
+import jakarta.ejb.Remote;
 
 public interface IGestionAttributionEJB {
 	public List<Attribution> findAll();

@@ -1,9 +1,8 @@
 package be.helha.aemt.groupeA6.ejb;
 
 import java.util.List;
-
-import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
+import jakarta.ejb.Remote;
 
 public interface IGestionMissionEJB {
 	public List<Mission> findAll();

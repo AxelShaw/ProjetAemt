@@ -3,7 +3,9 @@ package be.helha.aemt.groupeA6.ejb;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import jakarta.ejb.Remote;
 
+@Remote
 public interface IGestionUtilisateurEJB {
 	
 	public List<Utilisateur> findAll();

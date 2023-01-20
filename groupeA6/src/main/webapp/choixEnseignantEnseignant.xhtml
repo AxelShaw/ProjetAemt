@@ -55,26 +55,22 @@
 }
 
 .btnBack {
-	margin-top: 2%;
-	margin-left: 2%;
+	margin-top: 3%;
+	margin-left: 5%;
 	margin-bottom: 2%;
-	font-size: 2.2em;
+	font-size: 3em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
 	border-radius: 50px;
-	width: 3%;
+	width: 3.6%;
 }
 
 .btnBack:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 </style>
 </head>
-<body>
-	<h1>liste des missions</h1>
-</body>
-
 <body>
 	<h:form>
 		<h:commandButton class="btnBack" value="🠔"
@@ -84,7 +80,7 @@
 
 	<div class="list">
 		<h:dataTable value="#{enseignantsControl.doFindAll()}" var="e"
-			border="2" bgcolor="#7A7878">
+			border="2" bgcolor="#459475">
 			<h:column>
 				<f:facet name="header">NOM</f:facet>
 				<h:form>
