@@ -2,8 +2,6 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
-import be.helha.aemt.groupeA6.entities.Enseignant;
-import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -15,6 +13,8 @@ import jakarta.persistence.TypedQuery;
 @Stateless
 @LocalBean
 public class UtilisateurDAO {
+	
+	private Role role;
 	
 	@PersistenceContext(unitName = "groupeA6-JTA")
 	private EntityManager em;
@@ -83,8 +83,30 @@ public class UtilisateurDAO {
 			return null;
 		}
 		
-		Utilisateur res = em.createQuery("Select u from Utilisateur u where u.email = ?1", Utilisateur.class).setParameter(1, email).getResultList().get(0);
+		String strQuery = "Select u from Utilisateur u where u.email = ?1";
+		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
+		Utilisateur res = query.getResultList().get(0);
 		return res.getNom() + " " + res.getPrenom();
 	}
 
+	public int getRole(String email) {
+		if (email == null) {
+			return 0;
+		}
+				
+		String strQuery = "Select u from Utilisateur u where u.email = ?1";
+		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
+		Utilisateur user = query.getResultList().get(0);
+		
+		return user.getPerm();
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 }

@@ -3,9 +3,11 @@ package be.helha.aemt.groupeA6.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import be.helha.aemt.groupeA6.dao.DDE;
+import be.helha.aemt.groupeA6.dao.DDOM;
+import be.helha.aemt.groupeA6.dao.Role;
+import be.helha.aemt.groupeA6.dao.S;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,6 +40,19 @@ public class Utilisateur implements Serializable {
 		this.role = role;
 	}
 
+	public int getPerm() {
+		Role r;
+		if (role.equals("DDOM")) {
+			r = new DDOM();
+		} else if (role.equals("DDE")) {
+			r = new DDE();
+		} else {
+			r = new S();
+		}
+		
+		return r.getPerm();
+	}
+	
 	@Override
 	public String toString() {
 		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password="
@@ -96,7 +111,6 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-
 	public String getRole() {
 		return role;
 	}
@@ -112,9 +126,4 @@ public class Utilisateur implements Serializable {
 	public String getDepartement() {
 		return departement;
 	}
-
-
-
-
-	
 }

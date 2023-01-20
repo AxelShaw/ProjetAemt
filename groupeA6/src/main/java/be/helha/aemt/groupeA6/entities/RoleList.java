@@ -1,13 +1,13 @@
 package be.helha.aemt.groupeA6.entities;
 
-public enum Role {
+public enum RoleList {
 	  S("S"),
 	  DDE("DDE"),
 	  DDOM("DDOM");
 	  
 	  private String label;
 
-	  private Role(String label) {
+	  private RoleList(String label) {
 	      this.label = label;
 	  }
 

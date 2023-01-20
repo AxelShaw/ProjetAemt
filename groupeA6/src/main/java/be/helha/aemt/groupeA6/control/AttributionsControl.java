@@ -15,7 +15,7 @@ import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
-import be.helha.aemt.groupeA6.entities.Role;
+import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;

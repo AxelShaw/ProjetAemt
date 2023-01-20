@@ -10,7 +10,7 @@ import javax.naming.NamingException;
 
 import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
 import be.helha.aemt.groupeA6.entities.Enseignant;
-import be.helha.aemt.groupeA6.entities.Role;
+import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
@@ -49,11 +49,16 @@ public class UtilisateursControl implements Serializable {
 		username = doGetUsername(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
 	}
 	
+	public boolean isAllowed(int permNeeded) {
+		int permUser = doGetRole(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+		return permUser >= permNeeded;
+	}
+	
 	public UtilisateursControl() {
 	}
 	
-    public Role[] getStatuses() {
-        return Role.values();
+    public RoleList[] getStatuses() {
+        return RoleList.values();
     }
 
 	public void init() {
@@ -97,6 +102,11 @@ public class UtilisateursControl implements Serializable {
 	public String doGetUsername(String email) {
 		init();
 		return beanGestion.getUsername(email);
+	}
+	
+	public int doGetRole(String email) {
+		init();
+		return beanGestion.getRole(email);
 	}
 	
 	public String doGoToUpdate(Utilisateur u) {

@@ -3,12 +3,18 @@ package be.helha.aemt.groupeA6.control;
 import java.io.Serializable;
 
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
 @Named
 @SessionScoped
 public class NavigationControl implements Serializable {
+	
+	private Boolean enseignantFlag = false;
+	private Boolean ueFlag = false;
+	private Boolean aaFlag = false;
+	private Boolean sectionFlag = false;
+	private Boolean missionFlag = false;
+	private Boolean utilisateurFlag = false;
 	
 	public String doGroupeA6() {
 		return "groupeA6.xhtml";
@@ -39,23 +45,45 @@ public class NavigationControl implements Serializable {
 		return "listSection.xhtml";
 	}
 
-
-	public String doEnseignant() {
-		return "Enseignant.xhtml";
+	public void clear() {
+		enseignantFlag = false;
+		ueFlag = false;
+		aaFlag = false;
+		sectionFlag = false;
+		missionFlag = false;
+		utilisateurFlag = false;
 	}
 	
-	public String doMission() {
-		return "Mission.xhtml";
-	}
-	public String doAA() {
-		return "AA.xhtml";
+	public void doEnseignant() {
+		clear();
+		enseignantFlag = !enseignantFlag;
 	}
 	
-	public String doSection() {
-		return "Section.xhtml";
+	public void doMission() {
+		clear();
+		missionFlag = !missionFlag;
 	}
-	public String doUtilisateur() {
-		return "Utilisateur.xhtml";
+	public void doAA() {
+		clear();
+		aaFlag = !aaFlag;
+	}
+	
+	public void doUe() {
+		clear();
+		ueFlag = !ueFlag;
+	}
+	
+	public void doSection() {
+		clear();
+		sectionFlag = !sectionFlag;
+	}
+	public void doUtilisateur() {
+		clear();
+		utilisateurFlag = !utilisateurFlag;
+	}
+	
+	public boolean isClear() {
+		return !(enseignantFlag || ueFlag || aaFlag || sectionFlag || missionFlag || utilisateurFlag);
 	}
 	
 	public String doAddMission() {
@@ -80,10 +108,6 @@ public class NavigationControl implements Serializable {
 		return "listUe.xhtml";
 	}
 	
-	public String doUe() {
-		return "Ue.xhtml";
-	}
-	
 	public String doAddUe() {
 		return "addUe.xhtml";
 	}
@@ -106,5 +130,57 @@ public class NavigationControl implements Serializable {
 	
 	public String doChoixEnseignantEnseignantAA() {
 		return "choixEnseignantEnseignantAA.xhtml";
+	}
+
+	public Boolean getEnseignantFlag() {
+		return enseignantFlag;
+	}
+
+	public void setEnseignantFlag(Boolean enseignantFlag) {
+		this.enseignantFlag = enseignantFlag;
+	}
+
+	public Boolean getUeFlag() {
+		return ueFlag;
+	}
+
+	public void setUeFlag(Boolean ueFlag) {
+		this.ueFlag = ueFlag;
+	}
+
+	public Boolean getAaFlag() {
+		return aaFlag;
+	}
+
+	public void setAaFlag(Boolean aaFlag) {
+		this.aaFlag = aaFlag;
+	}
+
+	public Boolean getSectionFlag() {
+		return sectionFlag;
+	}
+
+	public void setSectionFlag(Boolean sectionFlag) {
+		this.sectionFlag = sectionFlag;
+	}
+
+	public Boolean getMissionFlag() {
+		return missionFlag;
+	}
+
+	public void setMissionFlag(Boolean missionFlag) {
+		this.missionFlag = missionFlag;
+	}
+
+	public Boolean getUtilisateurFlag() {
+		return utilisateurFlag;
+	}
+
+	public void setUtilisateurFlag(Boolean utilisateurFlag) {
+		this.utilisateurFlag = utilisateurFlag;
+	}
+	
+	public String doChoixUeUe() {
+		return "choixUeUe.xhtml";
 	}
 }

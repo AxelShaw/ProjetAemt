@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Departement;
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.enterprise.context.SessionScoped;
@@ -45,6 +46,8 @@ public class UEControl implements Serializable{
 	private List<UE> list;
 		
 	private int blocFilter;
+	
+	private int idChoix;
 	
 	public UEControl() {
 		list = new ArrayList<>();
@@ -114,6 +117,25 @@ public class UEControl implements Serializable{
 		e.setId(idUpdate);
 		beanGestion.update(e);
 		return "listUe.xhtml";
+	}
+	
+	public String doChoixUe(UE e) {
+		init();
+		this.idChoix = e.getId();
+		return "choixAaUe.xhtml";
+	}
+	
+	public String addAA(AA a) {
+		init();
+		UE s = doFindById(idChoix);
+		s.addAA(a);
+		beanGestion.add(s);
+		return "Section.xhtml";
+	}
+	
+	public UE doFindById(Integer id) {
+		init();
+		return beanGestion.findById(id);
 	}
 
 	public int getAnneeAcademiqueAjout() {

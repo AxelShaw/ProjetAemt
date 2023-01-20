@@ -12,4 +12,5 @@ public interface IGestionUtilisateurEJB {
 	public Utilisateur remove(Utilisateur u);
 	public Utilisateur update(Utilisateur u);
 	public String getUsername(String email);
+	public int getRole(String email);
 }

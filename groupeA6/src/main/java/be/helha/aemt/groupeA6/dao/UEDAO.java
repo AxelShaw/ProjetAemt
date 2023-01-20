@@ -1,6 +1,5 @@
 package be.helha.aemt.groupeA6.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Section;
