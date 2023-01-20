@@ -1,7 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
-import java.io.Serializable;
-import java.util.List;
+import java.io.Serializable;import java.util.List;
+import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -19,6 +19,13 @@ import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 
@@ -37,6 +44,7 @@ public class AttributionsControl implements Serializable {
 	private List<AA> aas;
 	
 	private List<Mission> missions;
+	
 	
 	public AttributionsControl() {
 	}
@@ -104,8 +112,9 @@ public class AttributionsControl implements Serializable {
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;
 	}
-
-
 	
+
+
+
 
 }
