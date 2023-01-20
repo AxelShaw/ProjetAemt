@@ -1,6 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -22,6 +23,7 @@ import jakarta.persistence.Enumerated;
 public class UtilisateursControl implements Serializable {
 	
 	private IGestionUtilisateurEJB beanGestion;
+	
 	
 	private String nom;
 	private String prenom;
