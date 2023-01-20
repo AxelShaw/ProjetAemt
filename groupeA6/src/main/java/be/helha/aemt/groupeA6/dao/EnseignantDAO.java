@@ -2,8 +2,6 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
-import com.itextpdf.kernel.pdf.PdfWriter;
-
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
