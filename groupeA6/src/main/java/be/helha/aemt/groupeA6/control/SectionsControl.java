@@ -76,7 +76,7 @@ public class SectionsControl implements Serializable {
 	public String doGoToUpdate(Section s ) {
 		init();
 		this.idU = s.getId();
-		this.nom = s.getNom();
+		this.nomU = s.getNom();
 		this.missionsU = s.getMissions();
 		return "updateSection.xhtml";
 	}

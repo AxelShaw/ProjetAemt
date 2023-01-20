@@ -8,12 +8,19 @@
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
-	margin-left: 10%;
+	margin-left: 12%;
 	font-size: 150%;
 }
 
 .table {
 	font-size: 1.2em;
+	color: black;
+}
+
+.tableNumber {
+	font-size: 1.2em;
+	text-align: center;
+	color: black;
 }
 
 .btn {
@@ -35,7 +42,6 @@
 	border-color: black;
 	border-style: solid;
 	border-radius: 20px;
-	font-size: 1.2em;
 }
 
 .btnDelete:hover {
@@ -47,27 +53,26 @@
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
-	font-size: 1.2em;
 }
 
 .btnUpdate:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 
 .btnBack {
-	margin-top: 2%;
-	margin-left: 2%;
+	margin-top: 3%;
+	margin-left: 5%;
 	margin-bottom: 2%;
-	font-size: 2.2em;
+	font-size: 3em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
 	border-radius: 50px;
-	width: 3%;
+	width: 3.6%;
 }
 
 .btnBack:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 </style>
 </head>
@@ -120,9 +125,9 @@
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">Detail</f:facet>
+				<f:facet name="header">Details</f:facet>
 				<h:form>
-					<h:link value="Show Detail" outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}"/>
+					<h:link value="Show Details" outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}"/>
 				</h:form>
 			</h:column>
 		</h:dataTable>

@@ -8,18 +8,25 @@
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
-	margin-left: 10%;
+	margin-left: 15%;
 	font-size: 150%;
 }
 
 .table {
 	font-size: 1.2em;
+	color: black;
+}
+
+.tableNumber {
+	font-size: 1.2em;
+	text-align: center;
+	color: black;
 }
 
 .fields {
 	width: 30%;
 	font-size: 1.2em;
-	background-color: #CCCCCC;
+	background-color: #45A495;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
@@ -31,7 +38,7 @@
 	color: black;
 	font-size: 1.2em;
 	width: 8%;
-	background-color: #999999;
+	background-color: #459475;
 	border-color: black;
 	border-style: solid;
 	border-size: 1px;
@@ -83,19 +90,19 @@
 }
 
 .btnBack {
-	margin-top: 2%;
-	margin-left: 2%;
+	margin-top: 3%;
+	margin-left: 5%;
 	margin-bottom: 2%;
-	font-size: 2.2em;
+	font-size: 3em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
 	border-radius: 50px;
-	width: 3%;
+	width: 3.6%;
 }
 
 .btnBack:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 </style>
 </head>
@@ -120,28 +127,28 @@
 			<h:column>
 				<f:facet name="header">anneeAcademique</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true"
+					<h:inputText style="width:200px;" class="tableNumber" disabled="true"
 						value="#{ue.anneeAcademique}"/>
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">bloc</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true"
+					<h:inputText style="width:200px;" class="tableNumber" disabled="true"
 						value="#{ue.bloc}"/>
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">code</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true"
+					<h:inputText style="width:300px;" class="tableNumber" disabled="true"
 						value="#{ue.code}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">credit</f:facet>
 				<h:form>
-					<h:inputText style="width:400px;" class="table" disabled="true"
+					<h:inputText style="width:400px;" class="tableNumber" disabled="true"
 						value="#{ue.credit}" />
 				</h:form>
 			</h:column>
