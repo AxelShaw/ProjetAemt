@@ -14,6 +14,8 @@ import jakarta.persistence.TypedQuery;
 @LocalBean
 public class UtilisateurDAO {
 	
+	private Role role;
+	
 	@PersistenceContext(unitName = "groupeA6-JTA")
 	private EntityManager em;
 	
@@ -96,13 +98,25 @@ public class UtilisateurDAO {
 		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
 		String res = query.getResultList().get(0).getRole();
 		
-		int role = 0;
 		if (res.equals("DDOM")) {
-			role = 2;
+			role = new DDOM();
 		} else if (res.equals("DDE")) {
-			role = 1;
+			role = new DDE();
+		} else {
+			role = new S();
 		}
 		
+		int perm = role.getPerm();
+		
+		return perm;
+	}
+
+	public Role getRole() {
 		return role;
 	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 }
