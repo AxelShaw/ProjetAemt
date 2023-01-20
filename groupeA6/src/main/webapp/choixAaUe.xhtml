@@ -21,27 +21,6 @@
 	text-align: center;
 }
 
-.fields {
-	width: 30%;
-	font-size: 1.2em;
-	background-color: #CCCCCC;
-	border-size: 1px;
-	border-color: black;
-	border-style: solid;
-	margin-bottom: 0.5%;
-}
-
-.fieldsHeader {
-	text-align: center;
-	color: black;
-	font-size: 1.2em;
-	width: 8%;
-	background-color: #999999;
-	border-color: black;
-	border-style: solid;
-	border-size: 1px;
-}
-
 .btn {
 	margin-top: 2%;
 	margin-left: 49%;
@@ -87,26 +66,57 @@
 	background-color: #C0C0C2;
 }
 
-.btnBack {
+.fields {
+	width: 32%;
+	font-size: 1.4em;
+	border-size: 1px;
+	border-color: black;
+	border-style: groove;
+	background-color: #45A495;
+}
+
+.fieldsHeader {
+	font-size: 1.4em;
+	width: 21%;
+	border-size: 2px;
+	border-color: black;
+	border-style: solid;
+	background-color: #459475;
+	color: black;
+}
+
+.btn {
 	margin-top: 2%;
-	margin-left: 2%;
+	margin-left: 42%;
+	font-size: 1.4em;
+	width: 12%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+}
+
+.btn:hover {
+	background-color: #B2B2B4;
+}
+
+.btnBack {
+	margin-top: 3%;
+	margin-left: 5%;
 	margin-bottom: 2%;
-	font-size: 2.2em;
+	font-size: 3em;
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
 	border-radius: 50px;
-	width: 3%;
+	width: 3.6%;
 }
 
 .btnBack:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
 }
 </style>
 </head>
-<body>
-	<h1>liste des missions</h1>
-</body>
 
 <body>
 	<h:form>
@@ -116,7 +126,7 @@
 	</h:form>
 	<div class="list">
 		<h:dataTable value="#{aAControl.doFindAll()}" var="e"
-			border="2" bgcolor="#7A7878">
+			border="2" bgcolor="#459475">
 			<h:column>
 				<f:facet name="header">ANNEE ACADEMIQUE</f:facet>
 				<h:form>
