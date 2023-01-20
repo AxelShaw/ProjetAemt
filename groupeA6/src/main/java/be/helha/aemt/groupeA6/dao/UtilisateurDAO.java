@@ -2,8 +2,6 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
-import be.helha.aemt.groupeA6.entities.Enseignant;
-import be.helha.aemt.groupeA6.entities.Role;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -83,7 +81,9 @@ public class UtilisateurDAO {
 			return null;
 		}
 		
-		Utilisateur res = em.createQuery("Select u from Utilisateur u where u.email = ?1", Utilisateur.class).setParameter(1, email).getResultList().get(0);
+		String strQuery = "Select u from Utilisateur u where u.email = ?1";
+		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
+		Utilisateur res = query.getResultList().get(0);
 		return res.getNom() + " " + res.getPrenom();
 	}
 
@@ -91,8 +91,10 @@ public class UtilisateurDAO {
 		if (email == null) {
 			return 0;
 		}
-		
-		String res = em.createQuery("Select u from Utilisateur u where u.email = ?1", Utilisateur.class).setParameter(1, email).getResultList().get(0).getRole();
+				
+		String strQuery = "Select u from Utilisateur u where u.email = ?1";
+		TypedQuery<Utilisateur> query = em.createQuery(strQuery, Utilisateur.class).setParameter(1, email);
+		String res = query.getResultList().get(0).getRole();
 		
 		int role = 0;
 		if (res.equals("DDOM")) {

@@ -2,10 +2,7 @@ package be.helha.aemt.groupeA6.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -96,7 +93,6 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-
 	public String getRole() {
 		return role;
 	}
@@ -112,9 +108,4 @@ public class Utilisateur implements Serializable {
 	public String getDepartement() {
 		return departement;
 	}
-
-
-
-
-	
 }
