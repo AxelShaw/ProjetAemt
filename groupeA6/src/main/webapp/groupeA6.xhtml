@@ -44,10 +44,24 @@
 	border-color: black;
 }
 
+#welcome {
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-bottom: 2%;
+	color: black;
+	text-align: center;
+	border-size: 1px;
+	font-size: 4em;
+	border-size: 1px;
+	border-style: solid;
+	border-color: #45C4B5;
+	background-color: #45C4B5;
+}
+
 .btn {
 	margin-top: 2%;
 	margin-left: 2%;
-	margin-bottom: 2%; font-size : 1.5em;
+	margin-bottom: 2%;
 	width: 40%;
 	border-size: 1px;
 	border-color: black;
@@ -73,8 +87,8 @@
 	position: absolute;
 	top: -5px;
 	right: -5px;
-	width: #{utilisateursControl.username.length() * 17 + 80}px;
 	#{utilisateursControl.doUsername()};
+	width: #{utilisateursControl.username.length() * 17 + 80}px;
 }
 </style>
 </head>
@@ -111,6 +125,8 @@
 	</h:form>
 
 	<div id="secondary">
+		<h:inputText id="welcome" value="Welcome" disabled="true" rendered="#{navigationControl.isClear()}"/>
+	
 		<div id="ens">
 			<h:form>
 				<h:commandButton class="btn" value="Ajouter un enseignant"
