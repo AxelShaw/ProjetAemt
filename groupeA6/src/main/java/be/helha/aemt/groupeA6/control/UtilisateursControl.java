@@ -49,8 +49,13 @@ public class UtilisateursControl implements Serializable {
 		username = doGetUsername(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
 	}
 	
+	// Détermine si l'utilisateur connecté a l'autorisation d'accéder au contenu
 	public boolean isAllowed(int permNeeded) {
-		int permUser = doGetRole(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+		// Détermine le niveau de permission de l'utilisateur connecté
+		int permUser = doGetRole(
+		// Recupère l'utilisateur se connectant à l'application
+		FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
+		// Compare le niveau de permission de l'utilisateur avec le niveau de permission requis
 		return permUser >= permNeeded;
 	}
 	
