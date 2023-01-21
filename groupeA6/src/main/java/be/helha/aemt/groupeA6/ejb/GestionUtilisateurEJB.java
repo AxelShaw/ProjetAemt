@@ -15,8 +15,8 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 	private UtilisateurDAO daoUtilisateur;
 
 	@Override
-	public List<Utilisateur> findAll() {
-		return daoUtilisateur.findAll();
+	public List<Utilisateur> findAll(String name) {
+		return daoUtilisateur.findAll(name);
 	}
 
 	@Override

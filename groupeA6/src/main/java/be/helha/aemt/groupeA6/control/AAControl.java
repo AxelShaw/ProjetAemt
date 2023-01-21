@@ -47,6 +47,8 @@ public class AAControl implements Serializable {
 	private Integer nombreEtudiantUpdate;
 	private int fractionUpdate;
 	
+	private String name;
+	
 	public AAControl() {
 	}
 
@@ -62,7 +64,7 @@ public class AAControl implements Serializable {
 	
 	public List<AA> doFindAll() {
 		init();
-		return beanGestion.findAll();
+		return beanGestion.findAll(name);
 	}
 	
 	public AA doFindById() {
@@ -292,7 +294,13 @@ public class AAControl implements Serializable {
 	public void setFractionUpdate(int fractionUpdate) {
 		this.fractionUpdate = fractionUpdate;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }

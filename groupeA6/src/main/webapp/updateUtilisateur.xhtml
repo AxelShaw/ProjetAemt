@@ -62,6 +62,13 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+.fields2 {
+	width: 32.5%;
+	font-size: 1.4em;
+	border-color: black;
+	border-style: groove;
+	background-color: #45A495;
+}
 </style>
 </head>
 <body>
@@ -87,8 +94,12 @@
 			<h:inputText class="fieldsHeader" value="Departement" disabled="true" />
 			<h:inputText class="fields" value="#{utilisateursControl.departementUpdate}" />
 			<br />
-			<h:inputText class="fieldsHeader" value="Role" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.roleUpdate}" />
+			<h:inputText class="fieldsHeader" value="Role" for="role" />
+         		<h:selectOneMenu class="fields2" value="#{utilisateursControl.roleUpdate}" id="role">
+             		<f:selectItem itemLabel="S" itemValue="S"/>
+           			<f:selectItem itemLabel="DDE" itemValue="DDE"/>
+           			<f:selectItem itemLabel="DDOM" itemValue="DDOM"/>
+            	</h:selectOneMenu>
 			<br />
 			<h:commandButton class="btn" value="Modify"
 				action="#{utilisateursControl.doUpdate()}" />

@@ -7,7 +7,7 @@ import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.Remote;
 
 public interface IGestionSectionEJB {
-	public List<Section> findAll();
+	public List<Section> findAll(String name);
 	public Section findById(int id);
 	public Section add(Section s);
 	public Section remove(Section s);

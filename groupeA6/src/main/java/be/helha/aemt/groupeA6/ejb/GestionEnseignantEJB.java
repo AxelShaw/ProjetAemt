@@ -18,8 +18,8 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	private EnseignantDAO daoEnseignant;
 	
 	@Override
-	public List<Enseignant> findAll() {
-		return daoEnseignant.findAll();
+	public List<Enseignant> findAll(String name) {
+		return daoEnseignant.findAll(name);
 	}
 	
 	@Override

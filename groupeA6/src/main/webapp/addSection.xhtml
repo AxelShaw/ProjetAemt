@@ -63,6 +63,26 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
+.tableNumber {
+	font-size: 1.2em;
+	text-align: center;
+}
+.list{
+	margin-left: 20%
+}
 </style>
 </head>
 <body>
@@ -70,14 +90,34 @@
 		<h:commandButton class="btnBack" value="🠔"
 			action="#{navigationControl.doGroupeA6()}" />
 	</h:form>
+	
+		<div class="list">
+			<h:dataTable value="#{departementsControl.doFindAll()}" var="e"
+				border="2" bgcolor="#459475">
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:form>
+						<h:inputText style="width:230px;" class="tableNumber" disabled="true" value="#{e.nom}"/>
+					</h:form>
+				</h:column>
+				<h:column>
+				<f:facet name="header">SELECT</f:facet>
+					<h:form>
+						<h:commandButton class="btnDelete" value="O"
+							action="#{sectionsControl.doAdd(e)}" />
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</div>
 
 	<div class="form">
 		<h:form>
 			<h:inputText class="fieldsHeader" value="nom" disabled="true" />
 			<h:inputText class="fields" value="#{sectionsControl.nom}" />
-			<br />
-			<h:commandButton class="btn" value="Add"
-				action="#{sectionsControl.doAdd()}" />
+			<br />	
+
+		<h:commandButton class="btn" value="Add"
+				action="#{sectionsControl.doAddTemp()}" />
 		</h:form>
 	</div>
 </body>

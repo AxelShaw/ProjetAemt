@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.LocalBean;
@@ -21,12 +22,21 @@ public class UEDAO {
 
 	}
 	
-	public List<UE> findAll(int bFilter) {
-		if (bFilter<1 || bFilter>3) {
+	public List<UE> findAll(int bFilter, String name) {
+		if ((bFilter<1 || bFilter>3) && name == null) {
 			return em.createQuery("Select e from UE e", UE.class).getResultList();
+		}else {
+			if(!(bFilter<1 || bFilter>3) && name != null) {
+				return em.createQuery("Select e from UE e where e.bloc = ?1 AND e.intitule LIKE Concat('%',?2,'%')", UE.class).setParameter(1, bFilter).setParameter(2, name).getResultList();
+			}
+			if(name != null) {
+				return em.createQuery("Select e from UE e where e.intitule LIKE Concat('%',?1,'%')", UE.class).setParameter(1, name).getResultList();
+			}
+			if(!(bFilter<1 || bFilter>3)) {
+				return em.createQuery("Select e from UE e where e.bloc = ?1", UE.class).setParameter(1, bFilter).getResultList();
+			}
 		}
-		
-		return em.createQuery("Select e from UE e where e.bloc = ?1", UE.class).setParameter(1, bFilter).getResultList();
+		return em.createQuery("Select e from UE e", UE.class).getResultList();
 	}
 
 	public UE add(UE e) {

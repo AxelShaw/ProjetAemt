@@ -24,9 +24,15 @@ public class SectionDAO {
 
 	}
 	
-	public List<Section> findAll() {
-		return em.createQuery("Select s from Section s", Section.class).getResultList();
+	public List<Section> findAll(String name) {
+
+		if (name == null) {
+			return em.createQuery("Select s from Section s", Section.class).getResultList();
+		}
+		return em.createQuery("Select s from Section s where s.nom LIKE Concat('%',?1,'%')", Section.class).setParameter(1, name).getResultList();
 	}
+		
+
 
 	public Section add(Section s) {
 		if (s==null) {

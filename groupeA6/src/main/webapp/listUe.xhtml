@@ -120,9 +120,16 @@
 
 			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
 		</h:form>
+		
+		<h:form class="nomText">
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.name}" />
+
+			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
+		</h:form>
 		<br />
 
-		<h:dataTable value="#{uEControl.list}" var="ue" border="2"
+		<h:dataTable value="#{uEControl.doFindAll()}" var="ue" border="2"
 			bgcolor="#459475">
 			<h:column>
 				<f:facet name="header">anneeAcademique</f:facet>
@@ -139,10 +146,10 @@
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">code</f:facet>
+				<f:facet name="header">Intitule</f:facet>
 				<h:form>
 					<h:inputText style="width:300px;" class="tableNumber" disabled="true"
-						value="#{ue.code}" />
+						value="#{ue.intitule}" />
 				</h:form>
 			</h:column>
 			<h:column>

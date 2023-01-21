@@ -3,6 +3,7 @@ package be.helha.aemt.groupeA6.dao;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Enseignant;
+import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -20,9 +21,15 @@ public class EnseignantDAO {
 
 	}
 	
-	public List<Enseignant> findAll() {
-		return em.createQuery("Select e from Enseignant e", Enseignant.class).getResultList();
+	public List<Enseignant> findAll(String name) {
+		
+		if (name == null) {
+			return em.createQuery("Select e from Enseignant e", Enseignant.class).getResultList();
+		}
+		return em.createQuery("Select e from Enseignant e where e.nom LIKE Concat('%',?1,'%')", Enseignant.class).setParameter(1, name).getResultList();
 	}
+	
+	
 
 	public Enseignant add(Enseignant e) {
 		if (e==null) {

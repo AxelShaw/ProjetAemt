@@ -8,7 +8,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import be.helha.aemt.groupeA6.ejb.IGestionDepartementEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionSectionEJB;
+import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
@@ -21,16 +23,23 @@ public class SectionsControl implements Serializable {
 	
 
 	private IGestionSectionEJB beanSectionGestion;
+	private IGestionDepartementEJB beanDepartementGestion;
 	
 	private Integer id;
 	private String nom;
     private List<Mission> missions;
     
+    private Departement d;
+    
     private Integer idU;
 	private String nomU;
 	private List<Mission> missionsU;
 	
+	private Integer ChoixIdD;
+	
 	private Integer idChoix;
+	
+	private String name;
 
 	
 	public SectionsControl() {
@@ -40,15 +49,20 @@ public class SectionsControl implements Serializable {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
+			beanDepartementGestion = (IGestionDepartementEJB) ctx.lookup("java:global/groupeA6/GestionDepartementEJB!be.helha.aemt.groupeA6.ejb.IGestionDepartementEJB");
 			beanSectionGestion = (IGestionSectionEJB) ctx.lookup("java:global/groupeA6/GestionSectionEJB!be.helha.aemt.groupeA6.ejb.IGestionSectionEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public void selectDepartement(Departement e) {
+		setChoixIdD(e.getId());
+	}
+	
 	public List<Section> doFindAll() {
 		init();
-		return beanSectionGestion.findAll();
+		return beanSectionGestion.findAll(name);
 	}
 	
 	public Section doFindById(Integer id) {
@@ -56,12 +70,18 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findById(id);
 	}
 	
-	public String doAdd() {
+	public void doAdd(Departement e) {
+		init();
+		d = e;
+	}
+	
+	public String doAddTemp() {
 		init();
 		Section s = new Section(nom, missions);
+		d.addSection(s);
+		beanDepartementGestion.add(d);
 		this.nom = "";
 		this.missions = null;
-		beanSectionGestion.add(s);
 		return "listSection.xhtml";
 	}
 
@@ -155,6 +175,24 @@ public class SectionsControl implements Serializable {
 	public void setIdChoix(Integer idChoix) {
 		this.idChoix = idChoix;
 	}
+
+	public Integer getChoixIdD() {
+		return ChoixIdD;
+	}
+
+	public void setChoixIdD(Integer choixIdD) {
+		ChoixIdD = choixIdD;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	
 	
 

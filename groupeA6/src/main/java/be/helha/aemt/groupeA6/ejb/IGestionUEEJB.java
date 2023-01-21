@@ -7,7 +7,7 @@ import be.helha.aemt.groupeA6.entities.UE;
 import jakarta.ejb.Remote;
 
 public interface IGestionUEEJB {
-	public List<UE> findAll(int bFilter);
+	public List<UE> findAll(int bFilter, String name);
 	public UE findById(int id);
 	public UE add(UE ue);
 	public UE remove(UE ue);

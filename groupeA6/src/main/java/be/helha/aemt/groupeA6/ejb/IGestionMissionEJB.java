@@ -5,7 +5,7 @@ import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.ejb.Remote;
 
 public interface IGestionMissionEJB {
-	public List<Mission> findAll();
+	public List<Mission> findAll(String name);
 	public Mission findById(int id);
 	public Mission add(Mission m);
 	public Mission remove(Mission m);

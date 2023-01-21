@@ -6,7 +6,7 @@ import be.helha.aemt.groupeA6.entities.AA;
 import jakarta.ejb.Remote;
 
 public interface IGestionAAEJB {
-	public List<AA> findAll();
+	public List<AA> findAll(String name);
 	public AA findById(int id);
 	public AA add(AA a);
 	public AA remove(AA a);

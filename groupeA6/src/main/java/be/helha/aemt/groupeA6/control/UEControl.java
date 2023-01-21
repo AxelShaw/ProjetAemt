@@ -8,6 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import be.helha.aemt.groupeA6.ejb.IGestionSectionEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Departement;
@@ -22,6 +23,10 @@ import jakarta.inject.Named;
 public class UEControl implements Serializable{
 	
 	private IGestionUEEJB beanGestion;
+	private IGestionSectionEJB beanSectionGestion;
+	
+	private Section s;
+	
 	
 	private int anneeAcademiqueAjout;
 	private int blocAjout = 1;
@@ -47,12 +52,14 @@ public class UEControl implements Serializable{
 		
 	private int blocFilter;
 	
+	private String name;
+	
 	private int idChoix;
 	
 	public UEControl() {
 		list = new ArrayList<>();
 		init();
-		list = beanGestion.findAll(blocFilter);
+		list = beanGestion.findAll(blocFilter, name);
 	}
 
 	public void init() {
@@ -60,6 +67,7 @@ public class UEControl implements Serializable{
 		try {
 			ctx = new InitialContext();
 			beanGestion = (IGestionUEEJB) ctx.lookup("java:global/groupeA6/GestionUEEJB!be.helha.aemt.groupeA6.ejb.IGestionUEEJB");
+			beanSectionGestion = (IGestionSectionEJB) ctx.lookup("java:global/groupeA6/GestionSectionEJB!be.helha.aemt.groupeA6.ejb.IGestionSectionEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +75,7 @@ public class UEControl implements Serializable{
 	
 	public List<UE> doFindAll() {
 		init();
-		list = beanGestion.findAll(blocFilter);
+		list = beanGestion.findAll(blocFilter, name);
 		return list;
 	}
 	
@@ -87,6 +95,7 @@ public class UEControl implements Serializable{
 		this.intituleAjout = "";
 		this.creditAjout = 0;
 		this.aasAjout = null;
+		ue.addSection(s);
 		beanGestion.add(ue);
 		return "listUe.xhtml";
 	}
@@ -125,12 +134,16 @@ public class UEControl implements Serializable{
 		return "choixAaUe.xhtml";
 	}
 	
+	public void doChoixSec(Section e) {
+		s = e;
+	}
+	
 	public String addAA(AA a) {
 		init();
 		UE s = doFindById(idChoix);
 		s.addAA(a);
 		beanGestion.add(s);
-		return "Section.xhtml";
+		return "groupeA6.xhtml";
 	}
 	
 	public UE doFindById(Integer id) {
@@ -297,5 +310,15 @@ public class UEControl implements Serializable{
 	public void setList(List<UE> list) {
 		this.list = list;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 }

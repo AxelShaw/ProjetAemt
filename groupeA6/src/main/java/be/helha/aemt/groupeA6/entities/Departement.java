@@ -36,6 +36,10 @@ public class Departement implements Serializable{
 	public Departement() {
 	}
 	
+	public void addSection(Section s) {
+		sections.add(s);
+	}
+	
 	public String getNom() {
 		return nom;
 	}

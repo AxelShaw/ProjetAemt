@@ -14,8 +14,8 @@ public class GestionSectionEJB implements IGestionSectionEJB {
 	private SectionDAO daoSection;
 
 	@Override
-	public List<Section> findAll() {
-		return daoSection.findAll();
+	public List<Section> findAll(String name) {
+		return daoSection.findAll(name);
 	}
 
 	@Override

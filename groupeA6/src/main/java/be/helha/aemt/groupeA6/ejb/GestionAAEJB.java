@@ -14,8 +14,8 @@ public class GestionAAEJB implements IGestionAAEJB {
 	private AADAO daoAA;
 
 	@Override
-	public List<AA> findAll() {
-		return daoAA.findAll();
+	public List<AA> findAll(String name) {
+		return daoAA.findAll(name);
 	}
 
 	@Override

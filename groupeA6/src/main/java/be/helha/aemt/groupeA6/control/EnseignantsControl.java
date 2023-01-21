@@ -43,6 +43,8 @@ public class EnseignantsControl implements Serializable {
 	
 	private Integer idChoix;
 	
+	private String name;
+	
 	public EnseignantsControl() {
 	}
 
@@ -58,7 +60,7 @@ public class EnseignantsControl implements Serializable {
 	
 	public List<Enseignant> doFindAll() {
 		init();
-		return beanGestion.findAll();
+		return beanGestion.findAll(name);
 	}
 	
 	public Enseignant doFindById() {
@@ -244,4 +246,38 @@ public class EnseignantsControl implements Serializable {
 		this.idUpdate = idUpdate;
 	}
 
+	public List<AA> getAas() {
+		return aas;
+	}
+
+	public void setAas(List<AA> aas) {
+		this.aas = aas;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
+	}
+
+	public Integer getIdChoix() {
+		return idChoix;
+	}
+
+	public void setIdChoix(Integer idChoix) {
+		this.idChoix = idChoix;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	
 }

@@ -7,7 +7,7 @@ import jakarta.ejb.Remote;
 
 public interface IGestionEnseignantEJB {
 		
-	public List<Enseignant> findAll();
+	public List<Enseignant> findAll(String name);
 	public Enseignant findById(int id);
 	public Enseignant add(Enseignant e);
 	public Enseignant remove(Enseignant e);

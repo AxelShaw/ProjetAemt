@@ -21,8 +21,11 @@ public class AADAO {
 
 	}
 	
-	public List<AA> findAll() {
-		return em.createQuery("Select a from AA a", AA.class).getResultList();
+	public List<AA> findAll(String name) {
+		if (name == null) {
+			return em.createQuery("Select a from AA a", AA.class).getResultList();
+		}
+		return em.createQuery("Select a from AA a where a.intitule LIKE Concat('%',?1,'%')", AA.class).setParameter(1, name).getResultList();
 	}
 
 	public AA add(AA a) {
