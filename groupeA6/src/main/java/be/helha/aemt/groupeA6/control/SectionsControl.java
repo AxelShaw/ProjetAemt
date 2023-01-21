@@ -29,6 +29,8 @@ public class SectionsControl implements Serializable {
 	private String nom;
     private List<Mission> missions;
     
+    private Departement d;
+    
     private Integer idU;
 	private String nomU;
 	private List<Mission> missionsU;
@@ -45,6 +47,7 @@ public class SectionsControl implements Serializable {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
+			beanDepartementGestion = (IGestionDepartementEJB) ctx.lookup("java:global/groupeA6/GestionDepartementEJB!be.helha.aemt.groupeA6.ejb.IGestionDepartementEJB");
 			beanSectionGestion = (IGestionSectionEJB) ctx.lookup("java:global/groupeA6/GestionSectionEJB!be.helha.aemt.groupeA6.ejb.IGestionSectionEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -65,23 +68,18 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findById(id);
 	}
 	
-	public String doAdd(Departement e) {
+	public void doAdd(Departement e) {
 		init();
-		Section s = new Section(nom, missions);
-		e.addSection(s);
-		beanDepartementGestion.add(e);
-		this.nom = "";
-		this.missions = null;
-		beanSectionGestion.add(s);
-		return "listSection.xhtml";
+		d = e;
 	}
 	
 	public String doAddTemp() {
 		init();
 		Section s = new Section(nom, missions);
+		d.addSection(s);
+		beanDepartementGestion.add(d);
 		this.nom = "";
 		this.missions = null;
-		beanSectionGestion.add(s);
 		return "listSection.xhtml";
 	}
 

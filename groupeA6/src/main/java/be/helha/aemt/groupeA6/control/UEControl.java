@@ -8,6 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import be.helha.aemt.groupeA6.ejb.IGestionSectionEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Departement;
@@ -22,6 +23,10 @@ import jakarta.inject.Named;
 public class UEControl implements Serializable{
 	
 	private IGestionUEEJB beanGestion;
+	private IGestionSectionEJB beanSectionGestion;
+	
+	private Section s;
+	
 	
 	private int anneeAcademiqueAjout;
 	private int blocAjout = 1;
@@ -60,6 +65,7 @@ public class UEControl implements Serializable{
 		try {
 			ctx = new InitialContext();
 			beanGestion = (IGestionUEEJB) ctx.lookup("java:global/groupeA6/GestionUEEJB!be.helha.aemt.groupeA6.ejb.IGestionUEEJB");
+			beanSectionGestion = (IGestionSectionEJB) ctx.lookup("java:global/groupeA6/GestionSectionEJB!be.helha.aemt.groupeA6.ejb.IGestionSectionEJB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -87,6 +93,7 @@ public class UEControl implements Serializable{
 		this.intituleAjout = "";
 		this.creditAjout = 0;
 		this.aasAjout = null;
+		ue.addSection(s);
 		beanGestion.add(ue);
 		return "listUe.xhtml";
 	}
@@ -123,6 +130,10 @@ public class UEControl implements Serializable{
 		init();
 		this.idChoix = e.getId();
 		return "choixAaUe.xhtml";
+	}
+	
+	public void doChoixSec(Section e) {
+		s = e;
 	}
 	
 	public String addAA(AA a) {

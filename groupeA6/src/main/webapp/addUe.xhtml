@@ -63,6 +63,28 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+
+.list{
+margin-left:20%;
+}
+
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
+.tableNumber {
+	font-size: 1.2em;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -70,6 +92,25 @@
 		<h:commandButton class="btnBack" value="🠔"
 			action="#{navigationControl.doGroupeA6()}" />
 	</h:form>
+	
+	<div class="list">
+		<h:dataTable value="#{sectionsControl.doFindAll()}" var="e"
+			border="2" bgcolor="#459475">
+			<h:column>
+				<f:facet name="header">Nom</f:facet>
+				<h:form>
+					<h:inputText style="width:200px;" class="tableNumber" disabled="true" value="#{e.nom}"/>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">SELECT</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="O"
+						action="#{uEControl.doChoixSec(e)}" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
 
 	<div class="form">
 		<h:form>
