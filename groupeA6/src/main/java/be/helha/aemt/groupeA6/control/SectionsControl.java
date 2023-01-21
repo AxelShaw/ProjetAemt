@@ -38,6 +38,8 @@ public class SectionsControl implements Serializable {
 	private Integer ChoixIdD;
 	
 	private Integer idChoix;
+	
+	private String name;
 
 	
 	public SectionsControl() {
@@ -60,7 +62,7 @@ public class SectionsControl implements Serializable {
 	
 	public List<Section> doFindAll() {
 		init();
-		return beanSectionGestion.findAll();
+		return beanSectionGestion.findAll(name);
 	}
 	
 	public Section doFindById(Integer id) {
@@ -180,6 +182,14 @@ public class SectionsControl implements Serializable {
 
 	public void setChoixIdD(Integer choixIdD) {
 		ChoixIdD = choixIdD;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	

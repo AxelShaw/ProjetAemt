@@ -28,6 +28,8 @@ public class MissionControl implements Serializable {
 	private int heuresUpdate;
 	private int idUpdate;
 	
+	private String name;
+	
 	public MissionControl() {
 	}
 
@@ -43,7 +45,7 @@ public class MissionControl implements Serializable {
 	
 	public List<Mission> doFindAll() {
 		init();
-		return beanGestion.findAll();
+		return beanGestion.findAll(name);
 	}
 	
 	public Mission doFindById() {
@@ -158,4 +160,13 @@ public class MissionControl implements Serializable {
 		this.idUpdate = idUpdate;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 }

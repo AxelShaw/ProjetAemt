@@ -43,6 +43,8 @@ public class UtilisateursControl implements Serializable {
 	
 	private int id;
 	
+	private String name;
+	
 	private String username = "";
 	
 	public void doUsername() {
@@ -78,7 +80,7 @@ public class UtilisateursControl implements Serializable {
 	
 	public List<Utilisateur> doFindAll() {
 		init();
-		return beanGestion.findAll();
+		return beanGestion.findAll(name);
 	}
 	
 	public Utilisateur doFindById() {
@@ -255,4 +257,14 @@ public class UtilisateursControl implements Serializable {
 	public void setIdUpdate(int idUpdate) {
 		this.idUpdate = idUpdate;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }

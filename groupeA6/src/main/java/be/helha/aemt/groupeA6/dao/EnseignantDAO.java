@@ -28,6 +28,8 @@ public class EnseignantDAO {
 		}
 		return em.createQuery("Select e from Enseignant e where e.nom LIKE Concat('%',?1,'%')", Enseignant.class).setParameter(1, name).getResultList();
 	}
+	
+	
 
 	public Enseignant add(Enseignant e) {
 		if (e==null) {

@@ -120,6 +120,13 @@
 
 			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
 		</h:form>
+		
+		<h:form class="nomText">
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.name}" />
+
+			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
+		</h:form>
 		<br />
 
 		<h:dataTable value="#{uEControl.doFindAll()}" var="ue" border="2"

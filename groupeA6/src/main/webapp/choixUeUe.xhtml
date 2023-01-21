@@ -97,14 +97,53 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+.nomText{
+margin-left:10%;
+}
+.btnFilter {
+	margin-left: 49%;
+	border-size: 1px;
+	border-color: white;
+	border-style: solid;
+	background-color: white;
+}
+.fields {
+	width: 30%;
+	font-size: 1.2em;
+	background-color: #45A495;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	margin-bottom: 0.5%;
+}
+
+.fieldsHeader {
+	text-align: center;
+	color: black;
+	font-size: 1.2em;
+	width: 8%;
+	background-color: #459475;
+	border-color: black;
+	border-style: solid;
+	border-size: 1px;
+}
 </style>
 </head>
 <body>
+<h2>Selectionner une UE :</h2>
 	<h:form>
 		<h:commandButton class="btnBack" value="🠔"
 			action="#{navigationControl.doGroupeA6()}" />
 		<br />
 	</h:form>
+	
+					<h:form class="nomText">
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+			<h:inputText class="fields" value="#{uEControl.name}" />
+
+			<h:commandButton class="btnFilter" action="#{uEControl.doFindAll()}" />
+		</h:form>
+	
 	<div class="list">
 		<h:form>
 			<h:inputText class="fieldsHeader" value="Bloc" disabled="true" />
@@ -131,10 +170,10 @@
 				</h:form>
 			</h:column>
 			<h:column>
-				<f:facet name="header">code</f:facet>
+				<f:facet name="header">Intitule</f:facet>
 				<h:form>
 					<h:inputText style="width:300px;" class="table" disabled="true"
-						value="#{ue.code}" />
+						value="#{ue.intitule}" />
 				</h:form>
 			</h:column>
 			<h:column>

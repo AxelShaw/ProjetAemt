@@ -52,12 +52,14 @@ public class UEControl implements Serializable{
 		
 	private int blocFilter;
 	
+	private String name;
+	
 	private int idChoix;
 	
 	public UEControl() {
 		list = new ArrayList<>();
 		init();
-		list = beanGestion.findAll(blocFilter);
+		list = beanGestion.findAll(blocFilter, name);
 	}
 
 	public void init() {
@@ -73,7 +75,7 @@ public class UEControl implements Serializable{
 	
 	public List<UE> doFindAll() {
 		init();
-		list = beanGestion.findAll(blocFilter);
+		list = beanGestion.findAll(blocFilter, name);
 		return list;
 	}
 	
@@ -308,5 +310,15 @@ public class UEControl implements Serializable{
 	public void setList(List<UE> list) {
 		this.list = list;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 }

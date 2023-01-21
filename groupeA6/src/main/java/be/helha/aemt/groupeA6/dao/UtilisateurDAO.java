@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.dao;
 
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -23,8 +24,11 @@ public class UtilisateurDAO {
 
 	}
 	
-	public List<Utilisateur> findAll() {
-		return em.createQuery("Select u from Utilisateur u", Utilisateur.class).getResultList();
+	public List<Utilisateur> findAll(String name) {
+		if (name == null) {
+			return em.createQuery("Select u from Utilisateur u", Utilisateur.class).getResultList();
+		}
+		return em.createQuery("Select m from Utilisateur m where m.nom LIKE Concat('%',?1,'%')", Utilisateur.class).setParameter(1, name).getResultList();
 	}
 
 	public Utilisateur add(Utilisateur u) {

@@ -14,8 +14,8 @@ public class GestionMissionEJB implements IGestionMissionEJB {
 	private MissionDAO daoMission;
 	
 	@Override
-	public List<Mission> findAll() {
-		return daoMission.findAll();
+	public List<Mission> findAll(String name) {
+		return daoMission.findAll(name);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import jakarta.ejb.Remote;
 @Remote
 public interface IGestionUtilisateurEJB {
 	
-	public List<Utilisateur> findAll();
+	public List<Utilisateur> findAll(String name);
 	public Utilisateur findById(int id);
 	public Utilisateur add(Utilisateur u);
 	public Utilisateur remove(Utilisateur u);
