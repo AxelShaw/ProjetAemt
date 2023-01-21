@@ -23,6 +23,7 @@ public class DepartementsControl implements Serializable {
 	private IGestionDepartementEJB beanDepartementGestion;
 	private int id;
 	private String nom;
+	private List<String> noms;	
 	
 
 	private List<Section> sections;
@@ -48,7 +49,7 @@ public class DepartementsControl implements Serializable {
 		return beanDepartementGestion.findAll();
 	}
 	
-	public Departement doFindById() {
+	public Departement doFindById(Integer id) {
 		init();
 		return beanDepartementGestion.findById(id);
 	}

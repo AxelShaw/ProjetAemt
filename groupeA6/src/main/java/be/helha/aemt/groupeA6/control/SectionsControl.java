@@ -8,7 +8,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import be.helha.aemt.groupeA6.ejb.IGestionDepartementEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionSectionEJB;
+import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
@@ -21,6 +23,7 @@ public class SectionsControl implements Serializable {
 	
 
 	private IGestionSectionEJB beanSectionGestion;
+	private IGestionDepartementEJB beanDepartementGestion;
 	
 	private Integer id;
 	private String nom;
@@ -29,6 +32,8 @@ public class SectionsControl implements Serializable {
     private Integer idU;
 	private String nomU;
 	private List<Mission> missionsU;
+	
+	private Integer ChoixIdD;
 	
 	private Integer idChoix;
 
@@ -46,6 +51,10 @@ public class SectionsControl implements Serializable {
 		}
 	}
 	
+	public void selectDepartement(Departement e) {
+		setChoixIdD(e.getId());
+	}
+	
 	public List<Section> doFindAll() {
 		init();
 		return beanSectionGestion.findAll();
@@ -56,7 +65,18 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findById(id);
 	}
 	
-	public String doAdd() {
+	public String doAdd(Departement e) {
+		init();
+		Section s = new Section(nom, missions);
+		e.addSection(s);
+		beanDepartementGestion.add(e);
+		this.nom = "";
+		this.missions = null;
+		beanSectionGestion.add(s);
+		return "listSection.xhtml";
+	}
+	
+	public String doAddTemp() {
 		init();
 		Section s = new Section(nom, missions);
 		this.nom = "";
@@ -155,6 +175,16 @@ public class SectionsControl implements Serializable {
 	public void setIdChoix(Integer idChoix) {
 		this.idChoix = idChoix;
 	}
+
+	public Integer getChoixIdD() {
+		return ChoixIdD;
+	}
+
+	public void setChoixIdD(Integer choixIdD) {
+		ChoixIdD = choixIdD;
+	}
+
+	
 	
 	
 
