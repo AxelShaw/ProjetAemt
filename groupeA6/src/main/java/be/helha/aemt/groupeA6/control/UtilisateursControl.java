@@ -1,6 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,13 +89,16 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.findById(id);
 	}
 	
-	public String doAdd() {
+	public String doAdd() throws NoSuchAlgorithmException {
 		init();
-		Utilisateur u = new Utilisateur(nom, prenom, email, password,departement,role);
+		
+		Utilisateur u = new Utilisateur(nom, prenom, email, HashPasswordControl.hashPassword(password),departement,role);
 		this.nom = "";
 		this.prenom = "";
 		this.email = "";
+		
 		this.password = "";
+		
 		this.departement = "";
 		this.role = "";
 		beanGestion.add(u);

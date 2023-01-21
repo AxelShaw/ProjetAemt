@@ -150,6 +150,16 @@ public class UEControl implements Serializable{
 		init();
 		return beanGestion.findById(id);
 	}
+	
+	public List<UE> doFindBySection(Section s) {
+		list = new ArrayList<>();
+		init();
+		list = beanGestion.findBySection(s);
+		
+		
+		return list;
+		
+	}
 
 	public int getAnneeAcademiqueAjout() {
 		return anneeAcademiqueAjout;
