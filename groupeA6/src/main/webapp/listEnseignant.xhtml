@@ -8,7 +8,7 @@
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
-	margin-left: 12%;
+	margin-left: 15%;
 	font-size: 150%;
 }
 
@@ -23,6 +23,27 @@
 	color: black;
 }
 
+.fields {
+	width: 30%;
+	font-size: 1.2em;
+	background-color: #45A495;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	margin-bottom: 0.5%;
+}
+
+.fieldsHeader {
+	text-align: center;
+	color: black;
+	font-size: 1.2em;
+	width: 8%;
+	background-color: #459475;
+	border-color: black;
+	border-style: solid;
+	border-size: 1px;
+}
+
 .btn {
 	margin-top: 2%;
 	margin-left: 49%;
@@ -32,6 +53,14 @@
 	border-color: black;
 	border-style: solid;
 	font-size: 1.2em;
+}
+
+.btnFilter {
+	margin-left: 49%;
+	border-size: 1px;
+	border-color: white;
+	border-style: solid;
+	background-color: white;
 }
 
 .btnDelete {
@@ -53,10 +82,11 @@
 	border-size: 1px;
 	border-color: black;
 	border-style: solid;
+	font-size: 1.2em;
 }
 
 .btnUpdate:hover {
-	background-color: #B2B2B4;
+	background-color: #C0C0C2;
 }
 
 .btnBack {
@@ -74,6 +104,9 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+.nomText{
+margin-left:15%;
+}
 </style>
 </head>
 <body>
@@ -82,6 +115,13 @@
 			action="#{navigationControl.doGroupeA6()}" />
 		<br />
 	</h:form>
+	
+		<h:form class="nomText">
+			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+			<h:inputText class="fields" value="#{enseignantsControl.name}" />
+
+			<h:commandButton class="btnFilter" action="#{enseignantsControl.doFindAll()}" />
+		</h:form>
 
 	<div class="list">
 		<h:dataTable value="#{enseignantsControl.doFindAll()}" var="e"
