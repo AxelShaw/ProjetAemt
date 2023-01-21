@@ -26,7 +26,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	public Enseignant findById(int id) {
 		return daoEnseignant.findById(id);
 	}
-
+	
 
 	@Override
 	public Enseignant add(Enseignant e) {

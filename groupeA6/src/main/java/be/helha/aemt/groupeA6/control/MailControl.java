@@ -1,8 +1,20 @@
 package be.helha.aemt.groupeA6.control;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Properties;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import be.helha.aemt.groupeA6.ejb.IGestionAttributionEJB;
+import be.helha.aemt.groupeA6.entities.AA;
+import be.helha.aemt.groupeA6.entities.Attribution;
+import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.mail.Session;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -11,14 +23,16 @@ import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
+
+
 public class MailControl {
-	   public static void main(String[] args) {
-
-	        // Recipient's email ID needs to be mentioned.
-	        String to = "lucas.dorchy@gmail.com";
-
+			
+		public static void sendMail(String toEmail, String contenu,String contenu2) 
+		{
+			
 	        // Sender's email ID needs to be mentioned
-	        String from = "rifamon840@quamox.com";
+	        String emailAccount = "lucas.dorchy@gmail.com";
+	        String password = "tpxqujdqxoyxbeou";
 
 	        // Assuming you are sending email from through gmails smtp
 	        String host = "smtp.gmail.com";
@@ -42,39 +56,47 @@ public class MailControl {
 
 	            protected PasswordAuthentication getPasswordAuthentication() {
 
-	                return new PasswordAuthentication("lucas.dorchy@gmail.com", "tpxqujdqxoyxbeou");
+	                return new PasswordAuthentication(emailAccount, password);
 
 	            }
 	            
 	        });
 
-	        // Used to debug SMTP issues
-	        session.setDebug(true);
+	        
 
-	        try {
-	            // Create a default MimeMessage object.
-	            MimeMessage message = new MimeMessage(session);
+	        Message message = setMessage(session,emailAccount,toEmail,contenu, contenu2 );
+	        
 
-	            // Set From: header field of the header.
-	            message.setFrom(new InternetAddress(from));
 
-	            // Set To: header field of the header.
-	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+		    }
+		
+		private static Message setMessage(Session session, String emailAccount, String toEmail,String contenu, String contenu2) {
+			
+	        
+			  try {
+		            // Create a default MimeMessage object.
+		            MimeMessage message = new MimeMessage(session);
 
-	            // Set Subject: header field
-	            message.setSubject("This is the Subject Line!");
+		            // Set From: header field of the header.
+		            message.setFrom(new InternetAddress(emailAccount));
 
-	            // Now set the actual message
-	            message.setText("This is actual message");
+		            // Set To: header field of the header.
+		            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 
-	            System.out.println("sending...");
-	            // Send message
-	            Transport.send(message);
-	            System.out.println("Sent message successfully....");
-	        } catch (MessagingException mex) {
-	            mex.printStackTrace();
-	        }
+		            // Set Subject: header field
+		            message.setSubject("Attribution :");
 
-	    }
+		            // Now set the actual message
+		            message.setText(contenu + "\n" + contenu2);
+			        // Send message
+		            Transport.send(message);
+		            
 
+
+		        } catch (MessagingException mex) {
+		            mex.printStackTrace();
+		        }
+			  return null;
+				
+			}
 	}

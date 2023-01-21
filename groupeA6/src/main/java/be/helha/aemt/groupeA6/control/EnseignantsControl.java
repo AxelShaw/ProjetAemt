@@ -66,6 +66,13 @@ public class EnseignantsControl implements Serializable {
 		return beanGestion.findById(idAjout);
 	}
 	
+	public Enseignant doFindById(Integer id) {
+		init();
+		return beanGestion.findById(id);
+	}
+	
+	
+	
 	public String doAdd() {
 		init();
 		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
@@ -82,6 +89,29 @@ public class EnseignantsControl implements Serializable {
 	public String doDelete(Enseignant e) {
 		init();
 		beanGestion.remove(e);
+		
+		return "listEnseignant.xhtml";
+	}
+	
+	public String doFindMailById(Integer id){
+		init();
+
+		int temp = 0;
+		Enseignant res = beanGestion.findById(id);
+		
+		String contenu = "Liste des AA : \n";
+		
+		for(int i = 0; i<res.getAttribution().getAas().size();i++) {
+			contenu = contenu + res.getAttribution().getAas().get(i).toString() +"\n";
+		}
+		
+		String contenu2 = "Liste des Missions : \n";
+		
+		for(int i = 0; i<res.getAttribution().getMissions().size();i++) {
+			contenu2 = contenu2 + res.getAttribution().getMissions().get(i).toString();
+		}
+
+		MailControl.sendMail(res.getMail(), contenu, contenu2);
 		return "listEnseignant.xhtml";
 	}
 	
@@ -132,10 +162,7 @@ public class EnseignantsControl implements Serializable {
 	}
 	
 	
-	public Enseignant doFindById(Integer id) {
-		init();
-		return beanGestion.findById(id);
-	}
+
 	
 	public String getNomAjout() {
 		return nomAjout;
