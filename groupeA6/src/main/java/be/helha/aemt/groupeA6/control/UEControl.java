@@ -141,7 +141,7 @@ public class UEControl implements Serializable{
 		UE s = doFindById(idChoix);
 		s.addAA(a);
 		beanGestion.add(s);
-		return "Section.xhtml";
+		return "groupeA6.xhtml";
 	}
 	
 	public UE doFindById(Integer id) {
