@@ -33,8 +33,13 @@ public class NavigationControl implements Serializable {
 	public String doListUtilisateur() {
 		return "listUtilisateur.xhtml";
 	}
+	
 	public String doListAA() {
 		return "listAA.xhtml";
+	}
+	
+	public String doListAANonAttribues() {
+		return "listAANonAttribues.xhtml";
 	}
 	
 	public String doListMission() {

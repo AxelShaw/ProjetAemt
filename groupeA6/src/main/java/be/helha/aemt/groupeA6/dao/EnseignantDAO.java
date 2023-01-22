@@ -22,10 +22,10 @@ public class EnseignantDAO {
 	}
 	
 	public List<Enseignant> findAll(String name) {
-		
 		if (name == null) {
 			return em.createQuery("Select e from Enseignant e", Enseignant.class).getResultList();
 		}
+		
 		return em.createQuery("Select e from Enseignant e where e.nom LIKE Concat('%',?1,'%')", Enseignant.class).setParameter(1, name).getResultList();
 	}
 	

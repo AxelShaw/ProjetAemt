@@ -11,7 +11,7 @@ import be.helha.aemt.groupeA6.ejb.IGestionAAEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.UE;
 import be.helha.aemt.groupeA6.entities.AA;
-
+import be.helha.aemt.groupeA6.entities.Attribution;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -65,6 +65,14 @@ public class AAControl implements Serializable {
 	public List<AA> doFindAll() {
 		init();
 		return beanGestion.findAll(name);
+	}
+	
+	public List<AA> doFindNonAttribues() {
+		init();
+		AttributionsControl atr = new AttributionsControl();
+		List<AA> l = beanGestion.findAll(name);
+		l.removeAll(atr.doFindAllAttribues());
+		return l;
 	}
 	
 	public AA doFindById() {

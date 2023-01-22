@@ -80,6 +80,11 @@ public class AttributionsControl implements Serializable {
 		return beanGestionAttribution.remove(a);
 	}
 
+	public List<AA> doFindAllAttribues() {
+		init();
+		return beanGestionAttribution.findAllAttribues();
+	}
+	
 	//Getters and setters
 	public Integer getId() {
 		return id;

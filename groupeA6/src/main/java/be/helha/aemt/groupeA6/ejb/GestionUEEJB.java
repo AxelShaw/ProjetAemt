@@ -11,7 +11,6 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class GestionUEEJB implements IGestionUEEJB {
 	
-	
 	@EJB
 	private UEDAO daoUE;
 

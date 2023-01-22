@@ -3,6 +3,7 @@ package be.helha.aemt.groupeA6.ejb;
 import java.util.List;
 
 import be.helha.aemt.groupeA6.dao.AttributionDAO;
+import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -36,6 +37,10 @@ public class GestionAttributionEJB implements IGestionAttributionEJB {
 	//@Override
 	public Attribution update(Attribution a1, Attribution a2) {
 		return daoAttribution.update(a1, a2);
+	}
+	
+	public List<AA> findAllAttribues() {
+		return daoAttribution.findAllAttribues();
 	}
 
 }

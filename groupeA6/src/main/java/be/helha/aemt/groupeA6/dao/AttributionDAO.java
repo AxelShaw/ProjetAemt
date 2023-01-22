@@ -1,7 +1,9 @@
 package be.helha.aemt.groupeA6.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
@@ -78,4 +80,19 @@ public class AttributionDAO {
 		return a1;
 	}
 
+	public List<AA> findAllAttribues() {
+		List<AA> list = new ArrayList<>();
+		
+		List<Attribution> l = em.createQuery("Select a from Attribution a", Attribution.class).getResultList();
+		
+		for (Attribution atr: l) {
+			for (AA aa: atr.getAas()) {
+				if (!list.contains(aa)) {
+					list.add(aa);
+				}
+			}
+		}
+		
+		return list;
+	}
 }

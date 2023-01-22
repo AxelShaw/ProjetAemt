@@ -90,8 +90,31 @@
 	position: absolute;
 	top: -5px;
 	right: -5px;
-	#{utilisateursControl.doUsername()};
-	width: #{utilisateursControl.username.length() * 17 + 80}px;
+	#{
+	utilisateursControl
+	.doUsername()
+}
+;
+width
+:
+ 
+#{
+utilisateursControl
+.username
+.length
+(
+)
+ 
+*
+ 
+17
++
+80
+}
+px
+;
+
+
 }
 </style>
 </head>
@@ -128,8 +151,9 @@
 	</h:form>
 
 	<div id="secondary">
-		<h:inputText id="welcome" value="Bienvenue" disabled="true" rendered="#{navigationControl.isClear()}"/>
-	
+		<h:inputText id="welcome" value="Bienvenue" disabled="true"
+			rendered="#{navigationControl.isClear()}" />
+
 		<div id="ens">
 			<h:form>
 				<h:commandButton class="btn" value="Ajouter un enseignant"
@@ -168,6 +192,9 @@
 					rendered="#{navigationControl.aaFlag}" />
 				<h:commandButton class="btn" value="Lister les AA"
 					action="#{navigationControl.doListAA()}"
+					rendered="#{navigationControl.aaFlag}" />
+				<h:commandButton class="btn" value="Lister les AA non attribuées"
+					action="#{navigationControl.doListAANonAttribues()}"
 					rendered="#{navigationControl.aaFlag}" />
 			</h:form>
 		</div>

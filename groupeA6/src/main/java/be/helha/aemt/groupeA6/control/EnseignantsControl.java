@@ -1,8 +1,7 @@
 package be.helha.aemt.groupeA6.control;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -14,7 +13,6 @@ import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
-import be.helha.aemt.groupeA6.entities.Section;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -22,8 +20,6 @@ import jakarta.inject.Named;
 @SessionScoped
 public class EnseignantsControl implements Serializable {
 	
-//	utiliser le serveur pour une reference de EJB
-//	supprimer l'annotation @Remote de IGestionEnseignant
 	private IGestionEnseignantEJB beanGestion;
 	
 	private String nomAjout;
@@ -41,11 +37,16 @@ public class EnseignantsControl implements Serializable {
 	private List<AA> aas;
 	private List<Mission> missions;
 	
+	private List<Enseignant> list;
+	
 	private Integer idChoix;
 	
 	private String name;
 	
 	public EnseignantsControl() {
+		list = new ArrayList<>();
+		init();
+		list = beanGestion.findAll(name);
 	}
 
 	public void init() {
@@ -60,7 +61,8 @@ public class EnseignantsControl implements Serializable {
 	
 	public List<Enseignant> doFindAll() {
 		init();
-		return beanGestion.findAll(name);
+		list = beanGestion.findAll(name);
+		return list;
 	}
 	
 	public Enseignant doFindById() {
@@ -278,6 +280,12 @@ public class EnseignantsControl implements Serializable {
 		this.name = name;
 	}
 
-	
+	public List<Enseignant> getList() {
+		return list;
+	}
+
+	public void setList(List<Enseignant> list) {
+		this.list = list;
+	}
 	
 }
