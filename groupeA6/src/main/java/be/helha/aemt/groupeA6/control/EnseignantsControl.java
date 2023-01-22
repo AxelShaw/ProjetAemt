@@ -100,7 +100,7 @@ public class EnseignantsControl implements Serializable {
 	public String doAdd() {
 		init();
 		setEmailValidation(mailAjout);
-		if(this.mailAjout==null) {
+		if(mailAjout==null) {
 			return "errorMail.xhtml";
 		}
 		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
@@ -122,11 +122,10 @@ public class EnseignantsControl implements Serializable {
 	}
 	
 	public void setEmailValidation(String email) {
-		if(email.matches("^[A-Za-z0-9._%+-]+helha\\.be$")) {
+		if(email.matches("(.*)helha.be")) {
 			this.mailAjout = email;
 			this.mailUpdate = email;
-		}
-		else  {
+		}else{
 			this.mailAjout = null;
 			this.mailUpdate = null;
 		}

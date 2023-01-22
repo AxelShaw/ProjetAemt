@@ -94,7 +94,7 @@ public class UtilisateursControl implements Serializable {
 	public String doAdd() throws NoSuchAlgorithmException {
 		init();
 		setEmailValidation(email);
-		if(this.email==null) {
+		if(email==null) {
 			return "errorMail.xhtml";
 		}
 		Utilisateur u = new Utilisateur(nom, prenom, email, HashPasswordControl.hashPassword(password),departement,role);
@@ -111,7 +111,7 @@ public class UtilisateursControl implements Serializable {
 	}
 	
 	public void setEmailValidation(String email) {
-		if(email.matches("^[A-Za-z0-9._%+-]+helha\\.be$")) {
+		if(email.matches("^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?(helha).be$")) {
 			this.email = email;
 			this.emailUpdate = email;
 		}
