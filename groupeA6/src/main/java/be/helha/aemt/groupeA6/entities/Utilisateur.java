@@ -1,7 +1,6 @@
 package be.helha.aemt.groupeA6.entities;
 
-import java.io.Serializable;
-import java.util.Objects;
+import java.io.Serializable;import java.util.Objects;
 
 import be.helha.aemt.groupeA6.dao.DDE;
 import be.helha.aemt.groupeA6.dao.DDOM;
@@ -59,6 +58,7 @@ public class Utilisateur implements Serializable {
 				+ password + ", departement=" + departement + ", role=" + role + "]";
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

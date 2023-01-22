@@ -13,6 +13,7 @@ import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import be.helha.aemt.groupeA6.exceptions.InvalidUserInputException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
@@ -63,6 +64,7 @@ public class UtilisateursControl implements Serializable {
 	}
 	
 	public UtilisateursControl() {
+
 	}
 	
     public RoleList[] getStatuses() {
@@ -91,12 +93,15 @@ public class UtilisateursControl implements Serializable {
 	
 	public String doAdd() throws NoSuchAlgorithmException {
 		init();
-		
+		setEmailValidation(email);
+		if(this.email==null) {
+			return "errorMail.xhtml";
+		}
 		Utilisateur u = new Utilisateur(nom, prenom, email, HashPasswordControl.hashPassword(password),departement,role);
+		
 		this.nom = "";
 		this.prenom = "";
 		this.email = "";
-		
 		this.password = "";
 		
 		this.departement = "";
@@ -105,9 +110,21 @@ public class UtilisateursControl implements Serializable {
 		return "listUtilisateur.xhtml";
 	}
 	
-	public Utilisateur doDelete(Utilisateur u) {
+	public void setEmailValidation(String email) {
+		if(email.matches("^[A-Za-z0-9._%+-]+helha\\.be$")) {
+			this.email = email;
+			this.emailUpdate = email;
+		}
+		else  {
+			this.email = null;
+			this.emailUpdate = null;
+		}
+	}
+	
+	public String doDelete(Utilisateur u) {
 		init();
-		return beanGestion.remove(u);
+		beanGestion.remove(u);
+		return "listUtilisateur.xhtml";
 	}
 	
 	public String doGetUsername(String email) {
@@ -125,7 +142,9 @@ public class UtilisateursControl implements Serializable {
 		this.idUpdate = u.getId();
 		this.nomUpdate = u.getNom();
 		this.prenomUpdate = u.getPrenom();
+		
 		this.emailUpdate = u.getEmail();
+		
 		this.passwordUpdate = u.getPassword();
 		this.departementUpdate = u.getDepartement();
 		this.roleUpdate = u.getRole();
@@ -134,7 +153,12 @@ public class UtilisateursControl implements Serializable {
 
 	public String doUpdate() {
 		init();
+		setEmailValidation(emailUpdate);
+		if(this.emailUpdate==null) {
+			return "errorMail.xhtml";
+		}
 		Utilisateur u = new Utilisateur(nomUpdate, prenomUpdate, emailUpdate, passwordUpdate,departementUpdate,roleUpdate);
+		
 		u.setId(idUpdate);
 		beanGestion.update(u);
 		return "listUtilisateur.xhtml";
