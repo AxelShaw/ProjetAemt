@@ -81,7 +81,7 @@
 	<div class="form">
 		<h:form>
 			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
-			<h:inputText class="fields" value="#{utilisateursControl.nom}" />
+			<h:inputText class="fields" value="#{utilisateursControl.nom}" required="true"/>
 			<br />
 			<h:inputText class="fieldsHeader" value="Prenom" disabled="true" />
 			<h:inputText class="fields" value="#{utilisateursControl.prenom}" />
@@ -103,7 +103,7 @@
             	</h:selectOneMenu>
 			<br />
 			<h:commandButton class="btn" value="Add"
-				action="#{utilisateursControl.doAdd()}" />
+				action="#{utilisateursControl.doAdd()}" /> 
 		</h:form>
 	</div>
 </body>
