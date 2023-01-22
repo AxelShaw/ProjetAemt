@@ -99,6 +99,10 @@ public class EnseignantsControl implements Serializable {
 	
 	public String doAdd() {
 		init();
+		setEmailValidation(mailAjout);
+		if(this.mailAjout==null) {
+			return "errorMail.xhtml";
+		}
 		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
 		this.nomAjout = "";
 		this.prenomAjout = "";
@@ -115,6 +119,17 @@ public class EnseignantsControl implements Serializable {
 		beanGestion.remove(e);
 		
 		return "listEnseignant.xhtml";
+	}
+	
+	public void setEmailValidation(String email) {
+		if(email.matches("^[A-Za-z0-9._%+-]+helha\\.be$")) {
+			this.mailAjout = email;
+			this.mailUpdate = email;
+		}
+		else  {
+			this.mailAjout = null;
+			this.mailUpdate = null;
+		}
 	}
 	
 	public String doFindMailById(Integer id){
@@ -172,6 +187,10 @@ public class EnseignantsControl implements Serializable {
 
 	public String doUpdate() {
 		init();
+		setEmailValidation(mailUpdate);
+		if(this.mailUpdate==null) {
+			return "errorMail.xhtml";
+		}
 		Enseignant e = new Enseignant(nomUpdate, prenomUpdate, mailUpdate, remarqueUpdate,null);
 		e.setId(idUpdate);
 		beanGestion.update(e);
