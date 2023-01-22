@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.control;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.naming.Context;
@@ -33,6 +34,8 @@ public class EnseignantsControl implements Serializable {
 	private String mailUpdate;
 	private String remarqueUpdate;
 	private int idUpdate;
+	
+	private double heureR;
 	
 	private List<AA> aas;
 	private List<Mission> missions;
@@ -72,6 +75,23 @@ public class EnseignantsControl implements Serializable {
 	
 	public Enseignant doFindById(Integer id) {
 		init();
+		heureR = 0;
+		double temp = 0;
+		Enseignant s = beanGestion.findById(id);
+		for (int i = 0; i < s.getAttribution().getAas().size(); i++) {
+			double fra = s.getAttribution().getAas().get(i).getFraction();
+			double heure = s.getAttribution().getAas().get(i).getHeure();
+			temp = temp + heure/fra;
+		}
+		
+		for (int i = 0; i < s.getAttribution().getMissions().size(); i++) {
+			double heure = s.getAttribution().getMissions().get(i).getHeures();
+			temp = temp + heure/1400;
+		}
+		
+		temp = temp * 10;
+		temp = Math.round(temp * Math.pow(10,2)) / Math.pow(10,2);
+		heureR = temp;
 		return beanGestion.findById(id);
 	}
 	
@@ -99,6 +119,25 @@ public class EnseignantsControl implements Serializable {
 	
 	public String doFindMailById(Integer id){
 		init();
+		
+		heureR = 0;
+		double temp2 = 0;
+		Enseignant s = beanGestion.findById(id);
+		for (int i = 0; i < s.getAttribution().getAas().size(); i++) {
+			double fra = s.getAttribution().getAas().get(i).getFraction();
+			double heure = s.getAttribution().getAas().get(i).getHeure();
+			temp2 = temp2 + heure/fra;
+		}
+		
+		for (int i = 0; i < s.getAttribution().getMissions().size(); i++) {
+			double heure = s.getAttribution().getMissions().get(i).getHeures();
+			temp2 = temp2 + heure/1400;
+		}
+		
+		temp2 = temp2 * 10;
+		temp2 = Math.round(temp2 * Math.pow(10,2)) / Math.pow(10,2);
+		heureR = temp2;
+		
 
 		int temp = 0;
 		Enseignant res = beanGestion.findById(id);
@@ -114,6 +153,8 @@ public class EnseignantsControl implements Serializable {
 		for(int i = 0; i<res.getAttribution().getMissions().size();i++) {
 			contenu2 = contenu2 + res.getAttribution().getMissions().get(i).toString();
 		}
+		
+		contenu2 = contenu2 + heureR + " / 10";
 
 		MailControl.sendMail(res.getMail(), contenu, contenu2);
 		return "listEnseignant.xhtml";
@@ -154,7 +195,7 @@ public class EnseignantsControl implements Serializable {
 		Enseignant s = doFindById(idChoix);
 		s.getAttribution().addMission(m);
 		beanGestion.add(s);
-		return "Section.xhtml";
+		return "groupeA6.xhtml";
 	}
 	
 	public String addAA(AA a) {
@@ -162,7 +203,7 @@ public class EnseignantsControl implements Serializable {
 		Enseignant s = doFindById(idChoix);
 		s.getAttribution().addAA(a);
 		beanGestion.add(s);
-		return "Section.xhtml";
+		return "groupeA6.xhtml";
 	}
 	
 	
@@ -287,5 +328,15 @@ public class EnseignantsControl implements Serializable {
 	public void setList(List<Enseignant> list) {
 		this.list = list;
 	}
+
+	public double getHeureR() {
+		return heureR;
+	}
+
+	public void setHeureR(double heureR) {
+		this.heureR = heureR;
+	}
+
+
 	
 }

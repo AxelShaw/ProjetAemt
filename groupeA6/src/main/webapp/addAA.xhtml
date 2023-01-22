@@ -62,6 +62,13 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+.fields2 {
+	width: 32.5%;
+	font-size: 1.4em;
+	border-color: black;
+	border-style: groove;
+	background-color: #45A495;
+}
 </style>
 </head>
 <body>
@@ -80,9 +87,13 @@
 			<br />
 			<h:inputText class="fieldsHeader" value="Credit" disabled="true" />
 			<h:inputText class="fields" value="#{aAControl.creditAjout}" />
-			<br />
-			<h:inputText class="fieldsHeader" value="Fraction" disabled="true" />
-			<h:inputText class="fields" value="#{aAControl.fractionAjout}" />
+			<br />	
+			<h:inputText class="fieldsHeader" value="Fraction" for="fraction" />
+         		<h:selectOneMenu class="fields2" value="#{aAControl.fractionAjout}" id="fraction">
+             		<f:selectItem itemLabel="480" itemValue="480"/>
+           			<f:selectItem itemLabel="750" itemValue="750"/>
+            	</h:selectOneMenu>
+			
 			<br />
 			<h:inputText class="fieldsHeader" value="Heure" disabled="true" />
 			<h:inputText class="fields" value="#{aAControl.heureAjout}" />

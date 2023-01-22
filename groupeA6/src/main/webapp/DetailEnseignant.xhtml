@@ -86,6 +86,16 @@
 .btnBack:hover {
 	background-color: #B2B2B4;
 }
+
+.fieldsHeure{
+	font-size: 2em;
+	margin-left: 10%;
+	border-color: black;
+	border-style: dotted;
+	border-left: thin;
+	border-right: thin;
+	border-bottom: thin;
+}
 </style>
 </head>
 <body>
@@ -152,6 +162,6 @@
 		</h:column>
 	</h:dataTable>
 	
-			<h:button class="test" value="mail"></h:button>
+	<h:inputText style="width:150px;" class="fieldsHeure" disabled="true" value="#{enseignantsControl.heureR} / 10" />
 </body>
 </html>
