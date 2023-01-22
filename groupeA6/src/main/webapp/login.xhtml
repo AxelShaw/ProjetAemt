@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Login Form</title>
@@ -51,7 +50,7 @@
 </h:head>
 <body>
 	<h:body>
-		<p:panel header="Login From">
+		
 			<form class="log" method="POST" action="j_security_check">
 				<input class="fieldsHeader" value="Email" disabled="true" />
 				<input class="fields" type="text" name="j_username" />
@@ -64,7 +63,7 @@
 				<input class="btn" type="submit" value="Login" /> 
 				<input class="btn" type="reset" value="Reset" />
 			</form>
-		</p:panel>
+		
 	</h:body>
 </body>
 </html>
