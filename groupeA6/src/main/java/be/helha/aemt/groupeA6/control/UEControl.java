@@ -156,7 +156,6 @@ public class UEControl implements Serializable{
 		init();
 		list = beanGestion.findBySection(s);
 		
-		
 		return list;
 		
 	}

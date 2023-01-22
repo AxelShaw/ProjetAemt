@@ -8,7 +8,7 @@
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
-	margin-left: 15%;
+	margin-left: 10%;
 	font-size: 150%;
 }
 
@@ -86,7 +86,19 @@
 }
 
 .btnUpdate:hover {
-	background-color: #C0C0C2;
+	background-color: #B2B2B4;
+}
+
+.btnSend {
+	font-size: 1.2em;
+	width: 100%;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+.btnSend:hover {
+	background-color: #B2B2B4;
 }
 
 .btnBack {
@@ -105,7 +117,7 @@
 	background-color: #B2B2B4;
 }
 .nomText{
-margin-left:15%;
+margin-left:10%;
 }
 </style>
 </head>
@@ -164,16 +176,16 @@ margin-left:15%;
 						action="#{enseignantsControl.doGoToUpdate(e)}"/>
 				</h:form>
 			</h:column>
-			<h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Details</f:facet>
 				<h:form>
 					<h:link value="Show Details" outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}"/>
 				</h:form>
 			</h:column>
-			<h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Envoie attribution</f:facet>
 				<h:form>
-					<h:commandButton class="btnUpdate" value="Send"
+					<h:commandButton class="btnSend" value="Send"
 						action="#{enseignantsControl.doFindMailById(e.id)}"/>
 				</h:form>
 			</h:column>

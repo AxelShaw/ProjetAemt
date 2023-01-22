@@ -32,6 +32,7 @@ public class AAControl implements Serializable {
 	private int heureQ2Ajout;
 	private int nombreGroupeAjout;
 	private Integer nombreEtudiantAjout;
+	
 	private int fractionAjout;
 	
 	//Update

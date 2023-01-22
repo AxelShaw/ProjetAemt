@@ -103,14 +103,14 @@
 			rendered="#{utilisateursControl.isAllowed(0)}" />
 		<br />
 
-		<h:commandButton class="btnMain" value="Ue"
+		<h:commandButton class="btnMain" value="UE"
 			action="#{navigationControl.doUe()}"
 			rendered="#{utilisateursControl.isAllowed(0)}" />
 		<br />
 
 		<h:commandButton class="btnMain" value="AA"
 			action="#{navigationControl.doAA()}"
-			rendered="#{utilisateursControl.isAllowed(1)}" />
+			rendered="#{utilisateursControl.isAllowed(0)}" />
 		<br />
 
 		<h:commandButton class="btnMain" value="Section"
@@ -120,7 +120,7 @@
 
 		<h:commandButton class="btnMain" value="Mission"
 			action="#{navigationControl.doMission()}"
-			rendered="#{utilisateursControl.isAllowed(1)}" />
+			rendered="#{utilisateursControl.isAllowed(0)}" />
 		<br />
 
 		<h:commandButton class="btnMain" value="Utilisateur"
@@ -142,10 +142,10 @@
 					rendered="#{navigationControl.enseignantFlag}" />
 				<h:commandButton class="btn" value="Ajout de mission"
 					action="#{navigationControl.doChoixEnseignantEnseignant()}"
-					rendered="#{navigationControl.enseignantFlag}" />
+					rendered="#{navigationControl.enseignantFlag and utilisateursControl.isAllowed(1)}" />
 				<h:commandButton class="btn" value="Ajout de AA"
 					action="#{navigationControl.doChoixEnseignantEnseignantAA()}"
-					rendered="#{navigationControl.enseignantFlag}" />
+					rendered="#{navigationControl.enseignantFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 
@@ -159,7 +159,7 @@
 					rendered="#{navigationControl.ueFlag}" />
 				<h:commandButton class="btn" value="Ajout de AA"
 					action="#{navigationControl.doChoixUeUe()}"
-					rendered="#{navigationControl.ueFlag}" />
+					rendered="#{navigationControl.ueFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 
@@ -173,7 +173,7 @@
 					rendered="#{navigationControl.aaFlag}" />
 				<h:commandButton class="btn" value="Lister les AA non attribuées"
 					action="#{navigationControl.doListAANonAttribues()}"
-					rendered="#{navigationControl.aaFlag}" />
+					rendered="#{navigationControl.aaFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 
@@ -187,7 +187,7 @@
 					rendered="#{navigationControl.sectionFlag}" />
 				<h:commandButton class="btn" value="Ajout de mission"
 					action="#{navigationControl.doChoixSectionSection()}"
-					rendered="#{navigationControl.sectionFlag}" />
+					rendered="#{navigationControl.sectionFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 
@@ -201,7 +201,7 @@
 					rendered="#{navigationControl.missionFlag}" />
 				<h:commandButton class="btn" value="Lister des missions non attribuées"
 					action="#{navigationControl.doListMissionNonAttribues()}"
-					rendered="#{navigationControl.missionFlag}" />
+					rendered="#{navigationControl.missionFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 
@@ -212,7 +212,7 @@
 					rendered="#{navigationControl.utilisateurFlag}" />
 				<h:commandButton class="btn" value="Liste des utilisateurs"
 					action="#{navigationControl.doListUtilisateur()}"
-					rendered="#{navigationControl.utilisateurFlag}" />
+					rendered="#{navigationControl.utilisateurFlag} " />
 			</h:form>
 		</div>
 	</div>
