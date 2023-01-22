@@ -176,13 +176,13 @@ margin-left:10%;
 						action="#{enseignantsControl.doGoToUpdate(e)}"/>
 				</h:form>
 			</h:column>
-			<h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Details</f:facet>
 				<h:form>
 					<h:link value="Show Details" outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}"/>
 				</h:form>
 			</h:column>
-			<h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Envoie attribution</f:facet>
 				<h:form>
 					<h:commandButton class="btnSend" value="Send"
