@@ -5,6 +5,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.dao.AttributionDAO;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
+import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
@@ -39,8 +40,11 @@ public class GestionAttributionEJB implements IGestionAttributionEJB {
 		return daoAttribution.update(a1, a2);
 	}
 	
-	public List<AA> findAllAttribues() {
-		return daoAttribution.findAllAttribues();
+	public List<AA> findAllAAAttribues() {
+		return daoAttribution.findAllAAAttribues();
 	}
 
+	public List<Mission> findAllMissionAttribues() {
+		return daoAttribution.findAllMissionAttribues();
+	}
 }

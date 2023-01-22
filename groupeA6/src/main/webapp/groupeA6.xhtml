@@ -83,38 +83,16 @@
 	height: 50px;
 	font-size: 2em;
 	font-size: 1.7em;
+	border-left-color: black;
+	border-left-style: solid;
+	border-bottom-color: black;
+	border-bottom-style: solid;
 	border-size: 1px;
-	border-color: black;
-	border-style: solid;
-	border-radius: 10px;
 	position: absolute;
-	top: -5px;
-	right: -5px;
-	#{
-	utilisateursControl
-	.doUsername()
-}
-;
-width
-:
- 
-#{
-utilisateursControl
-.username
-.length
-(
-)
- 
-*
- 
-17
-+
-80
-}
-px
-;
-
-
+	top: 0;
+	right: 0;
+	#{utilisateursControl.doUsername()};
+	width:#{utilisateursControl.username.length()*17+80}px;
 }
 </style>
 </head>
@@ -220,6 +198,9 @@ px
 					rendered="#{navigationControl.missionFlag}" />
 				<h:commandButton class="btn" value="Lister des missions"
 					action="#{navigationControl.doListMission()}"
+					rendered="#{navigationControl.missionFlag}" />
+				<h:commandButton class="btn" value="Lister des missions non attribuées"
+					action="#{navigationControl.doListMissionNonAttribues()}"
 					rendered="#{navigationControl.missionFlag}" />
 			</h:form>
 		</div>

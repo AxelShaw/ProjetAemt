@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import be.helha.aemt.groupeA6.ejb.IGestionMissionEJB;
+import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -46,6 +47,14 @@ public class MissionControl implements Serializable {
 	public List<Mission> doFindAll() {
 		init();
 		return beanGestion.findAll(name);
+	}
+	
+	public List<Mission> doFindNonAttribues() {
+		init();
+		AttributionsControl atr = new AttributionsControl();
+		List<Mission> l = beanGestion.findAll(name);
+		l.removeAll(atr.doFindAllMissionAttribues());
+		return l;
 	}
 	
 	public Mission doFindById() {

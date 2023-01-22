@@ -35,8 +35,6 @@ public class AttributionsControl implements Serializable {
 	
 	private IGestionAttributionEJB beanGestionAttribution;
 	
-
-	
 	private Integer id;
 	
 	private int anneeAcademique;
@@ -80,9 +78,14 @@ public class AttributionsControl implements Serializable {
 		return beanGestionAttribution.remove(a);
 	}
 
-	public List<AA> doFindAllAttribues() {
+	public List<AA> doFindAllAAAttribues() {
 		init();
-		return beanGestionAttribution.findAllAttribues();
+		return beanGestionAttribution.findAllAAAttribues();
+	}
+	
+	public List<Mission> doFindAllMissionAttribues() {
+		init();
+		return beanGestionAttribution.findAllMissionAttribues();
 	}
 	
 	//Getters and setters

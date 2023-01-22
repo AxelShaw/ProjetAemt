@@ -4,7 +4,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
-<title>Liste des AA</title>
+<title>Liste des AA non attribuées</title>
 <meta http-equiv=" Content-Type" content="text/html; charset=UTF-8" />
 <style>
 .list {
@@ -32,33 +32,6 @@
 	border-color: black;
 	border-style: solid;
 	font-size: 1.2em;
-}
-
-.btnDelete {
-	margin-left: 30%;
-	width: 40%;
-	font-size: 1.2em;
-	border-size: 1px;
-	border-color: black;
-	border-style: solid;
-	border-radius: 20px;
-	font-size: 1.2em;
-}
-
-.btnDelete:hover {
-	background-color: red;
-}
-
-.btnUpdate {
-	font-size: 1.2em;
-	border-size: 1px;
-	border-color: black;
-	border-style: solid;
-	font-size: 1.2em;
-}
-
-.btnUpdate:hover {
-	background-color: #B2B2B4;
 }
 
 .btnBack {
@@ -128,7 +101,7 @@ margin-left:6%;
 			<h:column>
 				<f:facet name="header">ANNEE ACADEMIQUE</f:facet>
 				<h:form>
-					<h:inputText style="width:190px;" class="tableNumber" disabled="true" value="#{e.anneeAcademique}"/>
+					<h:inputText style="width:280px;" class="tableNumber" disabled="true" value="#{e.anneeAcademique}"/>
 				</h:form>
 			</h:column>
 			<h:column>
@@ -176,27 +149,13 @@ margin-left:6%;
 			<h:column>
 				<f:facet name="header">NOMBRE ETUDIANT</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="tableNumber" disabled="true" value="#{e.nombreEtudiant}"/>
+					<h:inputText style="width:220px;" class="tableNumber" disabled="true" value="#{e.nombreEtudiant}"/>
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">NOMBRE GROUPE</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="tableNumber" disabled="true" value="#{e.nombreGroupe}"/>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">DELETE</f:facet>
-				<h:form>
-					<h:commandButton class="btnDelete" value="X"
-						action="#{aAControl.doDelete(e)}"/>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">UPDATE</f:facet>
-				<h:form>
-					<h:commandButton class="btnUpdate" value="Modify"
-						action="#{aAControl.doGoToUpdate(e)}"/>
+					<h:inputText style="width:220px;" class="tableNumber" disabled="true" value="#{e.nombreGroupe}"/>
 				</h:form>
 			</h:column>
 		</h:dataTable>

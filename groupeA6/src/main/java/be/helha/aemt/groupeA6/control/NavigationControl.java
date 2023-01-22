@@ -46,6 +46,10 @@ public class NavigationControl implements Serializable {
 		return "listMission.xhtml";
 	}
 	
+	public String doListMissionNonAttribues() {
+		return "listMissionNonAttribues.xhtml";
+	}
+	
 	public String doListSection() {
 		return "listSection.xhtml";
 	}

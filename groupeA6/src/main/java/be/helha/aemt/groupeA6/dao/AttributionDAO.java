@@ -5,6 +5,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
+import be.helha.aemt.groupeA6.entities.Mission;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -80,7 +81,7 @@ public class AttributionDAO {
 		return a1;
 	}
 
-	public List<AA> findAllAttribues() {
+	public List<AA> findAllAAAttribues() {
 		List<AA> list = new ArrayList<>();
 		
 		List<Attribution> l = em.createQuery("Select a from Attribution a", Attribution.class).getResultList();
@@ -89,6 +90,22 @@ public class AttributionDAO {
 			for (AA aa: atr.getAas()) {
 				if (!list.contains(aa)) {
 					list.add(aa);
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public List<Mission> findAllMissionAttribues() {
+		List<Mission> list = new ArrayList<>();
+		
+		List<Attribution> l = em.createQuery("Select a from Attribution a", Attribution.class).getResultList();
+		
+		for (Attribution atr: l) {
+			for (Mission mis: atr.getMissions()) {
+				if (!list.contains(mis)) {
+					list.add(mis);
 				}
 			}
 		}

@@ -71,7 +71,7 @@ public class AAControl implements Serializable {
 		init();
 		AttributionsControl atr = new AttributionsControl();
 		List<AA> l = beanGestion.findAll(name);
-		l.removeAll(atr.doFindAllAttribues());
+		l.removeAll(atr.doFindAllAAAttribues());
 		return l;
 	}
 	
