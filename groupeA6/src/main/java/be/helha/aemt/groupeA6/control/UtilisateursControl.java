@@ -15,17 +15,20 @@ import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import be.helha.aemt.groupeA6.exceptions.InvalidUserInputException;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Named
 @SessionScoped
 public class UtilisateursControl implements Serializable {
 	
 	private IGestionUtilisateurEJB beanGestion;
-	
 	
 	private String nom;
 	private String prenom;
@@ -66,6 +69,37 @@ public class UtilisateursControl implements Serializable {
 	public UtilisateursControl() {
 
 	}
+	
+	//deconnection
+	public String doLogout() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	    
+	    // Get all cookies from the request
+	    Cookie[] cookies = request.getCookies();
+	    
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if ("JSESSIONID".equals(cookie.getName())) {
+	                // Set the max age of the cookie to 0 to invalidate it
+	                cookie.setMaxAge(0);
+	                
+	                // Add the cookie to the response to remove it
+	                HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+	                response.addCookie(cookie);
+	                break;
+	            }
+	        }
+	    }
+	    
+	    ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+	    try {
+	        externalContext.redirect("/groupeA6/");
+	    } catch (Exception e) {
+	        e.printStackTrace(); // Handle the exception appropriately
+	    }
+	    return "";
+	}
+
 	
     public RoleList[] getStatuses() {
         return RoleList.values();
@@ -293,6 +327,5 @@ public class UtilisateursControl implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	
 }

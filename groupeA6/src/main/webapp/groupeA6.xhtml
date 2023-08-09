@@ -93,6 +93,16 @@
 	#{utilisateursControl.doUsername()};
 	width:#{utilisateursControl.username.length()*17+80}px;
 }
+.deco{
+	text-align: center;
+	height: 50px;
+	font-size: 2em;
+	font-size: 1.7em;
+	float : right;
+	margin-top:50px;
+	top: 10;
+	right: 10;
+}
 </style>
 </head>
 <body>
@@ -215,9 +225,15 @@
 			</h:form>
 		</div>
 	</div>
-
-	<h:inputText class="login" disabled="true"
+	<div>
+		<h:inputText class="login" disabled="true"	
 		value="#{utilisateursControl.username}"
 		onclick="/groupeA6/login.xhtml" />
+		<h:form>
+			    <h:commandButton class="deco" value="Déconnexion" action="#{utilisateursControl.doLogout()}" />
+		</h:form>
+
+	</div>
+
 </body>
 </html>
