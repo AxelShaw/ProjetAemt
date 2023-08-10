@@ -7,6 +7,11 @@
 		<class>be.helha.aemt.groupeA6.entities.Enseignant</class>
 		<class>be.helha.aemt.groupeA6.entities.Mission</class>
 		<class>be.helha.aemt.groupeA6.entities.UE</class>
+		<class>be.helha.aemt.groupeA6.entities.AA</class>
+		<class>be.helha.aemt.groupeA6.entities.Attribution</class>
+		<class>be.helha.aemt.groupeA6.entities.Departement</class>
+		<class>be.helha.aemt.groupeA6.entities.Section</class>
+		<class>be.helha.aemt.groupeA6.entities.Utilisateur</class>
 		<properties>
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://54.216.125.208:3306/dba6" />
 			<property name="jakarta.persistence.jdbc.user" value="ga6" />
