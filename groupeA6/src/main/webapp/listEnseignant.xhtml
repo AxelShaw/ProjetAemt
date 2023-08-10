@@ -170,8 +170,13 @@ margin-left:10%;
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{enseignantsControl.doDelete(e)}" />
+						action="#{enseignantsControl.doDelete(e)}" onclick="showAlertDelete()"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertDelete() {
+				        alert('L\'enseignant a bien été supprimé.');
+				    }
+				</h:outputScript>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
@@ -191,8 +196,13 @@ margin-left:10%;
 				<f:facet name="header">Envoie attribution</f:facet>
 				<h:form>
 					<h:commandButton class="btnSend" value="Send"
-						action="#{enseignantsControl.doFindMailById(e.id)}" />
+						action="#{enseignantsControl.doFindMailById(e.id)}" onclick="showAlertMail()"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertMail() {
+				        alert('L\'email a bien été envoyé.');
+				    }
+				</h:outputScript>
 			</h:column>
 		</h:dataTable>
 	</div>

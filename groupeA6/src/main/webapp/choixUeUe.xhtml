@@ -187,8 +187,13 @@ margin-left:10%;
 			<f:facet name="header">SELECT</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="O"
-						action="#{uEControl.doChoixUe(ue)}" />
+						action="#{uEControl.doChoixUe(ue)}" onclick="showAlertSelect('#{ue.intitule}')"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertSelect(name) {
+				        alert('Vous avez sélectionné l\'UE : ' + name);
+				    }
+				</h:outputScript>
 			</h:column>
 		</h:dataTable>
 	</div>

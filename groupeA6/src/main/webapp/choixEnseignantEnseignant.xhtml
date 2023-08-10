@@ -147,8 +147,14 @@ margin-left:10%;
 				<f:facet name="header">SELECT</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="O"
-						action="#{enseignantsControl.addMission(e)}" />
+						action="#{enseignantsControl.addMission(e)}" onclick="showAlertSelect('#{e.nom}')"/>
+					<h:outputScript>
+					    function showAlertSelect(name) {
+					        alert('La Mission a bien été ajouté à : ' + name);
+					    }
+					</h:outputScript>
 				</h:form>
+				
 			</h:column>
 		</h:dataTable>
 	</div>

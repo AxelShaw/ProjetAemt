@@ -113,7 +113,13 @@
 			<h:inputText class="fields" value="#{aAControl.nombreGroupeAjout}" />
 			<br />
 			<h:commandButton class="btn" value="Add"
-				action="#{aAControl.doAdd()}" />
+				action="#{aAControl.doAdd()}" onclick="showAlertAdd()"/>
+				
+				<h:outputScript>
+				    function showAlertAdd() {
+				        alert('AA a bien été ajouté');
+				    }
+				</h:outputScript>
 		</h:form>
 	</div>
 </body>

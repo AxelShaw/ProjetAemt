@@ -103,8 +103,13 @@
 				<f:facet name="header">SELECT</f:facet>
 					<h:form>
 						<h:commandButton class="btnDelete" value="O"
-							action="#{sectionsControl.doAdd(e)}" />
+							action="#{sectionsControl.doAdd(e)}" onclick="showAlertSelect('#{e.nom}')"/>
 					</h:form>
+					<h:outputScript>
+					    function showAlertSelect(name) {
+					        alert('Vous avez sélectionné le département : ' + name);
+					    }
+					</h:outputScript>
 				</h:column>
 			</h:dataTable>
 		</div>
@@ -116,7 +121,12 @@
 			<br />	
 
 		<h:commandButton class="btn" value="Add"
-				action="#{sectionsControl.doAddTemp()}" />
+				action="#{sectionsControl.doAddTemp()}" onclick="showAlertAdd()"/>
+		<h:outputScript>
+				    function showAlertAdd() {
+				        alert('Section a bien été ajouté');
+				    }
+				</h:outputScript>
 		</h:form>
 	</div>
 </body>

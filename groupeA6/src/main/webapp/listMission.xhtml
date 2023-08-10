@@ -149,8 +149,13 @@ margin-left:23%;
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{missionControl.doDelete(e)}" />
+						action="#{missionControl.doDelete(e)}" onclick="showAlertDelete()"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertDelete() {
+				        alert('La mission a bien été supprimé.');
+				    }
+				</h:outputScript>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>

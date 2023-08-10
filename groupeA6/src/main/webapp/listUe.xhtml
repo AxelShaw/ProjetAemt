@@ -163,8 +163,13 @@
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{uEControl.doDelete(ue)}" />
+						action="#{uEControl.doDelete(ue)}" onclick="showAlertDelete()"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertDelete() {
+				        alert('L\'UE a bien été supprimé.');
+				    }
+				</h:outputScript>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>

@@ -102,7 +102,12 @@
 			<h:inputText class="fields" value="#{aAControl.nombreGroupeUpdate}" />
 			<br />
 			<h:commandButton class="btn" value="Modify"
-				action="#{aAControl.doUpdate()}" />
+				action="#{aAControl.doUpdate()}" onclick="showAlertUpadte()"/>
+			<h:outputScript>
+				    function showAlertUpadte() {
+				        alert('L\'AA a bien été modifiée.');
+				    }
+				</h:outputScript>
 		</h:form>
 	</div>
 </body>

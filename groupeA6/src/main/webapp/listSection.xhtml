@@ -133,8 +133,13 @@ margin-left:30%;
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{sectionsControl.doDelete(e)}"/>
+						action="#{sectionsControl.doDelete(e)}" onclick="showAlertDelete()"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertDelete() {
+				        alert('La section a bien été supprimé.');
+				    }
+				</h:outputScript>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>

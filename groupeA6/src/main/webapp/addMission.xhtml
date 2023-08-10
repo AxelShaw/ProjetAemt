@@ -79,7 +79,12 @@
 			<h:inputText class="fieldsHeader" value="Heures" disabled="true" />
 			<h:inputText class="fields" value="#{missionControl.heuresAjout}" />
 			<h:commandButton class="btn" value="Add"
-				action="#{missionControl.doAdd()}" />
+				action="#{missionControl.doAdd()}" onclick="showAlertAdd()"/>
+			<h:outputScript>
+				    function showAlertAdd() {
+				        alert('Mission a bien été ajouté');
+				    }
+				</h:outputScript>
 		</h:form>
 	</div>
 </body>

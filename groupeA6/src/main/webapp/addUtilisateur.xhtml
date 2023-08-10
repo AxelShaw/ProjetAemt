@@ -102,7 +102,12 @@
             	</h:selectOneMenu>
 			<br />
 			<h:commandButton class="btn" value="Add"
-				action="#{utilisateursControl.doAdd()}" /> 
+				action="#{utilisateursControl.doAdd()}" onclick="showAlertAjout()"/> 
+			<h:outputScript>
+				    function showAlertAjout() {
+				        alert('Vous avez bien ajouté une nouvelle utilisateur');
+				    }
+			</h:outputScript>
 		</h:form>
 	</div>
 </body>

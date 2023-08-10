@@ -229,7 +229,13 @@ margin-left:10%;
 			<f:facet name="header">SELECT</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="O"
-						action="#{uEControl.addAA(e)}" />
+						action="#{uEControl.addAA(e)}" onclick="showAlertSelect()"/>
+						
+				<h:outputScript>
+				    function showAlertSelect() {
+				        alert('AA a bien été ajouté à l\'UE.');
+				    }
+				</h:outputScript>
 				</h:form>
 			</h:column>
 		</h:dataTable>

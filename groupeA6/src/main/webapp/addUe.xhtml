@@ -105,8 +105,13 @@ margin-left:20%;
 				<f:facet name="header">SELECT</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="O"
-						action="#{uEControl.doChoixSec(e)}" />
+						action="#{uEControl.doChoixSec(e)}" onclick="showAlertSelect('#{e.nom}')"/>
 				</h:form>
+				<h:outputScript>
+				    function showAlertSelect(name) {
+				        alert('Vous avez sélectionné la section : ' + name);
+				    }
+				</h:outputScript>
 			</h:column>
 		</h:dataTable>
 	</div>
@@ -129,7 +134,12 @@ margin-left:20%;
 			<h:inputText class="fields" value="#{uEControl.creditAjout}" />
 			<br />
 			<h:commandButton class="btn" value="Add"
-				action="#{uEControl.doAdd()}" />
+				action="#{uEControl.doAdd()}" onclick="showAlertAjout()"/>
+			<h:outputScript>
+				    function showAlertAjout() {
+				        alert('Vous avez bien ajouté une nouvelle UE');
+				    }
+			</h:outputScript>
 		</h:form>
 	</div>
 </body>
