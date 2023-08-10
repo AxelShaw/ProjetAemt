@@ -12,7 +12,6 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @Stateless
-@LocalBean
 public class UtilisateurDAO {
 	
 	private Role role;

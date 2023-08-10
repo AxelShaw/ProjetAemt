@@ -9,12 +9,12 @@ import jakarta.persistence.Persistence;
 
 public abstract class AbstractDAO<T> implements IDAO<T>{
 
-	protected static EntityManagerFactory emf;// = Persistence.createEntityManagerFactory("paUtilisateur2022");
-	protected EntityManager em;// = emf.createEntityManager();
-	protected EntityTransaction tx;//=em.getTransaction();
+	protected static EntityManagerFactory emf;
+	protected EntityManager em;
+	protected EntityTransaction tx;
 	
 	public AbstractDAO() {
-		if(emf == null) emf = Persistence.createEntityManagerFactory("paRenautA06-LOCAL");
+		if(emf == null) emf = Persistence.createEntityManagerFactory("groupeA6-JTA");
 		em = emf.createEntityManager();
 		tx=em.getTransaction();
 	}

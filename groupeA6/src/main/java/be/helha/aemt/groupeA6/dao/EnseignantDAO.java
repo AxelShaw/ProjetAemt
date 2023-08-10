@@ -11,7 +11,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
 @Stateless
-@LocalBean
 public class EnseignantDAO {
 	
 	@PersistenceContext(unitName = "groupeA6-JTA")

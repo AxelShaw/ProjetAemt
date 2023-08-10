@@ -14,7 +14,6 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @Stateless
-@LocalBean
 public class SectionDAO {
 	
 	@PersistenceContext(unitName = "groupeA6-JTA")

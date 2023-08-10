@@ -79,6 +79,21 @@ margin-left:6%;
 	border-style: solid;
 	border-size: 1px;
 }
+
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+	font-size: 1.2em;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
 </style>
 </head>
 <body>
@@ -101,61 +116,78 @@ margin-left:6%;
 			<h:column>
 				<f:facet name="header">ANNEE ACADEMIQUE</f:facet>
 				<h:form>
-					<h:inputText style="width:280px;" class="tableNumber" disabled="true" value="#{e.anneeAcademique}"/>
+					<h:inputText style="width:280px;" class="tableNumber"
+						disabled="true" value="#{e.anneeAcademique}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">CODE</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="table" disabled="true" value="#{e.code}"/>
+					<h:inputText style="width:150px;" class="table" disabled="true"
+						value="#{e.code}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">CREDIT</f:facet>
 				<h:form>
-					<h:inputText style="width:100px;" class="tableNumber" disabled="true" value="#{e.credit}"/>
+					<h:inputText style="width:100px;" class="tableNumber"
+						disabled="true" value="#{e.credit}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">FRACTION</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="tableNumber" disabled="true" value="#{e.fraction}"/>
+					<h:inputText style="width:150px;" class="tableNumber"
+						disabled="true" value="#{e.fraction}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">HEURE</f:facet>
 				<h:form>
-					<h:inputText style="width:100px;" class="tableNumber" disabled="true" value="#{e.heure}"/>
+					<h:inputText style="width:100px;" class="tableNumber"
+						disabled="true" value="#{e.heure}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">HEUREQ1</f:facet>
 				<h:form>
-					<h:inputText style="width:130px;" class="tableNumber" disabled="true" value="#{e.heureQ1}"/>
+					<h:inputText style="width:130px;" class="tableNumber"
+						disabled="true" value="#{e.heureQ1}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">HEUREQ2</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="tableNumber" disabled="true" value="#{e.heureQ2}"/>
+					<h:inputText style="width:150px;" class="tableNumber"
+						disabled="true" value="#{e.heureQ2}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">INTITULE</f:facet>
 				<h:form>
-					<h:inputText style="width:150px;" class="table" disabled="true" value="#{e.intitule}"/>
+					<h:inputText style="width:150px;" class="table" disabled="true"
+						value="#{e.intitule}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">NOMBRE ETUDIANT</f:facet>
 				<h:form>
-					<h:inputText style="width:220px;" class="tableNumber" disabled="true" value="#{e.nombreEtudiant}"/>
+					<h:inputText style="width:160px;" class="tableNumber"
+						disabled="true" value="#{e.nombreEtudiant}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">NOMBRE GROUPE</f:facet>
 				<h:form>
-					<h:inputText style="width:220px;" class="tableNumber" disabled="true" value="#{e.nombreGroupe}"/>
+					<h:inputText style="width:160px;" class="tableNumber"
+						disabled="true" value="#{e.nombreGroupe}" />
+				</h:form>
+			</h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
+				<f:facet name="header">Attribuer</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="O"
+						action="#{enseignantsControl.selectAA(e)}" />
 				</h:form>
 			</h:column>
 		</h:dataTable>

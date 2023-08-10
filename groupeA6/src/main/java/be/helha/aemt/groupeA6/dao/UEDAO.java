@@ -12,7 +12,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
 @Stateless
-@LocalBean
 public class UEDAO {
 	
 	@PersistenceContext(unitName = "groupeA6-JTA")

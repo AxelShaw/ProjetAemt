@@ -9,7 +9,6 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 @Stateless
-@LocalBean
 public class DepartementDAO {
 	
 	@PersistenceContext(unitName = "groupeA6-JTA")

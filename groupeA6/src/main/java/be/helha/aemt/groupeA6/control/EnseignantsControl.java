@@ -44,6 +44,10 @@ public class EnseignantsControl implements Serializable {
 	
 	private Integer idChoix;
 	
+	private AA aaSelected;
+	
+	private Mission misSelected;
+	
 	private String name;
 	
 	public EnseignantsControl() {
@@ -198,36 +202,31 @@ public class EnseignantsControl implements Serializable {
 		return "listEnseignant.xhtml";
 	}
 
-	public String doChoixEns(Enseignant e) {
+	public String selectMission(Mission m) {
 		init();
-		this.idChoix = e.getId();
-		return "choixEnseignantMission.xhtml";
+		this.misSelected = m;
+		return "choixEnseignantEnseignant.xhtml";
 	}
 	
-	public String doChoixEns2(Enseignant e) {
+	public String addMission(Enseignant e) {
 		init();
-		this.idChoix = e.getId();
-		return "choixEnseignantAA.xhtml";
-	}
-	
-	public String addMission(Mission m) {
-		init();
-		Enseignant s = doFindById(idChoix);
-		s.getAttribution().addMission(m);
-		beanGestion.add(s);
+		e.getAttribution().addMission(misSelected);
+		beanGestion.add(e);
 		return "groupeA6.xhtml";
 	}
 	
-	public String addAA(AA a) {
+	public String selectAA(AA a) {
 		init();
-		Enseignant s = doFindById(idChoix);
-		s.getAttribution().addAA(a);
-		beanGestion.add(s);
-		return "groupeA6.xhtml";
+		this.aaSelected = a;
+		return "choixEnseignantEnseignantAA.xhtml";
 	}
 	
-	
-
+	public String addAA(Enseignant e) {
+		init();
+		e.getAttribution().addAA(aaSelected);
+		beanGestion.add(e);
+		return "groupeA6.xhtml";
+	}
 	
 	public String getNomAjout() {
 		return nomAjout;

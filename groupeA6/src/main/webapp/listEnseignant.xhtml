@@ -141,52 +141,57 @@ margin-left:10%;
 			<h:column>
 				<f:facet name="header">NOM</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.nom}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true"
+						value="#{e.nom}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">PRENOM</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.prenom}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true"
+						value="#{e.prenom}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">EMAIL</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="table" disabled="true" value="#{e.mail}"/>
+					<h:inputText style="width:300px;" class="table" disabled="true"
+						value="#{e.mail}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">REMARQUE</f:facet>
 				<h:form>
-					<h:inputText style="width:400px;" class="table" disabled="true" value="#{e.remarque}"/>
+					<h:inputText style="width:400px;" class="table" disabled="true"
+						value="#{e.remarque}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{enseignantsControl.doDelete(e)}"/>
+						action="#{enseignantsControl.doDelete(e)}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
 				<h:form>
 					<h:commandButton class="btnUpdate" value="Modify"
-						action="#{enseignantsControl.doGoToUpdate(e)}"/>
+						action="#{enseignantsControl.doGoToUpdate(e)}" />
 				</h:form>
 			</h:column>
 			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Details</f:facet>
 				<h:form>
-					<h:link value="Show Details" outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}"/>
+					<h:link value="Show Details"
+						outcome="#{navigationControl.doDetailEnseignant()}?id=#{e.id}" />
 				</h:form>
 			</h:column>
 			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
 				<f:facet name="header">Envoie attribution</f:facet>
 				<h:form>
 					<h:commandButton class="btnSend" value="Send"
-						action="#{enseignantsControl.doFindMailById(e.id)}"/>
+						action="#{enseignantsControl.doFindMailById(e.id)}" />
 				</h:form>
 			</h:column>
 		</h:dataTable>

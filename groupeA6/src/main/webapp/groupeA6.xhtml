@@ -149,12 +149,6 @@
 				<h:commandButton class="btn" value="Lister les enseignants"
 					action="#{navigationControl.doListEnseignant()}"
 					rendered="#{navigationControl.enseignantFlag}" />
-				<h:commandButton class="btn" value="Ajout de mission"
-					action="#{navigationControl.doChoixEnseignantEnseignant()}"
-					rendered="#{navigationControl.enseignantFlag and utilisateursControl.isAllowed(1)}" />
-				<h:commandButton class="btn" value="Ajout de AA"
-					action="#{navigationControl.doChoixEnseignantEnseignantAA()}"
-					rendered="#{navigationControl.enseignantFlag and utilisateursControl.isAllowed(1)}" />
 			</h:form>
 		</div>
 

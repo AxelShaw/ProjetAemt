@@ -79,6 +79,21 @@ margin-left:23%;
 	border-style: solid;
 	border-size: 1px;
 }
+
+.btnDelete {
+	margin-left: 30%;
+	width: 40%;
+	font-size: 1.2em;
+	border-size: 1px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+	font-size: 1.2em;
+}
+
+.btnDelete:hover {
+	background-color: red;
+}
 </style>
 </head>
 <body>
@@ -113,7 +128,15 @@ margin-left:23%;
 			<h:column>
 				<f:facet name="header">heures</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="tableNumber" disabled="true" value="#{e.heures}"/>
+					<h:inputText style="width:300px;" class="tableNumber"
+						disabled="true" value="#{e.heures}" />
+				</h:form>
+			</h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
+				<f:facet name="header">Attribuer</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="O"
+						action="#{enseignantsControl.selectMission(e)}" />
 				</h:form>
 			</h:column>
 		</h:dataTable>

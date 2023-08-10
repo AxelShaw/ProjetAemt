@@ -112,47 +112,58 @@ margin-left:23%;
 			action="#{navigationControl.doGroupeA6()}" />
 		<br />
 	</h:form>
-	
-		<h:form class="nomText">
-			<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
-			<h:inputText class="fields" value="#{missionControl.name}" />
 
-			<h:commandButton class="btnFilter" action="#{missionControl.doFindAll()}" />
-		</h:form>
+	<h:form class="nomText">
+		<h:inputText class="fieldsHeader" value="Nom" disabled="true" />
+		<h:inputText class="fields" value="#{missionControl.name}" />
+
+		<h:commandButton class="btnFilter"
+			action="#{missionControl.doFindAll()}" />
+	</h:form>
 
 	<div class="list">
-		<h:dataTable value="#{missionControl.doFindAll()}" var="e"
-			border="2" bgcolor="#459475">
+		<h:dataTable value="#{missionControl.doFindAll()}" var="e" border="2"
+			bgcolor="#459475">
 			<h:column>
 				<f:facet name="header">anneeAcademique</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="tableNumber" disabled="true" value="#{e.anneeAcademique}"/>
+					<h:inputText style="width:200px;" class="tableNumber"
+						disabled="true" value="#{e.anneeAcademique}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">intitule</f:facet>
 				<h:form>
-					<h:inputText style="width:200px;" class="table" disabled="true" value="#{e.intitule}"/>
+					<h:inputText style="width:200px;" class="table" disabled="true"
+						value="#{e.intitule}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">heures</f:facet>
 				<h:form>
-					<h:inputText style="width:300px;" class="tableNumber" disabled="true" value="#{e.heures}"/>
+					<h:inputText style="width:300px;" class="tableNumber"
+						disabled="true" value="#{e.heures}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">DELETE</f:facet>
 				<h:form>
 					<h:commandButton class="btnDelete" value="X"
-						action="#{missionControl.doDelete(e)}"/>
+						action="#{missionControl.doDelete(e)}" />
 				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">UPDATE</f:facet>
 				<h:form>
 					<h:commandButton class="btnUpdate" value="Modify"
-						action="#{missionControl.doGoToUpdate(e)}"/>
+						action="#{missionControl.doGoToUpdate(e)}" />
+				</h:form>
+			</h:column>
+			<h:column rendered="#{utilisateursControl.isAllowed(1)}">
+				<f:facet name="header">Attribuer</f:facet>
+				<h:form>
+					<h:commandButton class="btnDelete" value="O"
+						action="#{enseignantsControl.selectMission(e)}" />
 				</h:form>
 			</h:column>
 		</h:dataTable>
