@@ -33,7 +33,7 @@ public class MailControl {
 			
 	        // Sender's email ID needs to be mentioned
 	        String emailAccount = "lucas.dorchy@gmail.com";
-	        String password = "tpxqujdqxoyxbeou";
+	        String password = "ztcwuvunuozsejtf";
 
 	        // Assuming you are sending email from through gmails smtp
 	        String host = "smtp.gmail.com";
