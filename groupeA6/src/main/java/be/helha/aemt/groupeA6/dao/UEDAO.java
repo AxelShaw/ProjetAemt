@@ -56,6 +56,7 @@ public class UEDAO {
 		
 		Query query = em.createQuery("delete from UE where id = ?1");	
 		query.setParameter(1, e.getId()).executeUpdate();
+		em.detach(e);
 		return e;
 	}
 
@@ -87,6 +88,7 @@ public class UEDAO {
 		query.setParameter(4, ue.getIntitule());
 		query.setParameter(5, ue.getCredit());
 		query.setParameter(6, search.getId()).executeUpdate();
+		em.detach(ue);
 		return ue;
 	}
 	

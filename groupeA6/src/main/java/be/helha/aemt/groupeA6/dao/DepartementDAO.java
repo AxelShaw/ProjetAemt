@@ -40,6 +40,7 @@ public class DepartementDAO {
 		
 		Query query = em.createQuery("delete from Enseignant where id = ?1");	
 		query.setParameter(1, d.getId()).executeUpdate();
+		em.detach(d);
 		return d;
 	}
 

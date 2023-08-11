@@ -45,11 +45,15 @@ public class AADAO {
 		
 		Query query = em.createQuery("delete from AA where id = ?1");	
 		query.setParameter(1, a.getId()).executeUpdate();
+		
+		em.detach(a);
+		
 		return a;
 	}
 
 	public AA find(AA a) {
 		em.contains(a);
+		em.detach(a);
 		return a;
 	}
 
@@ -80,6 +84,7 @@ public class AADAO {
 		query.setParameter(9, a.getNombreEtudiant());
 		query.setParameter(10, a.getNombreGroupe());
 		query.setParameter(11, a.getId()).executeUpdate();
+		em.detach(a);
 		return a;
 	}
 

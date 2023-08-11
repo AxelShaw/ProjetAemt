@@ -52,6 +52,7 @@ public class AttributionDAO {
 		
 		Query query = em.createQuery("delete from Attribution where id = ?1");	
 		query.setParameter(1, a.getId()).executeUpdate();
+		em.detach(a);
 		return a;
 	}
 
@@ -68,7 +69,7 @@ public class AttributionDAO {
 		em.detach(res);
 		return res;
 	}
-	//pas encore fait
+	
 	public Attribution update(Attribution a1, Attribution a2) {
 		if (a1==null || a2==null) {
 			return null;
@@ -77,6 +78,8 @@ public class AttributionDAO {
 		Query query = em.createQuery("UPDATE Attribution SET nom = ?1 WHERE email = ?2");	
 		query.setParameter(1, a2.getAnneeAcademique());
 		query.setParameter(2, a1.getId()).executeUpdate();
+		em.detach(a1);
+		em.detach(a2);
 		return a1;
 	}
 

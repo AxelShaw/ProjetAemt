@@ -48,6 +48,7 @@ public class UtilisateurDAO {
 		
 		Query query = em.createQuery("delete from Utilisateur where id = ?1");	
 		query.setParameter(1, u.getId()).executeUpdate();
+		em.detach(u);
 		return u;
 	}
 
@@ -78,6 +79,7 @@ public class UtilisateurDAO {
 		query.setParameter(5, u.getDepartement());
 		query.setParameter(6, u.getRole());
 		query.setParameter(7, u.getId()).executeUpdate();
+		em.detach(u);
 		return u;
 	}
 	

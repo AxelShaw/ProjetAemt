@@ -45,6 +45,7 @@ public class MissionDAO {
 		
 		Query query = em.createQuery("delete from Mission where id = ?1");	
 		query.setParameter(1, m.getId()).executeUpdate();
+		em.detach(m);
 		return m;
 	}
 
@@ -72,6 +73,7 @@ public class MissionDAO {
 		query.setParameter(2, m.getIntitule());
 		query.setParameter(3, m.getHeures());
 		query.setParameter(4, m.getId()).executeUpdate();
+		em.detach(m);
 		return m;
 	}
 

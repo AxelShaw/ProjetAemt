@@ -48,6 +48,7 @@ public class EnseignantDAO {
 		
 		Query query = em.createQuery("delete from Enseignant where id = ?1");	
 		query.setParameter(1, e.getId()).executeUpdate();
+		em.detach(e);
 		return e;
 	}
 
@@ -77,6 +78,7 @@ public class EnseignantDAO {
 		query.setParameter(3, e.getMail());
 		query.setParameter(4, e.getRemarque());
 		query.setParameter(5, e.getId()).executeUpdate();
+		em.detach(e);
 		return e;
 	}
 

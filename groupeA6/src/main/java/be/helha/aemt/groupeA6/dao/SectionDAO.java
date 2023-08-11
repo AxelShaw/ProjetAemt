@@ -51,6 +51,7 @@ public class SectionDAO {
 		
 		Query query = em.createQuery("delete from Section where id = ?1");	
 		query.setParameter(1, s.getId()).executeUpdate();
+		em.detach(s);
 		return s;
 	}
 
@@ -78,6 +79,7 @@ public class SectionDAO {
 		Query query = em.createQuery("UPDATE Section SET nom = ?1 WHERE id = ?2");	
 		query.setParameter(1, s.getNom());
 		query.setParameter(2, search.getId()).executeUpdate();
+		em.detach(s);
 		return s;
 	}
 
