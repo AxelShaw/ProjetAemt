@@ -103,7 +103,7 @@ public class UEDAO {
 	//Filtre année
 	public List<UE> findByAnneeAcademique(int annee)
 	{
-		Query query = em.createQuery("Select ue FROM UE ue where anneeacademique = ?1", UE.class);
+		Query query = em.createQuery("Select ue FROM UE ue where anneeAcademique = ?1", UE.class);
 		query.setParameter(1, annee);
 		return query.getResultList();
 	}
@@ -111,7 +111,7 @@ public class UEDAO {
 	//Filtre both
 	public List<UE> findBySectionAndAnneeAcademique(Section s, int annee)
 	{
-		Query query = em.createQuery("Select ue FROM UE ue where section_id = ?1 AND where anneeacademique = ?2", UE.class);
+		Query query = em.createQuery("Select ue FROM UE ue where section_id = ?1 AND where anneeAcademique = ?2", UE.class);
 		query.setParameter(1, s.getId()).setParameter(2, annee);
 		return query.getResultList();
 	}
