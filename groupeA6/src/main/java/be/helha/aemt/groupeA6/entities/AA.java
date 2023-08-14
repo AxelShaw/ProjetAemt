@@ -2,6 +2,7 @@ package be.helha.aemt.groupeA6.entities;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,9 @@ public class AA {
 	private Integer id;
 	
 	private Integer anneeAcademique;
+	
 	private String code;
+	
 	private String intitule;
 	private Integer credit;
 	private Integer heure;

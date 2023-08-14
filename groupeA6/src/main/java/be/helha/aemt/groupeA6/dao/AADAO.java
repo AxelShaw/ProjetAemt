@@ -71,7 +71,7 @@ public class AADAO {
 			return null;
 		}
 		
-		Query query = em.createQuery("UPDATE AA SET anneeacademique = ?1 , code = ?2 , credit = ?3, fraction = ?4, heure = ?5, heureq1 = ?6 , heureq2 = ?7,intitule = ?8 , nombreetudiant = ?9, nombregroupe = ?10  WHERE id = ?11 ");
+		Query query = em.createQuery("UPDATE AA SET anneeAcademique = ?1 , code = ?2 , credit = ?3, fraction = ?4, heure = ?5, heureQ1 = ?6 , heureQ2 = ?7,intitule = ?8 , nombreEtudiant = ?9, nombreGroupe = ?10  WHERE id = ?11 ");
 				 	
 		query.setParameter(1, a.getAnneeAcademique());
 		query.setParameter(2, a.getCode());
