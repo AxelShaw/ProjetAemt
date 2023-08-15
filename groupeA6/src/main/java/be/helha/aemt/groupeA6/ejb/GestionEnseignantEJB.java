@@ -1,9 +1,9 @@
 package be.helha.aemt.groupeA6.ejb;
 
 import java.util.List;
-
 import be.helha.aemt.groupeA6.dao.EnseignantDAO;
 import be.helha.aemt.groupeA6.entities.Enseignant;
+import be.helha.aemt.groupeA6.exceptions.EmailDuplicateException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -30,7 +30,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	
 
 	@Override
-	public Enseignant add(Enseignant e) throws NotFoundException{
+	public Enseignant add(Enseignant e) throws EmailDuplicateException, NotFoundException{
 		return daoEnseignant.add(e);
 	}
 
@@ -40,7 +40,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	}
 	
 	@Override
-	public Enseignant update(Enseignant e) throws NotFoundException{
+	public Enseignant update(Enseignant e) throws  EmailDuplicateException, NotFoundException{
 		return daoEnseignant.update(e);
 	}
 }

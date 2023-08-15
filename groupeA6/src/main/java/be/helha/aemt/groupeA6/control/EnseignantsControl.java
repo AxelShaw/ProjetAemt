@@ -14,6 +14,7 @@ import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.EmailDuplicateException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -102,7 +103,7 @@ public class EnseignantsControl implements Serializable{
 	
 	
 	
-	public String doAdd() throws NotFoundException{
+	public String doAdd() throws NotFoundException, EmailDuplicateException{
 		init();
 		setEmailValidation(mailAjout);
 		if(mailAjout==null) {
@@ -191,7 +192,7 @@ public class EnseignantsControl implements Serializable{
 		return "updateEnseignant.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException{
+	public String doUpdate() throws NotFoundException, EmailDuplicateException{
 		init();
 		setEmailValidation(mailUpdate);
 		if(this.mailUpdate==null) {
@@ -209,7 +210,7 @@ public class EnseignantsControl implements Serializable{
 		return "choixEnseignantEnseignant.xhtml";
 	}
 	
-	public String addMission(Enseignant e) throws NotFoundException{
+	public String addMission(Enseignant e) throws NotFoundException, EmailDuplicateException{
 		init();
 		e.getAttribution().addMission(misSelected);
 		beanGestion.add(e);
@@ -222,7 +223,7 @@ public class EnseignantsControl implements Serializable{
 		return "choixEnseignantEnseignantAA.xhtml";
 	}
 	
-	public String addAA(Enseignant e) throws NotFoundException{
+	public String addAA(Enseignant e) throws NotFoundException, EmailDuplicateException{
 		init();
 		e.getAttribution().addAA(aaSelected);
 		beanGestion.add(e);
