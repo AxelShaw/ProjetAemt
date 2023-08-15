@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.dao.AADAO;
 import be.helha.aemt.groupeA6.entities.AA;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
@@ -19,22 +20,22 @@ public class GestionAAEJB implements IGestionAAEJB {
 	}
 
 	@Override
-	public AA findById(int id) {
+	public AA findById(int id) throws NotFoundException {
 		return daoAA.findById(id);
 	}
 
 	@Override
-	public AA add(AA a) {
+	public AA add(AA a) throws NotFoundException {
 		return daoAA.add(a);
 	}
 
 	@Override
-	public AA remove(AA a) {
+	public AA remove(AA a) throws NotFoundException {
 		return daoAA.remove(a);
 	}
 
 	@Override
-	public AA update(AA a) {
+	public AA update(AA a) throws NotFoundException {
 		return daoAA.update(a);
 	}
 

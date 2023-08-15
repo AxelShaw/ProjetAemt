@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -30,9 +31,9 @@ public class EnseignantDAO {
 	
 	
 
-	public Enseignant add(Enseignant e) {
+	public Enseignant add(Enseignant e) throws NotFoundException{
 		if (e==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(e);
@@ -41,9 +42,9 @@ public class EnseignantDAO {
 		return e;
 	}
 	
-	public Enseignant remove(Enseignant e) {
+	public Enseignant remove(Enseignant e) throws NotFoundException{
 		if (e==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from Enseignant where id = ?1");	
@@ -57,9 +58,9 @@ public class EnseignantDAO {
 		return e;
 	}
 
-	public Enseignant findById(Integer id) {
+	public Enseignant findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		Enseignant res = em.find(Enseignant.class, id);	
 		em.detach(res);
@@ -67,9 +68,9 @@ public class EnseignantDAO {
 	}
 	
 	
-	public Enseignant update(Enseignant e) {
+	public Enseignant update(Enseignant e) throws NotFoundException{
 		if (e==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("UPDATE Enseignant SET nom = ?1, prenom = ?2, mail = ?3, remarque = ?4 WHERE id = ?5");	

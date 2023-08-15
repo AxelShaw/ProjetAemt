@@ -14,6 +14,7 @@ import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -65,7 +66,7 @@ public class SectionsControl implements Serializable {
 		return beanSectionGestion.findAll(name);
 	}
 	
-	public Section doFindById(Integer id) {
+	public Section doFindById(Integer id) throws NotFoundException{
 		init();
 		return beanSectionGestion.findById(id);
 	}
@@ -75,7 +76,7 @@ public class SectionsControl implements Serializable {
 		d = e;
 	}
 	
-	public String doAddTemp() {
+	public String doAddTemp() throws NotFoundException{
 		init();
 		Section s = new Section(nom, missions);
 		d.addSection(s);
@@ -85,7 +86,7 @@ public class SectionsControl implements Serializable {
 		return "listSection.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotFoundException{
 		init();
 		Section e = new Section(nomU, null);
 		e.setId(idU);
@@ -101,7 +102,7 @@ public class SectionsControl implements Serializable {
 		return "updateSection.xhtml";
 	}
 	
-	public Section doDelete(Section e) {
+	public Section doDelete(Section e) throws NotFoundException{
 		init();
 		return beanSectionGestion.remove(e);
 	}
@@ -112,7 +113,7 @@ public class SectionsControl implements Serializable {
 		return "choixMissionSection.xhtml";
 	}
 	
-	public String addMission(Mission m) {
+	public String addMission(Mission m) throws NotFoundException{
 		init();
 		Section s = doFindById(idChoix);
 		s.addMission(m);

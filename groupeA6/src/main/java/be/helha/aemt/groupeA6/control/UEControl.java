@@ -15,6 +15,7 @@ import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -79,12 +80,12 @@ public class UEControl implements Serializable{
 		return list;
 	}
 	
-	public UE doFindById() {
+	public UE doFindById() throws NotFoundException{
 		init();
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() {
+	public String doAdd() throws NotFoundException{
 		init();
 		UE ue = new UE(anneeAcademiqueAjout, sectionAjout, departementAjout, blocAjout, codeAjout, intituleAjout, creditAjout, aasAjout);
 		this.anneeAcademiqueAjout = 0;
@@ -100,7 +101,7 @@ public class UEControl implements Serializable{
 		return "listUe.xhtml";
 	}
 	
-	public String doDelete(UE ue) {
+	public String doDelete(UE ue) throws NotFoundException{
 		init();
 		beanGestion.remove(ue);
 		return "listeUe.xhtml";
@@ -120,7 +121,7 @@ public class UEControl implements Serializable{
 		return "updateUe.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotFoundException{
 		init();
 		UE e = new UE(anneeAcademiqueUpdate, sectionUpdate, departementUpdate, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, aasUpdate);
 		e.setId(idUpdate);
@@ -138,7 +139,7 @@ public class UEControl implements Serializable{
 		s = e;
 	}
 	
-	public String addAA(AA a) {
+	public String addAA(AA a) throws NotFoundException{
 		init();
 		UE s = doFindById(idChoix);
 		s.addAA(a);
@@ -146,7 +147,7 @@ public class UEControl implements Serializable{
 		return "groupeA6.xhtml";
 	}
 	
-	public UE doFindById(Integer id) {
+	public UE doFindById(Integer id) throws NotFoundException{
 		init();
 		return beanGestion.findById(id);
 	}

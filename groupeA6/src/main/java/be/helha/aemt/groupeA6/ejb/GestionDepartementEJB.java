@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.dao.DepartementDAO;
 import be.helha.aemt.groupeA6.entities.Departement;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
@@ -19,17 +20,17 @@ public class GestionDepartementEJB implements IGestionDepartementEJB {
 	}
 
 	@Override
-	public Departement findById(int id) {
+	public Departement findById(int id) throws NotFoundException {
 		return daoDepartement.findById(id);
 	}
 
 	@Override
-	public Departement add(Departement d) {
+	public Departement add(Departement d) throws NotFoundException {
 		return daoDepartement.add(d);
 	}
 
 	@Override
-	public Departement remove(Departement d) {
+	public Departement remove(Departement d) throws NotFoundException{
 		return daoDepartement.remove(d);
 	}
 

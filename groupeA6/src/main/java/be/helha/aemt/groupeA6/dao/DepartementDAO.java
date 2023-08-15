@@ -1,6 +1,7 @@
 package be.helha.aemt.groupeA6.dao;
 
 import be.helha.aemt.groupeA6.entities.Departement;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -22,9 +23,9 @@ public class DepartementDAO {
 		return em.createQuery("Select d from Departement d", Departement.class).getResultList();
 	}
 
-	public Departement add(Departement d) {
+	public Departement add(Departement d) throws NotFoundException{
 		if (d==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(d);
@@ -33,9 +34,9 @@ public class DepartementDAO {
 		return d;
 	}
 	
-	public Departement remove(Departement d) {
+	public Departement remove(Departement d) throws NotFoundException{
 		if (d==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from Enseignant where id = ?1");	
@@ -49,9 +50,9 @@ public class DepartementDAO {
 		return d;
 	}
 
-	public Departement findById(Integer id) {
+	public Departement findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		Departement res = em.find(Departement.class, id);	
 		em.detach(res);

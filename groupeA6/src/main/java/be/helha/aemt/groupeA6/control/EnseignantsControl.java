@@ -14,12 +14,13 @@ import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 @Named
 @SessionScoped
-public class EnseignantsControl implements Serializable {
+public class EnseignantsControl implements Serializable{
 	
 	private IGestionEnseignantEJB beanGestion;
 	
@@ -72,12 +73,12 @@ public class EnseignantsControl implements Serializable {
 		return list;
 	}
 	
-	public Enseignant doFindById() {
+	public Enseignant doFindById() throws NotFoundException{
 		init();
 		return beanGestion.findById(idAjout);
 	}
 	
-	public Enseignant doFindById(Integer id) {
+	public Enseignant doFindById(Integer id) throws NotFoundException{
 		init();
 		heureR = 0;
 		double temp = 0;
@@ -101,7 +102,7 @@ public class EnseignantsControl implements Serializable {
 	
 	
 	
-	public String doAdd() {
+	public String doAdd() throws NotFoundException{
 		init();
 		setEmailValidation(mailAjout);
 		if(mailAjout==null) {
@@ -119,7 +120,7 @@ public class EnseignantsControl implements Serializable {
 		return "listEnseignant.xhtml";
 	}
 	
-	public String doDelete(Enseignant e) {
+	public String doDelete(Enseignant e) throws NotFoundException{
 		init();
 		beanGestion.remove(e);
 		
@@ -137,7 +138,7 @@ public class EnseignantsControl implements Serializable {
 	}
 
 	
-	public String doFindMailById(Integer id){
+	public String doFindMailById(Integer id) throws NotFoundException{
 		init();
 		
 		heureR = 0;
@@ -190,7 +191,7 @@ public class EnseignantsControl implements Serializable {
 		return "updateEnseignant.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotFoundException{
 		init();
 		setEmailValidation(mailUpdate);
 		if(this.mailUpdate==null) {
@@ -208,7 +209,7 @@ public class EnseignantsControl implements Serializable {
 		return "choixEnseignantEnseignant.xhtml";
 	}
 	
-	public String addMission(Enseignant e) {
+	public String addMission(Enseignant e) throws NotFoundException{
 		init();
 		e.getAttribution().addMission(misSelected);
 		beanGestion.add(e);
@@ -221,7 +222,7 @@ public class EnseignantsControl implements Serializable {
 		return "choixEnseignantEnseignantAA.xhtml";
 	}
 	
-	public String addAA(Enseignant e) {
+	public String addAA(Enseignant e) throws NotFoundException{
 		init();
 		e.getAttribution().addAA(aaSelected);
 		beanGestion.add(e);

@@ -5,6 +5,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.dao.UEDAO;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
@@ -20,22 +21,22 @@ public class GestionUEEJB implements IGestionUEEJB {
 	}
 
 	@Override
-	public UE findById(int id) {
+	public UE findById(int id) throws NotFoundException {
 		return daoUE.findById(id);
 	}
 
 	@Override
-	public UE add(UE ue) {
+	public UE add(UE ue) throws NotFoundException{
 		return daoUE.add(ue);
 	}
 
 	@Override
-	public UE remove(UE ue) {
+	public UE remove(UE ue) throws NotFoundException{
 		return daoUE.remove(ue);
 	}
 
 	@Override
-	public UE update(UE ue) {
+	public UE update(UE ue) throws NotFoundException{
 		return daoUE.update(ue);
 	}
 

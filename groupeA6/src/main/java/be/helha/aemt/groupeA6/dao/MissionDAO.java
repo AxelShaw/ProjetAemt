@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -27,9 +28,9 @@ public class MissionDAO {
 		return em.createQuery("Select m from Mission m where m.intitule LIKE Concat('%',?1,'%')", Mission.class).setParameter(1, name).getResultList();
 	}
 
-	public Mission add(Mission m) {
+	public Mission add(Mission m) throws NotFoundException{
 		if (m==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(m);
@@ -38,9 +39,9 @@ public class MissionDAO {
 		return m;
 	}
 	
-	public Mission remove(Mission m) {
+	public Mission remove(Mission m) throws NotFoundException{
 		if (m==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from Mission where id = ?1");	
@@ -54,9 +55,9 @@ public class MissionDAO {
 		return m;
 	}
 
-	public Mission findById(Integer id) {
+	public Mission findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		Mission res = em.find(Mission.class, id);	
 		em.detach(res);
