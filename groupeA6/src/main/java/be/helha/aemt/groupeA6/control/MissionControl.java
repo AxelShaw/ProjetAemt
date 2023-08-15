@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionMissionEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -63,8 +64,11 @@ public class MissionControl implements Serializable {
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() throws NotFoundException{
+	public String doAdd() throws NotFoundException, NotCompleteException{
 		init();
+	    if (anneeAcademiqueAjout == 0 || intituleAjout.isEmpty() || heuresAjout == 0) {
+	        throw new NotCompleteException();
+	    }
 		Mission e = new Mission(anneeAcademiqueAjout, intituleAjout, heuresAjout);
 		this.anneeAcademiqueAjout = 0;
 		this.intituleAjout = "";
@@ -88,8 +92,11 @@ public class MissionControl implements Serializable {
 		return "updateMission.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotCompleteException {
 		init();
+	    if (anneeAcademiqueUpdate == 0 || intituleUpdate.isEmpty() || heuresUpdate == 0) {
+	        throw new NotCompleteException();
+	    }
 		Mission e = new Mission(anneeAcademiqueUpdate, intituleUpdate, heuresUpdate);
 		e.setId(idUpdate);
 		beanGestion.update(e);

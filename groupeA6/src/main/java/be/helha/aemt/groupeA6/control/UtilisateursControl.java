@@ -14,6 +14,7 @@ import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import be.helha.aemt.groupeA6.exceptions.InvalidUserInputException;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
@@ -126,8 +127,13 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.findById(id);
 	}
 	
-	public String doAdd() throws NoSuchAlgorithmException , NotFoundException{
+	public String doAdd() throws NoSuchAlgorithmException , NotFoundException, NotCompleteException{
 		init();
+		
+	    if (nom.isEmpty() || prenom.isEmpty() || password.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
+		
 		setEmailValidation(email);
 		if(email==null) {
 			return "errorMail.xhtml";
@@ -186,8 +192,11 @@ public class UtilisateursControl implements Serializable {
 		return "updateUtilisateur.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException{
+	public String doUpdate() throws NotFoundException, NotCompleteException{
 		init();
+	    if (nomUpdate.isEmpty() || prenomUpdate.isEmpty() || passwordUpdate.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
 		setEmailValidation(emailUpdate);
 		if(this.emailUpdate==null) {
 			return "errorMail.xhtml";

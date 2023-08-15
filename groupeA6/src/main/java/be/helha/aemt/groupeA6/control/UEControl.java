@@ -15,6 +15,7 @@ import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -85,8 +86,13 @@ public class UEControl implements Serializable{
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() throws NotFoundException{
+	public String doAdd() throws NotFoundException, NotCompleteException{
 		init();
+		
+	    if (anneeAcademiqueAjout == 0 ||codeAjout.isEmpty() ||intituleAjout.isEmpty() ||creditAjout == 0 || blocAjout == 0) {
+	            throw new NotCompleteException();
+	        }
+		
 		UE ue = new UE(anneeAcademiqueAjout, sectionAjout, departementAjout, blocAjout, codeAjout, intituleAjout, creditAjout, aasAjout);
 		this.anneeAcademiqueAjout = 0;
 		this.sectionAjout = null;
@@ -121,8 +127,11 @@ public class UEControl implements Serializable{
 		return "updateUe.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException{
+	public String doUpdate() throws NotFoundException, NotCompleteException{
 		init();
+	    if (anneeAcademiqueUpdate == 0 ||codeUpdate.isEmpty() ||intituleUpdate.isEmpty() ||creditUpdate == 0|| blocUpdate == 0) {
+            throw new NotCompleteException();
+        }
 		UE e = new UE(anneeAcademiqueUpdate, sectionUpdate, departementUpdate, blocUpdate, codeUpdate, intituleUpdate, creditUpdate, aasUpdate);
 		e.setId(idUpdate);
 		beanGestion.update(e);

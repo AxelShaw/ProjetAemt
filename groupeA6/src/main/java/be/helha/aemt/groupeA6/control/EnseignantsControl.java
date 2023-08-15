@@ -15,6 +15,7 @@ import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.exceptions.EmailDuplicateException;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -102,13 +103,18 @@ public class EnseignantsControl implements Serializable{
 	}
 	
 	
-	
-	public String doAdd() throws NotFoundException, EmailDuplicateException{
+
+	public String doAdd() throws NotFoundException, EmailDuplicateException,NotCompleteException{
+
 		init();
 		setEmailValidation(mailAjout);
 		if(mailAjout==null) {
 			return "errorMail.xhtml";
 		}
+		
+		if (nomAjout.isEmpty() || prenomAjout.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
 		
 		Enseignant e = new Enseignant(nomAjout, prenomAjout, mailAjout, remarqueAjout,null);
 		this.nomAjout = "";
@@ -192,12 +198,19 @@ public class EnseignantsControl implements Serializable{
 		return "updateEnseignant.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException, EmailDuplicateException{
+
+	public String doUpdate() throws NotFoundException, EmailDuplicateException,NotCompleteException{
+
 		init();
 		setEmailValidation(mailUpdate);
 		if(this.mailUpdate==null) {
 			return "errorMail.xhtml";
 		}
+		
+		if (nomUpdate.isEmpty() || prenomUpdate.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
+		
 		Enseignant e = new Enseignant(nomUpdate, prenomUpdate, mailUpdate, remarqueUpdate,null);
 		e.setId(idUpdate);
 		beanGestion.update(e);

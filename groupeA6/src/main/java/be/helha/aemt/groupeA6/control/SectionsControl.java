@@ -14,6 +14,7 @@ import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -76,8 +77,13 @@ public class SectionsControl implements Serializable {
 		d = e;
 	}
 	
-	public String doAddTemp() throws NotFoundException{
+	public String doAddTemp() throws NotFoundException, NotCompleteException{
 		init();
+		
+	    if (nom.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
+		
 		Section s = new Section(nom, missions);
 		d.addSection(s);
 		beanDepartementGestion.add(d);
@@ -86,8 +92,11 @@ public class SectionsControl implements Serializable {
 		return "listSection.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException{
+	public String doUpdate() throws NotFoundException, NotCompleteException{
 		init();
+	    if (nomU.isEmpty()) {
+	        throw new NotCompleteException();
+	    }
 		Section e = new Section(nomU, null);
 		e.setId(idU);
 		beanSectionGestion.update(e);

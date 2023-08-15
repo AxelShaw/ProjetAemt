@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionAAEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
@@ -82,21 +83,29 @@ public class AAControl implements Serializable {
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() throws NotFoundException {
-		init();
-		AA a = new AA(anneeAcademiqueAjout, codeAjout, intituleAjout, creditAjout, heureAjout, heureQ1Ajout, heureQ2Ajout, nombreGroupeAjout, nombreEtudiantAjout, fractionAjout);
-		this.anneeAcademiqueAjout=0;
-		this.codeAjout="";
-		this.intituleAjout="";
-		this.creditAjout=0;
-		this.heureAjout=0;
-		this.heureQ1Ajout=0;
-		this.heureQ2Ajout=0;
-		this.nombreGroupeAjout=0;
-		this.nombreEtudiantAjout=0;
-		this.fractionAjout = 0;
-		beanGestion.add(a);
-		return "listAA.xhtml";
+	public String doAdd() throws NotCompleteException, NotFoundException {
+	    init();
+	    
+	    if (anneeAcademiqueAjout == 0 || codeAjout.isEmpty() || intituleAjout.isEmpty() || creditAjout == 0 ||
+	        heureAjout == 0 || nombreGroupeAjout == 0 || nombreEtudiantAjout == 0 || fractionAjout == 0) {
+	        throw new NotCompleteException();
+	    }
+	    
+	    AA a = new AA(anneeAcademiqueAjout, codeAjout, intituleAjout, creditAjout, heureAjout, heureQ1Ajout, heureQ2Ajout, nombreGroupeAjout, nombreEtudiantAjout, fractionAjout);
+	    
+	    this.anneeAcademiqueAjout = 0;
+	    this.codeAjout = "";
+	    this.intituleAjout = "";
+	    this.creditAjout = 0;
+	    this.heureAjout = 0;
+	    this.heureQ1Ajout = 0;
+	    this.heureQ2Ajout = 0;
+	    this.nombreGroupeAjout = 0;
+	    this.nombreEtudiantAjout = 0;
+	    this.fractionAjout = 0;
+	    
+	    beanGestion.add(a);
+	    return "listAA.xhtml";
 	}
 	
 	public String doDelete(AA a) throws NotFoundException {
@@ -105,8 +114,11 @@ public class AAControl implements Serializable {
 		return "listAA.xhtml";
 	}
 	
-	public String doGoToUpdate(AA aa) {
+	public String doGoToUpdate(AA aa) throws NotCompleteException {
 		init();
+		
+
+		
 		this.idUpdate = aa.getId();
 		this.anneeAcademiqueUpdate=aa.getAnneeAcademique();
 		this.codeUpdate=aa.getCode();
@@ -121,8 +133,14 @@ public class AAControl implements Serializable {
 		return "updateAA.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException {
+	public String doUpdate() throws NotFoundException, NotCompleteException {
 		init();
+		
+	    if (anneeAcademiqueUpdate == 0 || codeUpdate.isEmpty() || intituleUpdate.isEmpty() || creditUpdate == 0 ||
+	    		heureUpdate == 0 || nombreGroupeUpdate == 0 || nombreEtudiantUpdate == 0 || fractionUpdate == 0) {
+		        throw new NotCompleteException();
+		    }
+		
 		AA aa = new AA(anneeAcademiqueUpdate, codeUpdate, intituleUpdate, creditUpdate, heureUpdate, heureQ1Update, heureQ2Update, nombreGroupeUpdate, nombreEtudiantUpdate, fractionUpdate);
 		aa.setId(idUpdate);
 		beanGestion.update(aa);
