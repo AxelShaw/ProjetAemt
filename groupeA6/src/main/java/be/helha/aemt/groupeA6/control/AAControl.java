@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionAAEJB;
 import be.helha.aemt.groupeA6.ejb.IGestionUEEJB;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import jakarta.enterprise.context.SessionScoped;
@@ -76,12 +77,12 @@ public class AAControl implements Serializable {
 		return l;
 	}
 	
-	public AA doFindById() {
+	public AA doFindById() throws NotFoundException {
 		init();
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() {
+	public String doAdd() throws NotFoundException {
 		init();
 		AA a = new AA(anneeAcademiqueAjout, codeAjout, intituleAjout, creditAjout, heureAjout, heureQ1Ajout, heureQ2Ajout, nombreGroupeAjout, nombreEtudiantAjout, fractionAjout);
 		this.anneeAcademiqueAjout=0;
@@ -98,7 +99,7 @@ public class AAControl implements Serializable {
 		return "listAA.xhtml";
 	}
 	
-	public String doDelete(AA a) {
+	public String doDelete(AA a) throws NotFoundException {
 		init();
 		beanGestion.remove(a);
 		return "listAA.xhtml";
@@ -120,7 +121,7 @@ public class AAControl implements Serializable {
 		return "updateAA.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotFoundException {
 		init();
 		AA aa = new AA(anneeAcademiqueUpdate, codeUpdate, intituleUpdate, creditUpdate, heureUpdate, heureQ1Update, heureQ2Update, nombreGroupeUpdate, nombreEtudiantUpdate, fractionUpdate);
 		aa.setId(idUpdate);

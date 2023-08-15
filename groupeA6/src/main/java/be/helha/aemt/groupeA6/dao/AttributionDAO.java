@@ -6,6 +6,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Attribution;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -27,9 +28,9 @@ public class AttributionDAO {
 		return em.createQuery("Select a from Attribution a", Attribution.class).getResultList();
 	}
 
-	public Attribution add(Attribution a) {
+	public Attribution add(Attribution a) throws NotFoundException{
 		if (a==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		List<Attribution> list = findAll();		
@@ -45,9 +46,9 @@ public class AttributionDAO {
 		return a;
 	}
 	
-	public Attribution remove(Attribution a) {
+	public Attribution remove(Attribution a) throws NotFoundException{
 		if (a==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from Attribution where id = ?1");	
@@ -61,18 +62,18 @@ public class AttributionDAO {
 		return a;
 	}
 
-	public Attribution findById(Integer id) {
+	public Attribution findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		Attribution res = em.find(Attribution.class, id);	
 		em.detach(res);
 		return res;
 	}
 	
-	public Attribution update(Attribution a1, Attribution a2) {
+	public Attribution update(Attribution a1, Attribution a2) throws NotFoundException{
 		if (a1==null || a2==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("UPDATE Attribution SET nom = ?1 WHERE email = ?2");	

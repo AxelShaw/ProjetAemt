@@ -6,6 +6,7 @@ import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -33,9 +34,9 @@ public class SectionDAO {
 		
 
 
-	public Section add(Section s) {
+	public Section add(Section s) throws NotFoundException{
 		if (s==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(s);
@@ -44,9 +45,9 @@ public class SectionDAO {
 		return s;
 	}
 		
-	public Section remove(Section s) {
+	public Section remove(Section s) throws NotFoundException{
 		if (s==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from Section where id = ?1");	
@@ -60,18 +61,18 @@ public class SectionDAO {
 		return s;
 	}
 
-	public Section findById(Integer id) {
+	public Section findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		Section res = em.find(Section.class, id);	
 		em.detach(res);
 		return res;
 	}
 
-	public Section update(Section s) {
+	public Section update(Section s) throws NotFoundException{
 		if (s==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Section search = find(s);

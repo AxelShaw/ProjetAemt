@@ -4,6 +4,7 @@ import java.util.List;
 
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Enseignant;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -27,9 +28,9 @@ public class AADAO {
 		return em.createQuery("Select a from AA a where a.intitule LIKE Concat('%',?1,'%')", AA.class).setParameter(1, name).getResultList();
 	}
 
-	public AA add(AA a) {
+	public AA add(AA a) throws NotFoundException {
 		if (a==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(a);
@@ -38,9 +39,9 @@ public class AADAO {
 		return a;
 	}
 	
-	public AA remove(AA a) {
+	public AA remove(AA a) throws NotFoundException{
 		if (a==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from AA where id = ?1");	
@@ -57,18 +58,18 @@ public class AADAO {
 		return a;
 	}
 
-	public AA findById(Integer id) {
+	public AA findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		AA res = em.find(AA.class, id);	
 		em.detach(res);
 		return res;
 	}
 	
-	public AA update(AA a) {
+	public AA update(AA a) throws NotFoundException{
 		if (a==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("UPDATE AA SET anneeAcademique = ?1 , code = ?2 , credit = ?3, fraction = ?4, heure = ?5, heureQ1 = ?6 , heureQ2 = ?7,intitule = ?8 , nombreEtudiant = ?9, nombreGroupe = ?10  WHERE id = ?11 ");

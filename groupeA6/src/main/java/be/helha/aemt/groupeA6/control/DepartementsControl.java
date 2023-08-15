@@ -12,6 +12,7 @@ import be.helha.aemt.groupeA6.ejb.IGestionDepartementEJB;
 import be.helha.aemt.groupeA6.entities.Departement;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.Section;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -49,12 +50,12 @@ public class DepartementsControl implements Serializable {
 		return beanDepartementGestion.findAll();
 	}
 	
-	public Departement doFindById(Integer id) {
+	public Departement doFindById(Integer id) throws NotFoundException{
 		init();
 		return beanDepartementGestion.findById(id);
 	}
 	
-	public Departement doAdd() {
+	public Departement doAdd() throws NotFoundException{
 		init();
 		Departement d = new Departement(nom, sections, missions);
 		this.nom = "";
@@ -63,7 +64,7 @@ public class DepartementsControl implements Serializable {
 		return beanDepartementGestion.add(d);
 	}
 	
-	public Departement doDelete(Departement d) {
+	public Departement doDelete(Departement d) throws NotFoundException{
 		init();
 		return beanDepartementGestion.remove(d);
 	}

@@ -17,6 +17,7 @@ import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Mission;
 import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import jakarta.mail.Authenticator;
@@ -62,18 +63,18 @@ public class AttributionsControl implements Serializable {
 		return beanGestionAttribution.findAll();
 	}
 	
-	public Attribution doFindById() {
+	public Attribution doFindById() throws NotFoundException {
 		init();
 		return beanGestionAttribution.findById(id);
 	}
 	
-	public Attribution doAdd() {
+	public Attribution doAdd() throws NotFoundException{
 		init();
 		Attribution a = new Attribution(anneeAcademique, aas,missions);
 		return beanGestionAttribution.add(a);
 	}
 	
-	public Attribution doDelete(Attribution a) {
+	public Attribution doDelete(Attribution a) throws NotFoundException{
 		init();
 		return beanGestionAttribution.remove(a);
 	}

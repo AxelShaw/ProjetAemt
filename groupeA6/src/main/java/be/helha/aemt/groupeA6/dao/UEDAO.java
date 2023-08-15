@@ -5,6 +5,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.Section;
 import be.helha.aemt.groupeA6.entities.UE;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -38,9 +39,9 @@ public class UEDAO {
 		return em.createQuery("Select e from UE e", UE.class).getResultList();
 	}
 
-	public UE add(UE e) {
+	public UE add(UE e) throws NotFoundException{
 		if (e==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		em.merge(e);
@@ -49,9 +50,9 @@ public class UEDAO {
 		return e;
 	}
 	
-	public UE remove(UE e) {
+	public UE remove(UE e) throws NotFoundException{
 		if (e==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		Query query = em.createQuery("delete from UE where id = ?1");	
@@ -65,18 +66,18 @@ public class UEDAO {
 		return e;
 	}
 
-	public UE findById(Integer id) {
+	public UE findById(Integer id) throws NotFoundException{
 		if (id == null) {
-			return null;
+			throw new NotFoundException();
 		}
 		UE res = em.find(UE.class, id);	
 		em.detach(res);
 		return res;
 	}
 	
-	public UE update(UE ue) {
+	public UE update(UE ue) throws NotFoundException{
 		if (ue==null) {
-			return null;
+			throw new NotFoundException();
 		}
 		
 		UE search = find(ue);

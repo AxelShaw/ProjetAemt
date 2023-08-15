@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.groupeA6.ejb.IGestionMissionEJB;
 import be.helha.aemt.groupeA6.entities.AA;
 import be.helha.aemt.groupeA6.entities.Mission;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -57,12 +58,12 @@ public class MissionControl implements Serializable {
 		return l;
 	}
 	
-	public Mission doFindById() {
+	public Mission doFindById() throws NotFoundException{
 		init();
 		return beanGestion.findById(idAjout);
 	}
 	
-	public String doAdd() {
+	public String doAdd() throws NotFoundException{
 		init();
 		Mission e = new Mission(anneeAcademiqueAjout, intituleAjout, heuresAjout);
 		this.anneeAcademiqueAjout = 0;
@@ -72,7 +73,7 @@ public class MissionControl implements Serializable {
 		return "listMission.xhtml";
 	}
 	
-	public String doDelete(Mission e) {
+	public String doDelete(Mission e) throws NotFoundException{
 		init();
 		beanGestion.remove(e);
 		return "listMission.xhtml";

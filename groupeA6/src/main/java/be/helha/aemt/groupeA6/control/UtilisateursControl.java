@@ -14,6 +14,7 @@ import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
 import be.helha.aemt.groupeA6.exceptions.InvalidUserInputException;
+import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
@@ -52,7 +53,7 @@ public class UtilisateursControl implements Serializable {
 	
 	private String username = "";
 	
-	public void doUsername() {
+	public void doUsername() throws NotFoundException {
 		username = doGetUsername(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
 	}
 	
@@ -120,12 +121,12 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.findAll(name);
 	}
 	
-	public Utilisateur doFindById() {
+	public Utilisateur doFindById() throws NotFoundException{
 		init();
 		return beanGestion.findById(id);
 	}
 	
-	public String doAdd() throws NoSuchAlgorithmException {
+	public String doAdd() throws NoSuchAlgorithmException , NotFoundException{
 		init();
 		setEmailValidation(email);
 		if(email==null) {
@@ -155,13 +156,13 @@ public class UtilisateursControl implements Serializable {
 		}
 	}
 	
-	public String doDelete(Utilisateur u) {
+	public String doDelete(Utilisateur u)throws NotFoundException {
 		init();
 		beanGestion.remove(u);
 		return "listUtilisateur.xhtml";
 	}
 	
-	public String doGetUsername(String email) {
+	public String doGetUsername(String email) throws NotFoundException{
 		init();
 		return beanGestion.getUsername(email);
 	}
@@ -185,7 +186,7 @@ public class UtilisateursControl implements Serializable {
 		return "updateUtilisateur.xhtml";
 	}
 
-	public String doUpdate() {
+	public String doUpdate() throws NotFoundException{
 		init();
 		setEmailValidation(emailUpdate);
 		if(this.emailUpdate==null) {
