@@ -13,6 +13,7 @@ import be.helha.aemt.groupeA6.ejb.IGestionUtilisateurEJB;
 import be.helha.aemt.groupeA6.entities.Enseignant;
 import be.helha.aemt.groupeA6.entities.RoleList;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import be.helha.aemt.groupeA6.exceptions.EmailDuplicateException;
 import be.helha.aemt.groupeA6.exceptions.InvalidUserInputException;
 import be.helha.aemt.groupeA6.exceptions.NotCompleteException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
@@ -127,7 +128,7 @@ public class UtilisateursControl implements Serializable {
 		return beanGestion.findById(id);
 	}
 	
-	public String doAdd() throws NoSuchAlgorithmException , NotFoundException, NotCompleteException{
+	public String doAdd() throws NoSuchAlgorithmException , NotFoundException, NotCompleteException, EmailDuplicateException{
 		init();
 		
 	    if (nom.isEmpty() || prenom.isEmpty() || password.isEmpty()) {
@@ -192,7 +193,7 @@ public class UtilisateursControl implements Serializable {
 		return "updateUtilisateur.xhtml";
 	}
 
-	public String doUpdate() throws NotFoundException, NotCompleteException{
+	public String doUpdate() throws NotFoundException, NotCompleteException, EmailDuplicateException{
 		init();
 	    if (nomUpdate.isEmpty() || prenomUpdate.isEmpty() || passwordUpdate.isEmpty()) {
 	        throw new NotCompleteException();

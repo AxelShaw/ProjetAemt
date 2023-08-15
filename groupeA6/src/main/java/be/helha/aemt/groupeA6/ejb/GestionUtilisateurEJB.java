@@ -5,6 +5,7 @@ import java.util.List;
 import be.helha.aemt.groupeA6.dao.EnseignantDAO;
 import be.helha.aemt.groupeA6.dao.UtilisateurDAO;
 import be.helha.aemt.groupeA6.entities.Utilisateur;
+import be.helha.aemt.groupeA6.exceptions.EmailDuplicateException;
 import be.helha.aemt.groupeA6.exceptions.NotFoundException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -26,7 +27,7 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 	}
 
 	@Override
-	public Utilisateur add(Utilisateur u) throws NotFoundException{
+	public Utilisateur add(Utilisateur u) throws EmailDuplicateException, NotFoundException {
 		return daoUtilisateur.add(u);
 	}
 
@@ -36,7 +37,7 @@ public class GestionUtilisateurEJB implements IGestionUtilisateurEJB {
 	}
 
 	@Override
-	public Utilisateur update(Utilisateur u) throws NotFoundException{
+	public Utilisateur update(Utilisateur u) throws EmailDuplicateException, NotFoundException {
 		return daoUtilisateur.update(u);
 	}
 
