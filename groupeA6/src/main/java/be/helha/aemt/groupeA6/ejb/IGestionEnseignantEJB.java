@@ -11,7 +11,7 @@ public interface IGestionEnseignantEJB {
 		
 	public List<Enseignant> findAll(String name);
 	public Enseignant findById(int id) throws NotFoundException;
-	public Enseignant add(Enseignant e) throws NotFoundException, EmailDuplicateException;
+	public Enseignant add(Enseignant e) throws NotFoundException;
 	public Enseignant remove(Enseignant e) throws NotFoundException;
-	public Enseignant update(Enseignant e) throws NotFoundException, EmailDuplicateException;
+	public Enseignant update(Enseignant e) throws NotFoundException;
 }

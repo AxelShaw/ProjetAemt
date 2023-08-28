@@ -33,7 +33,7 @@ public class EnseignantDAO {
 	
 	
 
-	public Enseignant add(Enseignant e) throws EmailDuplicateException, NotFoundException {
+	public Enseignant add(Enseignant e) throws  NotFoundException {
         if (e == null) {
             throw new NotFoundException();
         }
@@ -43,9 +43,6 @@ public class EnseignantDAO {
             checkQuery.setParameter(1, e.getMail());
             long count = (long) checkQuery.getSingleResult();
 
-            if (count > 0) {
-                throw new EmailDuplicateException("L'adresse e-mail est déjà utilisée par un autre enseignant.");
-            }
 
             em.persist(e);
 
@@ -83,7 +80,7 @@ public class EnseignantDAO {
 	}
 	
 	
-	public Enseignant update(Enseignant e) throws NotFoundException,  EmailDuplicateException {
+	public Enseignant update(Enseignant e) throws NotFoundException {
 		if (e==null) {
 			throw new NotFoundException();
 		}
@@ -92,10 +89,6 @@ public class EnseignantDAO {
             checkQuery.setParameter(1, e.getMail());
             checkQuery.setParameter(2, e.getId());
             long count = (long) checkQuery.getSingleResult();
-
-            if (count > 0) {
-                throw new EmailDuplicateException("L'adresse e-mail est déjà utilisée par un autre enseignant.");
-            }
 		
 			Query query = em.createQuery("UPDATE Enseignant SET nom = ?1, prenom = ?2, mail = ?3, remarque = ?4 WHERE id = ?5");	
 			query.setParameter(1, e.getNom());
@@ -105,7 +98,7 @@ public class EnseignantDAO {
 			query.setParameter(5, e.getId()).executeUpdate();
 		}
 		catch (NonUniqueResultException ex) {
-            throw new EmailDuplicateException("Plusieurs enseignants ont la même adresse e-mail.");
+           
         }
 
 

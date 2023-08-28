@@ -30,7 +30,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	
 
 	@Override
-	public Enseignant add(Enseignant e) throws EmailDuplicateException, NotFoundException{
+	public Enseignant add(Enseignant e) throws NotFoundException{
 		return daoEnseignant.add(e);
 	}
 
@@ -40,7 +40,7 @@ public class GestionEnseignantEJB implements IGestionEnseignantEJB {
 	}
 	
 	@Override
-	public Enseignant update(Enseignant e) throws  EmailDuplicateException, NotFoundException{
+	public Enseignant update(Enseignant e) throws NotFoundException{
 		return daoEnseignant.update(e);
 	}
 }

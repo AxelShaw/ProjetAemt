@@ -223,7 +223,7 @@ public class EnseignantsControl implements Serializable{
 		return "choixEnseignantEnseignant.xhtml";
 	}
 	
-	public String addMission(Enseignant e) throws NotFoundException, EmailDuplicateException{
+	public String addMission(Enseignant e) throws NotFoundException{
 		init();
 		e.getAttribution().addMission(misSelected);
 		beanGestion.add(e);
@@ -236,7 +236,7 @@ public class EnseignantsControl implements Serializable{
 		return "choixEnseignantEnseignantAA.xhtml";
 	}
 	
-	public String addAA(Enseignant e) throws NotFoundException, EmailDuplicateException{
+	public String addAA(Enseignant e) throws NotFoundException{
 		init();
 		e.getAttribution().addAA(aaSelected);
 		beanGestion.add(e);
