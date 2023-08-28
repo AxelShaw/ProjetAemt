@@ -199,7 +199,7 @@ public class EnseignantsControl implements Serializable{
 	}
 
 
-	public String doUpdate() throws NotFoundException, EmailDuplicateException,NotCompleteException{
+	public String doUpdate() throws NotFoundException,NotCompleteException{
 
 		init();
 		setEmailValidation(mailUpdate);
